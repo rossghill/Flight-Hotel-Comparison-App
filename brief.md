@@ -7,7 +7,12 @@ It wants a user to be able to reach our web app and input a departure date and r
 They would like the MVP built as soon as possible along with any other features you can implement.
 
 MVP
+
 User can search by departure and return dates
+
 User can view available flight and hotel options for their dates
+
 User can sort flight & hotel packages by price
+
 User can add packages to a favourites list
+
