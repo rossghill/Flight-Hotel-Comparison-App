@@ -11,7 +11,7 @@ const bodyParser        = require('body-parser');
 //server.use(router);
 server.use(bodyParser.json());
 server.use(bodyParser.urlencoded({extended: true}));
-server.use(express.static(path.join(__dirname, 'client/build/public')));
+server.use(express.static(path.join(__dirname + '/client/build/public')));
 
 server.get("/", function(req, res){
   res.sendFile(path.join(__dirname + '/client/build/index.html'));
