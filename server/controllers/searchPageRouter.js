@@ -22,7 +22,7 @@ searchPageRouter.get("/flights", function(req, res){
 
   // const serverFlightModel = new ServerFlightModel();
   // serverFlightModel.searchFlights("EDI", "LON", "2018-04-25", "2018-04-28",1,0);
-  // serverFlightModel.onUpdate = function(flightEntities){
+  // serverFlightModel.onFlightsUpdate = function(flightEntities){
   //   res.send(flightEntities);
   // }
 
