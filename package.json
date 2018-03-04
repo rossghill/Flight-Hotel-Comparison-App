@@ -1,0 +1,19 @@
+{
+  "name": "codeclan-group-project",
+  "version": "1.0.0",
+  "description": "[![Waffle.io - Columns and their card count](https://badge.waffle.io/rossghill/CodeClan-Group-Project.svg?columns=all)](https://waffle.io/rossghill/CodeClan-Group-Project)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rossghill/CodeClan-Group-Project.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rossghill/CodeClan-Group-Project/issues"
+  },
+  "homepage": "https://github.com/rossghill/CodeClan-Group-Project#readme"
+}
