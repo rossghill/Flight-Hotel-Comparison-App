@@ -22,6 +22,4 @@ ServerFlightModel.prototype.searchFlights = function(airportFrom, airportTo, dep
 
 }
 
-
-
 module.exports = ServerFlightModel;
