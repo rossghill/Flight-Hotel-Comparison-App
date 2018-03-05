@@ -3,19 +3,32 @@ body {
     padding: 10;
 }
 
+div {
+  border: 1px solid black;
+}
+
 #container-main {
+  display: flex;
+  flex-direction: column;
 }
 
 
 #container-header {
+  height: 20%;
+  display: flex;
+  flex-direction: row;
 }
 
 
 #div-company {
+  display: flex;
+  flex-direction: row;
 }
 
 #container-search-result-bars {
-
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
 }
 
 #container-search-bar {
@@ -24,20 +37,35 @@ body {
   flex-wrap: wrap;
 }
 
-#container-result-bar {
+#button_get_flight {
+  width: 50px;
+  background-color: #4d94ff;
+  color: white;
+  font-weight: bold;
+}
 
+#container-result-bar {
+  display: flex;
+  flex-direction: row;
 }
 
 
 #container-body {
-
+  height: 600px;
+  display: flex;
+  flex-direction: row;
 }
 
 #container-extra-filters {
-
+  display: flex;
+  flex-direction: row;
 }
 
 
 #container-packages {
-  
+  width: auto;
+}
+
+#div-package-map {
+  visibility: collapse;
 }
