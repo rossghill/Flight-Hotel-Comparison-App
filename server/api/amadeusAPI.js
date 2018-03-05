@@ -25,7 +25,9 @@ AmadeusAPI.prototype.searchFlights = function(airportFrom, airportTo, departureD
     }.bind(this));
 }
 
-
+AmadeusAPI.prototype.searchHotels = function(){
+    let url = `https://api.sandbox.amadeus.com/v1.2/hotels/search-airport?apikey=${this.amadeusApiKey}`;
+}
 
 
 

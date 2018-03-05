@@ -1,6 +1,13 @@
 const AmadeusAPI           = require("./../api/AmadeusAPI");
+
 const ServerFlightModel    = require("./../models/serverFlightModel");
+const ServerHotelModel    = require("./../models/serverHotelModel");
+
 const FlightEntity         = require("./../../client/src/entities/flightEntity");
+const HotelEntity         = require("./../../client/src/entities/hotelEntity");
+const FlightPackageEntity   = require("./../../client/src/entities/flightPackage");
+const FlightHotelPackageEntity = require("./../../client/src/entities/flightHotelPackage");
+
 const express              = require("express");
 const searchPageRouter     = new express.Router();
 
@@ -18,6 +25,7 @@ searchPageRouter.get("/search-for-packages", function(req, res){
      }
 
      res.send(flightEntities);
+     // res.send(packagesEntities):
      console.log("flights");
   }
 
