@@ -3,8 +3,8 @@ const ApiKey        = require('./apiKey');
 
 const AmadeusAPI = function(){
   this.amadeusApiKey        = new ApiKey().getAmadeusAPIKey();
-  this.numberOfFlightResult = 5;
-  this.numberOfHotelResults = 20;
+  this.numberOfFlightResult = 2;
+  this.numberOfHotelResults = 3;
   this.radius               = 10;
   this.onFlightsUpdate      = null;
   this.onHotelsUpdate        = null;
@@ -35,8 +35,6 @@ AmadeusAPI.prototype.searchHotels = function(location, checkInDate, checkOutDate
     url += `&check_out=${checkOutDate}`;
     url += `&radius=${this.radius}`;
     url += `&number_of_results=${this.numberOfHotelResults}`;
-
-console.log(url);
 
     let request = new ServerRequest();
     request.sendRequest(url, function(requestResponse){

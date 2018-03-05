@@ -14,35 +14,29 @@ const searchPageRouter     = new express.Router();
 
 
 searchPageRouter.get("/search-for-packages", function(req, res){
-  console.log(req);
+
    let amadeusAPI = new AmadeusAPI();
    amadeusAPI.searchFlights(req.query.origin, req.query.destination, req.query.departureDate, req.query.returnDate, req.query.adults, req.query.children);
-   amadeusAPI.onFlightsUpdate = function(flights)
-   {
+   amadeusAPI.onFlightsUpdate = function(flights){
      let flightEntities = [];
      for(flightJson of flights["results"]){
        flightEntities.push(new FlightEntity(flightJson));
      }
 
-     res.send(flightEntities);
-
-     console.log("flights");
+     amadeusAPI.searchHotels(req.query.destination, req.query.departureDate, req.query.returnDate)
+     amadeusAPI.onHotelsUpdate = function(hotels)
+     {
+       console.log("searchHotels result");
+       let hotelEntities = [];
+       for(hotelJson of hotels["results"]){
+         hotelEntities.push(new HotelEntity(hotelJson));
+       }
+       console.log(flightEntities);
+       res.send(hotelEntities);
+     }
 
   }
-  console.log("searchHotels");
-  let amadeusHotelAPI = new AmadeusAPI();
-  amadeusHotelAPI.searchHotels(req.query.destination, req.query.departureDate, req.query.returnDate)
-  amadeusHotelAPI.onHotelsUpdate = function(hotels)
-  {
-    console.log("searchHotels result");
-    let hotelEntities = [];
-    for(hotelJson of hotels["results"]){
-      hotelEntities.push(new HotelEntity(hotelJson));
-    }
-    res.send(hotelEntities);
-    console.log("hotels");
-    // res.send(packagesEntities):
-  }
+
 });
 
 
