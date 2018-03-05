@@ -10,12 +10,19 @@ const initializeFlightR = function(){
 
 const getPackages = function(){
 
-const origin = document.getElementById('origin').value;
-const destination = document.getElementById('destination').value;
-const departureDate = document.getElementById('departureDate').value;
-const returnDate = document.getElementById('returnDate').value;
-const adults = document.getElementById('adults').value;
-const children = document.getElementById('children').value;
+let origin = document.getElementById('origin').value;
+let destination = document.getElementById('destination').value;
+let departureDate = document.getElementById('departureDate').value;
+let returnDate = document.getElementById('returnDate').value;
+let adults = document.getElementById('adults').value;
+let children = document.getElementById('children').value;
+
+//   origin = "EDI";
+// destination = "LON";
+// departureDate= "2018-03-10";
+// returnDate = "2018-03-17";
+// adults = 2;
+// children = 2;
 
   const request = new XMLHttpRequest()
   let url = "http://localhost:3000/search-for-packages?";
@@ -29,7 +36,7 @@ const children = document.getElementById('children').value;
   request.open("GET", url);
   request.addEventListener("load", getPackagesCallBack);
   request.send();
-  console.log("getPackages");
+  // console.log("getPackages");
   // clientRequest = new ClientRequest();
   // clientRequest.sendRequestGetFlight(getPackagesCallBack);
 
