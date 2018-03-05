@@ -6,10 +6,10 @@ const searchPageRouter     = new express.Router();
 
 
 
-searchPageRouter.get("/flights", function(req, res){
-
+searchPageRouter.get("/search-for-packages", function(req, res){
+  console.log(req);
    let amadeusAPI = new AmadeusAPI();
-   amadeusAPI.searchFlights("EDI", "LON", "2018-04-25", "2018-04-28",1,0);
+   amadeusAPI.searchFlights(req.query.origin, req.query.destination, req.query.departureDate, req.query.returnDate, req.query.adults, req.query.children);
    amadeusAPI.onFlightsUpdate = function(flights)
    {
      let flightEntities = [];

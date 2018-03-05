@@ -5,22 +5,37 @@ const ClientRequest = require("./requests/clientRequest");
 
 const initializeFlightR = function(){
   console.log("initializeFlightR");
-  document.getElementById("button_get_flight").addEventListener("click", getFlights);
+  document.getElementById("button_get_flight").addEventListener("click", getPackages);
 }
 
-const getFlights = function(){
+const getPackages = function(){
+
+const origin = document.getElementById('origin').value;
+const destination = document.getElementById('destination').value;
+const departureDate = document.getElementById('departureDate').value;
+const returnDate = document.getElementById('returnDate').value;
+const adults = document.getElementById('adults').value;
+const children = document.getElementById('children').value;
 
   const request = new XMLHttpRequest()
-  request.open("GET", "http://localhost:3000/flights");
-  request.addEventListener("load", getFlightsCallBack);
+  let url = "http://localhost:3000/search-for-packages?";
+  url += `origin=${origin}`;
+  url += `&destination=${destination}`;
+  url += `&departureDate=${departureDate}`;
+  url += `&returnDate=${returnDate}`;
+  url += `&adults=${adults}`;
+  url += `&children=${children}`;
+
+  request.open("GET", url);
+  request.addEventListener("load", getPackagesCallBack);
   request.send();
-  console.log("getFlights");
+  console.log("getPackages");
   // clientRequest = new ClientRequest();
-  // clientRequest.sendRequestGetFlight(getFlightsCallBack);
+  // clientRequest.sendRequestGetFlight(getPackagesCallBack);
 
 }
 
-const getFlightsCallBack = function(){
+const getPackagesCallBack = function(){
   document.getElementById("div_flight_list").innerText = this.responseText;
 }
 
