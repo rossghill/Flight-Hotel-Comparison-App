@@ -1,7 +1,7 @@
 const CreateFlightPackage = function(){
-
-
-
+  this.createOutboundFlight();
+  this.createInboundFlight();
+  this.createHotelPriceAndAddFaveAction();
 }
 
 CreateViewPackage.prototype.createOutboundFlight = function(){

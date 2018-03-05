@@ -1,5 +1,7 @@
 const CreateHotelPackage = function(){
-
+  this.createHotelDescription();
+  this.createHotelMap();
+  this.createHotelPriceAndAddFaveAction();
 }
 
 CreateFlightPackage.prototype.createHotelDescription = function(){
