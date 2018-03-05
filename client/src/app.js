@@ -36,7 +36,7 @@ const children = document.getElementById('children').value;
 }
 
 const getPackagesCallBack = function(){
-  document.getElementById("div_flight_list").innerText = this.responseText;
+  document.getElementById("container-packages").innerText = this.responseText;
 }
 
 
