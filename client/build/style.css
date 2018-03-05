@@ -1,6 +1,43 @@
+body {
+    margin: 10;
+    padding: 10;
+}
+
+#container-main {
+}
+
+
+#container-header {
+}
+
+
+#div-company {
+}
+
+#container-search-result-bars {
+
+}
+
 #container-search-bar {
-  align-items: center;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+}
+
+#container-result-bar {
+
+}
+
+
+#container-body {
+
+}
+
+#container-extra-filters {
+
+}
+
+
+#container-packages {
+  
 }
