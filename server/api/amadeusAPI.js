@@ -38,7 +38,7 @@ AmadeusAPI.prototype.searchHotels = function(location, checkInDate, checkOutDate
 
     let request = new ServerRequest();
     request.sendRequest(url, function(requestResponse){
-      console.log(requestResponse);
+      // console.log(requestResponse);
       this.onHotelsUpdate(JSON.parse(requestResponse));
     }.bind(this));
 

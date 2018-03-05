@@ -36,7 +36,7 @@ let children = document.getElementById('children').value;
   request.open("GET", url);
   request.addEventListener("load", getPackagesCallBack);
   request.send();
-  console.log("getPackages");
+  // console.log("getPackages");
   // clientRequest = new ClientRequest();
   // clientRequest.sendRequestGetFlight(getPackagesCallBack);
 
