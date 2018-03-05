@@ -18,6 +18,7 @@ searchPageRouter.get("/flights", function(req, res){
      }
 
      res.send(flightEntities);
+     console.log("flights");
   }
 
   // const serverFlightModel = new ServerFlightModel();

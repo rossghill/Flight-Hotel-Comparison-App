@@ -3,12 +3,32 @@
   <head>
     <meta charset="utf-8">
     <title>FlightR</title>
+    <link rel="stylesheet" href="/style.css">
     <script src="bundle.js"></script>
   </head>
   <body>
-    <div>
-      <button id="button_get_flight">GET FLIGHTS</button>
-    </div>
+    <h1 align='center'>FlightR</h1>
+    <br/>
+      <container id='search' align='left'>
+          <form>
+            <div class="form-group">
+              <label for="origin">Leaving From:</label>
+              <input type="text" class="form-control" id="origin">
+            </div>
+
+            <div class="form-group">
+              <label for="destination">Destination:</label>
+              <input type="text" class="form-control" id="destination">
+            </div>
+
+
+          </form>
+
+      <div align='right'>
+        <button id="button_get_flight">GET FLIGHTS</button>
+      </div>
+    </container>
+
     <div id="div_flight_list">
 
     </div>
