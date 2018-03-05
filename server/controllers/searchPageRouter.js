@@ -25,17 +25,24 @@ searchPageRouter.get("/search-for-packages", function(req, res){
      }
 
      res.send(flightEntities);
-     // res.send(packagesEntities):
+
      console.log("flights");
+
   }
-
-  // const serverFlightModel = new ServerFlightModel();
-  // serverFlightModel.searchFlights("EDI", "LON", "2018-04-25", "2018-04-28",1,0);
-  // serverFlightModel.onFlightsUpdate = function(flightEntities){
-  //   res.send(flightEntities);
-  // }
-
-
+  console.log("searchHotels");
+  let amadeusHotelAPI = new AmadeusAPI();
+  amadeusHotelAPI.searchHotels(req.query.destination, req.query.departureDate, req.query.returnDate)
+  amadeusHotelAPI.onHotelsUpdate = function(hotels)
+  {
+    console.log("searchHotels result");
+    let hotelEntities = [];
+    for(hotelJson of hotels["results"]){
+      hotelEntities.push(new HotelEntity(hotelJson));
+    }
+    res.send(hotelEntities);
+    console.log("hotels");
+    // res.send(packagesEntities):
+  }
 });
 
 

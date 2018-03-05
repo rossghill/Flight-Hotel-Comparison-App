@@ -5,6 +5,7 @@ const AmadeusAPI = function(){
   this.amadeusApiKey        = new ApiKey().getAmadeusAPIKey();
   this.numberOfFlightResult = 5;
   this.numberOfHotelResults = 20;
+  this.radius               = 10;
   this.onFlightsUpdate      = null;
   this.onHotelsUpdate        = null;
 }
@@ -27,16 +28,19 @@ AmadeusAPI.prototype.searchFlights = function(airportFrom, airportTo, departureD
     }.bind(this));
 }
 
-AmadeusAPI.prototype.searchHotels = function(location, checkInDate, checkOutDate, radius){
+AmadeusAPI.prototype.searchHotels = function(location, checkInDate, checkOutDate){
     let url = `https://api.sandbox.amadeus.com/v1.2/hotels/search-airport?apikey=${this.amadeusApiKey}`;
     url += `&location=${location}`;
-    url += `&checkInDate=${checkInDate}`;
-    url += `&checkOutDate=${checkOutDate}`;
-    url += `&radius=${radius}`;
-    url += `&numberOfResults=${this.numberOfHotelResults}`;
+    url += `&check_in=${checkInDate}`;
+    url += `&check_out=${checkOutDate}`;
+    url += `&radius=${this.radius}`;
+    url += `&number_of_results=${this.numberOfHotelResults}`;
+
+console.log(url);
 
     let request = new ServerRequest();
     request.sendRequest(url, function(requestResponse){
+      console.log(requestResponse);
       this.onHotelsUpdate(JSON.parse(requestResponse));
     }.bind(this));
 
