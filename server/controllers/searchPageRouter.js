@@ -29,9 +29,37 @@ searchPageRouter.get("/search-for-packages", function(req, res){
        console.log("searchHotels result");
        let hotelEntities = [];
        for(hotelJson of hotels["results"]){
-         hotelEntities.push(new HotelEntity(hotelJson));
+         // hotelEntities.push(new HotelEntity(hotelJson));
+         let hotelDetails = []
+         hotelDetails.push(hotelJson.property_name);
+         hotelDetails.push(hotelJson.total_price.amount);
+         hotelDetails.push(hotelJson.total_price.currency);
+         let amenitiesArray = []
+         hotelJson.forEach(function(hotel, index){
+           if(hotel.amenities[index].amenity === "INTERNET_PUBLIC_AREAS"){
+             amenitiesArray.push("INTERNET_PUBLIC_AREAS");
+           } else if(hotel.amenities[index].amenity === "RESTAURANT"){
+             amenitiesArray.push("RESTAURANT");
+           } else if(hotel.amenities[index].amenity === "PARKING"){
+             amenitiesArray.push("PARKING");
+           } else if(hotel.amenities[index].amenity === "POOL"){
+             amenitiesArray.push("POOL");
+           } else if(hotel.amenities[index].amenity === "ACCESSIBLE_FACILITIES"){
+             amenitiesArray.push("ACCESSIBLE_FACILITIES");
+           }
+         });
+         hotelDetails.push(amenitiesArray);
+         // hotelDetails.push(); description
+         hotelDetails.push(hotelJson.images[0].url);
+         hotelDetails.push(hotelJson.images[1].url);
+         hotelDetails.push(hotelJson.awards[0].rating);
+         hotelDetails.push(hotelJson.location.latitude);
+         hotelDetails.push(hotelJson.location.longitude);
+
+         hotelEntities.push(new HotelEntity(hotelDetails));
        }
        console.log(flightEntities);
+       console.log(hotelEntities[0]);
        res.send(hotelEntities);
      }
 
