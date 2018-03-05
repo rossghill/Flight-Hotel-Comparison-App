@@ -7,50 +7,95 @@
     <script src="bundle.js"></script>
   </head>
   <body>
-    <h1 align='center'>FlightR</h1>
-    <br/>
-      <container id='search' align='left'>
-          <form>
-            <div class="form-group">
-              <label for="origin">Leaving From:</label>
-              <input type="text" class="form-control" id="origin">
+    <div id='container-main'>
+      <h1 align='center'>FlightR</h1>
+      <br/>
+
+      <!-- CONTAINS IMAGE, SEARCH & RESULTS DIVS -->
+      <div id='container-header'>
+
+            <!-- COMPANY IMAGE & SLOGAN TO FLEX AS ROW -->
+            <div id='div-company'>
+
             </div>
 
-            <div class="form-group">
-              <label for="destination">Destination:</label>
-              <input type="text" class="form-control" id="destination">
-            </div>
+            <!-- SEARCH BAR & RESULTS TO FLEX AS COLUMN -->
+            <div id='container-search-result-bars'>
 
-            <div class="form-group">
-              <label for="departureDate">Departure Date:</label>
-              <input type="date" class="form-control" id="departureDate">
-            </div>
+                <!-- MAIN SEARCH BAR & GO BUTTON -->
+                <div id='container-search-bar'>
 
-            <div class="form-group">
-              <label for="Return Date">Return Date:</label>
-              <input type="date" class="form-control" id="returnDate">
-            </div>
+                    <!-- SEARCH PARAMS -->
+                    <div id='div-origin'>
+                      <label for="origin">From:</label>
+                      <input type="text" id="origin">
+                    </div>
 
-            <div class="form-group">
-              <label for="adults">Adults:</label>
-              <input type="number" class="form-control" id="adults">
-            </div>
+                    <div id="div-destination">
+                      <label for="destination">To:</label>
+                      <input type="text" id="destination">
+                    </div>
 
-            <div class="form-group">
-              <label for="children">Children:</label>
-              <input type="number" class="form-control" id="children">
-            </div>
+                    <div id="div-departureDate">
+                      <label for="departureDate">Depart:</label>
+                      <input type="date" id="departureDate">
+                    </div>
+
+                    <div id="div-returnDate">
+                      <label for="Return Date">Return:</label>
+                      <input type="date" id="returnDate">
+                    </div>
+
+                    <div id="div-adults">
+                      <label for="adults">Adults:</label>
+                      <input type="number" id="adults">
+                    </div>
+
+                    <div id="div-children">
+                      <label for="children">Children:</label>
+                      <input type="number" id="children">
+                    </div>
+
+                    <!-- GO! BUTTON -->
+                    <button id="button_get_flight">GO!</button>
 
 
+                </div>
 
-          </form>
+                <!-- RESULTS BAR -->
+                <div id='container-result-bar'>
+                  <h2>RESULTS BAR</h2>
 
-      <div align='right'>
-        <button id="button_get_flight">GET FLIGHTS</button>
+                </div>
+
+          </div>
+
       </div>
-    </container>
 
-    <div id="div_flight_list">
+      <!-- CONTAINS EXTRA FILTERS AND PACKAGE DEALS DIVS -->
+      <div id='container-body'>
+
+            <!-- EXTRA FILTERS -->
+            <div id='container-extra-filters'>
+              <h2>FILTERS</h2>
+            </div>
+
+
+            <!-- PACKAGES -->
+
+            <div id='container-packages'>
+
+                <div id='div-package-list'>
+                  <h2>PACKAGE LIST</h2>
+                </div>
+
+                <div id='div-package-map'>
+                  <h2>PACKAGE MAP</h2>
+                </div>
+
+            </div>
+
+      </div>
 
     </div>
   </body>
