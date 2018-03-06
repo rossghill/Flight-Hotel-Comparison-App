@@ -3,34 +3,30 @@
 
 const HotelEntity = require("./../../client/src/entities/hotelEntity");
 const FlightEntity = require("./../../client/src/entities/flightEntity");
+const FlightPackage = require("./../../client/src/entities/flightPackage");
 
-const Package = function(flightDetails){
-
-newFlight = new FlightEntity(flightDetails);
-return newFlight;
+const Package = function(){
 
 }
 
 Package.prototype.createFlightPackage = function(jsonOutboundFlightsArray, jsonInboundFlightsArray, totalPrice) {
   let outboundFlightEntities = [];
   jsonOutboundFlightsArray.forEach(function(jsonFlight){
-    let flightEntity = createFlightEntity(jsonFlight);
+    let flightEntity = this.createFlightEntity(jsonFlight);
     outboundFlightEntities.push(flightEntity);
-  });
+  }.bind(this));
 
   let inboundFlightEntities = [];
   jsonInboundFlightsArray.forEach(function(jsonFlight){
-    let flightEntity = createFlightEntity(jsonFlight);
+    let flightEntity = this.createFlightEntity(jsonFlight);
     inboundFlightEntities.push(flightEntity);
-  });
+  }.bind(this));
 
   let flightPackage = new FlightPackage(outboundFlightEntities, inboundFlightEntities, totalPrice)
   return flightPackage;
 }
 
 Package.prototype.createFlightEntity = function(flightJson) {
-
-
   let flightDetails = {};
 
   flightDetails.origin = flightJson.origin.airport;
