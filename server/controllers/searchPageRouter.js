@@ -21,16 +21,7 @@ searchPageRouter.get("/search-for-packages", function(req, res){
 
   amadeusAPI.searchFlights(req.query.origin, req.query.destination, req.query.departureDate, req.query.returnDate, req.query.adults, req.query.children);
   amadeusAPI.onFlightsUpdate = function(flights){
-    flights.results.forEach(function(flight){
-      let outbound = flight.itineraries[0].outbound.flights;
-      let inbound = flight.itineraries[0].inbound.flights;
-      let totalPrice = flight.fare.total_price;
-      let flightPackage = packageModel.createFlightPackage(outbound, inbound, totalPrice);
-      flightPackagesArray.push(flightPackage);
-    });
-    }
-
-
+    flightPackagesArray = packageModel.createFlightPackages(flights);
 
     amadeusAPI.searchHotels(req.query.destination, req.query.departureDate, req.query.returnDate)
     amadeusAPI.onHotelsUpdate = function(hotels)
@@ -40,10 +31,10 @@ searchPageRouter.get("/search-for-packages", function(req, res){
         const hotelEntity = packageModel.createHotelEntity(hotelJson)
         hotelEntitiesArray.push(hotelEntity);
       }
-      // console.log(flightEntities);
-      res.send(hotelEntitiesArray);
+      // console.log(flightPackagesArray);
+      res.send(flightPackagesArray);
     }
-
+}
 
 
 });

@@ -9,6 +9,18 @@ const Package = function(){
 
 }
 
+Package.prototype.createFlightPackages = function(flights){
+  let flightPackagesArray = [];
+  flights.results.forEach(function(flight){
+    let outbound = flight.itineraries[0].outbound.flights;
+    let inbound = flight.itineraries[0].inbound.flights;
+    let totalPrice = flight.fare.total_price;
+    let flightPackage = this.createFlightPackage(outbound, inbound, totalPrice);
+    flightPackagesArray.push(flightPackage);
+  }.bind(this));
+  return flightPackagesArray;
+}
+
 Package.prototype.createFlightPackage = function(jsonOutboundFlightsArray, jsonInboundFlightsArray, totalPrice) {
   let outboundFlightEntities = [];
   jsonOutboundFlightsArray.forEach(function(jsonFlight){
