@@ -2,7 +2,7 @@ const AmadeusAPI           = require("./../api/AmadeusAPI");
 
 const ServerFlightModel    = require("./../models/serverFlightModel");
 const ServerHotelModel    = require("./../models/serverHotelModel");
-
+const PackageModel        = require("./../models/packageModel");
 const FlightEntity         = require("./../../client/src/entities/flightEntity");
 const HotelEntity         = require("./../../client/src/entities/hotelEntity");
 const FlightPackageEntity   = require("./../../client/src/entities/flightPackage");
@@ -16,12 +16,19 @@ const searchPageRouter     = new express.Router();
 searchPageRouter.get("/search-for-packages", function(req, res){
 
   let amadeusAPI = new AmadeusAPI();
+  let packageModel = new PackageModel();
+  let flightPackagesArray = [];
+
   amadeusAPI.searchFlights(req.query.origin, req.query.destination, req.query.departureDate, req.query.returnDate, req.query.adults, req.query.children);
   amadeusAPI.onFlightsUpdate = function(flights){
-    let flightEntities = [];
-    for(flightJson of flights["results"]){
-      flightEntities.push(new FlightEntity(flightJson));
+    let outbound = flights.results[0].itineraries[0].outbound.flights;
+    let inbound = flights.results[0].itineraries[0].inbound.flights;
+    let totalPrice = flights.results[0].fare.total_price;
+    let flightPackage = packageModel.createFlightPackage(outbound, inbound, totalPrice);
+    flightPackagesArray.push(flightPackage);
     }
+
+
 
     amadeusAPI.searchHotels(req.query.destination, req.query.departureDate, req.query.returnDate)
     amadeusAPI.onHotelsUpdate = function(hotels)
