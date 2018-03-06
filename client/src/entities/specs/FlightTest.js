@@ -20,7 +20,7 @@ flight1 = new Flight(flightDetails);
     assert.strictEqual(actual, 'LAX');
   });
 
-  xit('should have a destination', function(){
+  it('should have a destination', function(){
     const actual = flight1.destination;
     assert.strictEqual(actual, 'LON');
   });
