@@ -18,6 +18,7 @@ HotelView.prototype.createHotelView = function(hotelEntity){
   this.createHotelDescription(hotelEntity);
   this.createHotelMap(hotelEntity);
   this.createHotelPriceAndAddFaveAction(hotelEntity);
+  return document.createElement("div");
 }
 
 

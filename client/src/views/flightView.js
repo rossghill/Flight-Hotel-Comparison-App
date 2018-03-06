@@ -24,6 +24,7 @@ FlightView.prototype.createFlightView = function(flightPackage){
   this.createOutboundFlight(flightPackage.outboundFlight);
   this.createInboundFlight(flightPackage.inboundFlight);
   this.createFlightPriceAndChangeAction(flightPackage.totalPrice);
+  return document.createElement("div");
 }
 
 

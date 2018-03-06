@@ -1,8 +1,8 @@
-const ClientRequest = require("./requests/clientRequest");
-const CreatePackageListView = require("./views/createPackageListView");
-
-
-
+const ClientRequest   = require("./requests/clientRequest");
+const PackageListView = require("./views/packageListView");
+const PackageView     = require("./views/packageView");
+const HotelView       = require("./views/hotelView");
+const FlightView      = require("./views/flightView");
 
 const initializeFlightR = function(){
   console.log("initializeFlightR");
@@ -18,12 +18,12 @@ let returnDate = document.getElementById('returnDate').value;
 let adults = document.getElementById('adults').value;
 let children = document.getElementById('children').value;
 
-//   origin = "EDI";
-// destination = "LON";
-// departureDate= "2018-03-10";
-// returnDate = "2018-03-17";
+// origin = "LON";
+// destination = "CDG";
+// departureDate= "2018-06-10";
+// returnDate = "2018-06-17";
 // adults = 2;
-// children = 2;
+// children = 1;
 
   const request = new XMLHttpRequest()
   let url = "http://localhost:3000/search-for-packages?";
@@ -33,6 +33,8 @@ let children = document.getElementById('children').value;
   url += `&returnDate=${returnDate}`;
   url += `&adults=${adults}`;
   url += `&children=${children}`;
+
+
 
   request.open("GET", url);
   request.addEventListener("load", populatePackages);
@@ -44,10 +46,10 @@ let children = document.getElementById('children').value;
 }
 
 const populatePackages = function(){
-  // const packageListView = new PackageListView();
-  // packageListView.createPackageList(flightHotelPackages);
-  console.log(JSON.parse(this.responseText));
-  document.getElementById("container-packages").innerText = this.responseText;
+  const packageListView = new PackageListView();
+  console.log(this.responseText);
+  const flightHotelPackagesJSON = JSON.parse(this.responseText);
+  packageListView.createPackageList(flightHotelPackagesJSON.flightHotelPackages);
 }
 
 

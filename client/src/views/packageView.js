@@ -15,8 +15,9 @@ PackageView.prototype.createPackageView = function(flightHotelPackage){
 
   let div = document.createElement('div');
   div.classList.add('flex-row');
-  div.appendChild(flightView);
-  div.appendChild(hotelView);
+
+  div.appendChild(flightViewDiv);
+  div.appendChild(hotelViewDiv);
 
   return div;
 
