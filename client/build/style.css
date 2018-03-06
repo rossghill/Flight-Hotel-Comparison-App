@@ -3,18 +3,24 @@ body {
     padding: 10;
 }
 
-div {
-  border: 1px solid black;
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
 }
 
 #container-main {
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
 }
 
 
 #container-header {
-  height: 20%;
   display: flex;
   flex-direction: row;
 }
@@ -23,9 +29,11 @@ div {
 #div-company {
   display: flex;
   flex-direction: row;
+  border: 1px solid black;
 }
 
 #container-search-result-bars {
+  margin-left: 10px;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -35,6 +43,7 @@ div {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  border: 1px solid black;
 }
 
 #button_get_flight {
@@ -45,8 +54,10 @@ div {
 }
 
 #container-result-bar {
+  margin-top: 10px;
   display: flex;
   flex-direction: row;
+  border: 1px solid black;
 }
 
 
@@ -54,16 +65,21 @@ div {
   height: 600px;
   display: flex;
   flex-direction: row;
+  /* visibility: collapse; */
 }
 
 #container-extra-filters {
-  display: flex;
-  flex-direction: row;
+  width: 195px;
+  margin-top: 10px;
+  border: 1px solid black;
 }
 
 
 #container-packages {
-  width: auto;
+  width: 960px;
+  margin-top: 10px;
+  margin-left: 10px;
+  border: 1px solid black;
 }
 
 #div-package-map {
