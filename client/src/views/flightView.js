@@ -2,29 +2,56 @@ const FlightView = function(){
 
 }
 
-FlightView.prototype.createOutboundFlight = function(flightEntity){
-  this.createFlight(flightEntity);
-
-}
-
-FlightView.prototype.createInboundFlight = function(flightEntity){
-  this.createFlight(flightEntity);
-
-}
-
-FlightView.prototype.createFlightPriceAndChangeAction = function(totalPrice){
-
-}
-
 FlightView.prototype.createFlight = function(flightEntity){
-
+  let createFlightDiv = document.createElement("div");
+  //populate createFlightDiv
+  return createFlightDiv;
 }
+
+FlightView.prototype.createOutboundFlight = function(outboundFlightEntity){
+  let outboundFlightDiv = document.createElement("div");
+  let outboundHeaderDiv = document.createElement("div");
+  let outboundBodyDiv = this.createFlight(outboundFlightEntity);
+
+  outboundFlightDiv.appendChild(outboundHeaderDiv);
+  outboundFlightDiv.appendChild(outboundBodyDiv);
+
+  return outboundFlightDiv;
+}
+
+FlightView.prototype.createInboundFlight = function(inboundFlightEntity){
+  let inboundFlightDiv = document.createElement("div");
+  let inboundHeaderDiv = document.createElement("div");
+  let inboundBodyDiv = this.createFlight(inboundFlightEntity);
+
+  inboundFlightDiv.appendChild(inboundHeaderDiv);
+  inboundFlightDiv.appendChild(inboundBodyDiv);
+
+  return inboundFlightDiv;
+}
+
+FlightView.prototype.createFlightPriceAndChangeAction = function(flightPrice){
+
+  let priceDiv = document.createElement("div");
+  priceDiv.innerText = flightPrice;
+  return priceDiv;
+}
+
+
 
 FlightView.prototype.createFlightView = function(flightPackage){
-  this.createOutboundFlight(flightPackage.outboundFlight);
-  this.createInboundFlight(flightPackage.inboundFlight);
-  this.createFlightPriceAndChangeAction(flightPackage.totalPrice);
-  return document.createElement("div");
+  let mainDiv = document.createElement("div");
+
+
+  let outboundFlightDiv = this.createOutboundFlight(flightPackage.outboundFlight);
+  let inboundFlightDiv  = this.createInboundFlight(flightPackage.inboundFlight);
+  let priceDiv          = this.createFlightPriceAndChangeAction(flightPackage.flightPrice);
+
+  mainDiv.appendChild(outboundFlightDiv);
+  mainDiv.appendChild(inboundFlightDiv);
+  mainDiv.appendChild(priceDiv);
+  // console.log(flightPackage);
+  return mainDiv;
 }
 
 
