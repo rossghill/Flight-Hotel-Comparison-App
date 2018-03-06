@@ -2,13 +2,32 @@
 //require Hotel model in searchPageRouter
 
 const HotelEntity = require("./../../client/src/entities/hotelEntity");
+const FlightEntity = require("./../../client/src/entities/flightEntity");
 
-const Package = function(){
+const Package = function(flightDetails){
 
+newFlight = new FlightEntity(flightDetails);
+return newFlight;
 
 }
 
-Package.prototype.createHotelEntity = function () {
+Package.prototype.createFlightPackage = function(outboundFlightEntity, inboundFlightEntity, totalPrice) {
+  let flightPackage = new FlightPackage(outboundFlightEntity, inboundFlightEntity, totalPrice)
+  return flightPackage;
+}
+
+Package.prototype.createFlightEntity = function(flightJson) {
+
+
+  let flightDetails = {};
+  let flightEntity = new FlightEntity(flightDetails);
+
+  flightDetails.origin = flightJson.origin;
+  flightDetails.destination = flightJson.destination;
+
+}
+
+Package.prototype.createHotelEntity = function (hotelJson) {
 
 let hotelDetails = {}
 //hotelDetails["hotelName"] = hotelJson.property_name;
