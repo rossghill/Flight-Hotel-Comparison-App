@@ -11,8 +11,20 @@ return newFlight;
 
 }
 
-Package.prototype.createFlightPackage = function(outboundFlightEntity, inboundFlightEntity, totalPrice) {
-  let flightPackage = new FlightPackage(outboundFlightEntity, inboundFlightEntity, totalPrice)
+Package.prototype.createFlightPackage = function(jsonOutboundFlightsArray, jsonInboundFlightsArray, totalPrice) {
+  let outboundFlightEntities = [];
+  jsonOutboundFlightsArray.forEach(function(jsonFlight){
+    let flightEntity = createFlightEntity(jsonFlight);
+    outboundFlightEntities.push(flightEntity);
+  });
+
+  let inboundFlightEntities = [];
+  jsonInboundFlightsArray.forEach(function(jsonFlight){
+    let flightEntity = createFlightEntity(jsonFlight);
+    inboundFlightEntities.push(flightEntity);
+  });
+
+  let flightPackage = new FlightPackage(outboundFlightEntities, inboundFlightEntities, totalPrice)
   return flightPackage;
 }
 
@@ -20,11 +32,14 @@ Package.prototype.createFlightEntity = function(flightJson) {
 
 
   let flightDetails = {};
+
+  flightDetails.origin = flightJson.origin.airport;
+  flightDetails.destination = flightJson.destination.airport;
+  flightDetails.departureTime = flightJson.departs_at;
+  flightDetails.arrivalTime = flightJson.arrives_at;
+
   let flightEntity = new FlightEntity(flightDetails);
-
-  flightDetails.origin = flightJson.origin;
-  flightDetails.destination = flightJson.destination;
-
+  return flightEntity;
 }
 
 Package.prototype.createHotelEntity = function (hotelJson) {
