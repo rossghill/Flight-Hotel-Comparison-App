@@ -18,6 +18,7 @@ PackageView.prototype.createPackageView = function(flightHotelPackage){
   div.appendChild(flightView);
   div.appendChild(hotelView);
 
+  return div;
 
 }
 

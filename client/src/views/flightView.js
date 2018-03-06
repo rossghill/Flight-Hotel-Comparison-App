@@ -1,7 +1,5 @@
-const FlightView = function(flightPackage){
-  this.createOutboundFlight(flightPackage.outboundFlight);
-  this.createInboundFlight(flightPackage.inboundFlight);
-  this.createFlightPriceAndChangeAction(flightPackage.totalPrice);
+const FlightView = function(){
+
 }
 
 FlightView.prototype.createOutboundFlight = function(flightEntity){
@@ -20,6 +18,12 @@ FlightView.prototype.createFlightPriceAndChangeAction = function(totalPrice){
 
 FlightView.prototype.createFlight = function(flightEntity){
 
+}
+
+FlightView.prototype.createFlightView = function(flightPackage){
+  this.createOutboundFlight(flightPackage.outboundFlight);
+  this.createInboundFlight(flightPackage.inboundFlight);
+  this.createFlightPriceAndChangeAction(flightPackage.totalPrice);
 }
 
 

@@ -1,4 +1,5 @@
 const ClientRequest = require("./requests/clientRequest");
+const CreatePackageListView = require("./views/createPackageListView");
 
 
 
@@ -34,7 +35,7 @@ let children = document.getElementById('children').value;
   url += `&children=${children}`;
 
   request.open("GET", url);
-  request.addEventListener("load", getPackagesCallBack);
+  request.addEventListener("load", populatePackages);
   request.send();
   // console.log("getPackages");
   // clientRequest = new ClientRequest();
@@ -42,7 +43,10 @@ let children = document.getElementById('children').value;
 
 }
 
-const getPackagesCallBack = function(){
+const populatePackages = function(){
+  // const packageListView = new PackageListView();
+  // packageListView.createPackageList(flightHotelPackages);
+  console.log(JSON.parse(this.responseText));
   document.getElementById("container-packages").innerText = this.responseText;
 }
 

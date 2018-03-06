@@ -35,7 +35,7 @@ searchPageRouter.get("/search-for-packages", function(req, res){
         flightHotelPackagesArray.push(package);
       });
       let flightHotelPackages = new FlightHotelPackages(flightHotelPackagesArray, flightPackagesArray);
-      console.log(flightHotelPackages);
+      // console.log(JSON.stringify(flightHotelPackage));
       res.send(flightHotelPackages);
     }
   }

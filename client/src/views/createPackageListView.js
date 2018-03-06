@@ -15,7 +15,7 @@ PackageListView.prototype.createPackageList = function(flightHotelPackages){
     li.appendChild(div);
     ul.appendChild(li);
 
-
+    
   }
 
 
