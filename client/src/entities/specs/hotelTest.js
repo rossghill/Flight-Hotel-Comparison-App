@@ -27,7 +27,7 @@ it('should have a name', function(){
 });
 
 it('should have a price', function(){
-  const actual = hotel1.price;
+  const actual = hotel1.hotelPrice;
   assert.strictEqual(actual, 249.99)
 });
 

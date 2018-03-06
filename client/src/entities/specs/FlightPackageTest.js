@@ -34,7 +34,7 @@ it('flight package has inbound flights', function(){
 });
 
 it('flight should have total price', function(){
-  const actual = flightPackage.totalPrice;
+  const actual = flightPackage.flightPrice;
   assert.strictEqual(actual, 900.00);
 })
 
