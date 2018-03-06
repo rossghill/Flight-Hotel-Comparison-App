@@ -28,8 +28,8 @@ searchPageRouter.get("/search-for-packages", function(req, res){
       }
       hotelEntitiesArray.forEach(function(hotel){
         const flightPackage = flightPackagesArray[0];
-        const flightPrice = parseFloat(flightPackage.totalPrice);
-        const hotelPrice = parseFloat(hotel.price);
+        const flightPrice = parseFloat(flightPackage.flightPrice);
+        const hotelPrice = parseFloat(hotel.hotelPrice);
         const packagePrice = flightPrice + hotelPrice;
         const package = packageModel.createFlightHotelPackage(flightPackage, hotel, packagePrice)
         flightHotelPackagesArray.push(package);
