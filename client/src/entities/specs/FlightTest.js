@@ -25,8 +25,9 @@ flight1 = new Flight(flightDetails);
     assert.strictEqual(actual, 'LON');
   });
 
-  xit('should have a departure time', function(){
-
+  it('should have a departure time', function(){
+    const actual = flight1.departureTime;
+    assert.strictEqual(actual, "2018-03-16T12:50");
   });
 
   xit('should have an arrival time', function(){
