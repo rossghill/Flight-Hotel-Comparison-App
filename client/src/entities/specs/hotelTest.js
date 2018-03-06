@@ -46,29 +46,29 @@ it('should have a description', function(){
   assert.strictEqual(actual, "You can check in any time you like, but you can never leave")
 });
 
-xit('should have a', function(){
-  const actual = hotel1.
-  assert.strictEqual(actual, )
+it('should have a small image', function(){
+  const actual = hotel1.smallImage;
+  assert.strictEqual(actual, "http://bxit.ly/2oLQcwQ")
 });
 
-xit('should have a', function(){
-  const actual = hotel1.
-  assert.strictEqual(actual, )
+it('should have a big image', function(){
+  const actual = hotel1.bigImage;
+  assert.strictEqual(actual, "http://bxit.ly/1T09dWo")
 });
 
-xit('should have a', function(){
-  const actual = hotel1.
-  assert.strictEqual(actual, )
+it('should have a star rating', function(){
+  const actual = hotel1.starRating;
+  assert.strictEqual(actual, 5)
 });
 
-xit('should have a', function(){
-  const actual = hotel1.
-  assert.strictEqual(actual, )
+it('should have a latitude', function(){
+  const actual = hotel1.latitude;
+  assert.strictEqual(actual, 666.666)
 });
 
-xit('should have a', function(){
-  const actual = hotel1.
-  assert.strictEqual(actual, )
+it('should have a longitude', function(){
+  const actual = hotel1.longitude;
+  assert.strictEqual(actual, 777.777);
 });
 
 
