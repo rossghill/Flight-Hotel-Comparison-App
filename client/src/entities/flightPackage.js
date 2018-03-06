@@ -1,7 +1,7 @@
-const FlightPackage = function(outboundFlight, inboundFlight, totalPrice){
+const FlightPackage = function(outboundFlights, inboundFlights, totalPrice){
 
-  this.outboundFlight = outboundFlight;
-  this.inboundFlight = inboundFlight;
+  this.outboundFlights = outboundFlights;
+  this.inboundFlights = inboundFlights;
   this.totalPrice = totalPrice;
 
 }

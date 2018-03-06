@@ -1,9 +1,9 @@
-const FlightEntity = function(origin, destination, departureTime, arrivalTime){
+const FlightEntity = function(flightDetails){
 
-  this.origin = origin;
-  this.destination = destination;
-  this.departureTime = departureTime;
-  this.arrivalTime = arrivalTime;
+  this.origin = flightDetails.origin;
+  this.destination = flightDetails.destination;
+  this.departureTime = flightDetails.departureTime;
+  this.arrivalTime = flightDetails.arrivalTime;
 
 
 }
