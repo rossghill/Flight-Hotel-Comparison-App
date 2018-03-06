@@ -3,6 +3,7 @@
 
 const HotelEntity = require("./../../client/src/entities/hotelEntity");
 const FlightEntity = require("./../../client/src/entities/flightEntity");
+const FlightHotelPackage = require("./../../client/src/entities/flightHotelPackage");
 const FlightPackage = require("./../../client/src/entities/flightPackage");
 
 const Package = function(){
@@ -99,5 +100,12 @@ let hotelDetails = {}
         const newHotel = new HotelEntity(hotelDetails);
         return newHotel;
 }
+
+
+Package.prototype.createFlightHotelPackage = function(flightPackage, hotel, finalPrice){
+  const flightHotelPackage = new FlightHotelPackage(flightPackage, hotel, finalPrice);
+  return flightHotelPackage;
+}
+
 
 module.exports = Package;
