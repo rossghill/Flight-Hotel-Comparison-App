@@ -16,7 +16,7 @@
     "webpack-cli": "^2.0.9"
   },
   "scripts": {
-    "test": "mocha client/src/models/specs",
+    "test": "mocha client/src/entities/specs",
     "start": "nodemon server.js",
     "build": "cd client && webpack -w"
   },
