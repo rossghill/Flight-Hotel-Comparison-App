@@ -1,12 +1,6 @@
 const AmadeusAPI = require("./../api/AmadeusAPI");
-
-const ServerFlightModel = require("./../models/serverFlightModel");
-const ServerHotelModel = require("./../models/serverHotelModel");
 const Package = require("./../models/packageModel");
-const FlightEntity = require("./../../client/src/entities/flightEntity");
-const HotelEntity = require("./../../client/src/entities/hotelEntity");
-const FlightPackageEntity = require("./../../client/src/entities/flightPackage");
-const FlightHotelPackageEntity = require("./../../client/src/entities/flightHotelPackage");
+const FlightHotelPackages = require("./../../client/src/entities/flightHotelPackages");
 
 const express = require("express");
 const searchPageRouter = new express.Router();
@@ -18,6 +12,8 @@ searchPageRouter.get("/search-for-packages", function(req, res){
   let amadeusAPI = new AmadeusAPI();
   let packageModel = new Package();
   let flightPackagesArray = [];
+  let hotelEntitiesArray = [];
+  let flightHotelPackagesArray = [];
 
   amadeusAPI.searchFlights(req.query.origin, req.query.destination, req.query.departureDate, req.query.returnDate, req.query.adults, req.query.children);
   amadeusAPI.onFlightsUpdate = function(flights){
@@ -26,15 +22,23 @@ searchPageRouter.get("/search-for-packages", function(req, res){
     amadeusAPI.searchHotels(req.query.destination, req.query.departureDate, req.query.returnDate)
     amadeusAPI.onHotelsUpdate = function(hotels)
     {
-      let hotelEntitiesArray = [];
       for(hotelJson of hotels["results"]){
         const hotelEntity = packageModel.createHotelEntity(hotelJson)
         hotelEntitiesArray.push(hotelEntity);
       }
-      // console.log(flightPackagesArray);
-      res.send(flightPackagesArray);
+      hotelEntitiesArray.forEach(function(hotel){
+        const flightPackage = flightPackagesArray[0];
+        const flightPrice = parseFloat(flightPackage.totalPrice);
+        const hotelPrice = parseFloat(hotel.price);
+        const packagePrice = flightPrice + hotelPrice;
+        const package = packageModel.createFlightHotelPackage(flightPackage, hotel, packagePrice)
+        flightHotelPackagesArray.push(package);
+      });
+      let flightHotelPackages = new FlightHotelPackages(flightHotelPackagesArray, flightPackagesArray);
+      console.log(flightHotelPackages);
+      res.send(flightHotelPackages);
     }
-}
+  }
 
 
 });
