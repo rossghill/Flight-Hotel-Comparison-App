@@ -56,7 +56,7 @@ Package.prototype.createHotelEntity = function (hotelJson) {
 let hotelDetails = {}
 //hotelDetails["hotelName"] = hotelJson.property_name;
         hotelDetails.hotelName = hotelJson.property_name;
-        hotelDetails.price = hotelJson.total_price.amount;
+        hotelDetails.price = parseFloat(hotelJson.total_price.amount);
         hotelDetails.currency = hotelJson.total_price.currency;
 
 //amenities

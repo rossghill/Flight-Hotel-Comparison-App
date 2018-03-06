@@ -14,7 +14,7 @@ HotelView.prototype.createHotelPriceAndAddFaveAction = function(hotelEntity){
 
 }
 
-Hotelview.prototype.createHotelView = function(hotelEntity){
+HotelView.prototype.createHotelView = function(hotelEntity){
   this.createHotelDescription(hotelEntity);
   this.createHotelMap(hotelEntity);
   this.createHotelPriceAndAddFaveAction(hotelEntity);
