@@ -3,6 +3,16 @@ body {
     padding: 10;
 }
 
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
 #container-main {
   display: flex;
   flex-direction: column;
@@ -19,9 +29,11 @@ body {
 #div-company {
   display: flex;
   flex-direction: row;
+  border: 1px solid black;
 }
 
 #container-search-result-bars {
+  margin-left: 10px;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -31,7 +43,7 @@ body {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  border: 1px solid grey;
+  border: 1px solid black;
 }
 
 #button_get_flight {
@@ -45,7 +57,7 @@ body {
   margin-top: 10px;
   display: flex;
   flex-direction: row;
-  border: 1px solid grey;
+  border: 1px solid black;
 }
 
 
@@ -57,16 +69,17 @@ body {
 }
 
 #container-extra-filters {
-  width: 200px;
+  width: 195px;
   margin-top: 10px;
-  border: 1px solid grey;
+  border: 1px solid black;
 }
 
 
 #container-packages {
+  width: 960px;
   margin-top: 10px;
   margin-left: 10px;
-  border: 1px solid grey;
+  border: 1px solid black;
 }
 
 #div-package-map {
