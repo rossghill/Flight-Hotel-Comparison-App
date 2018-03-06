@@ -1,8 +1,8 @@
-const FlightHotelPackage = function(flightPackage, hotel, finalPrice){
+const FlightHotelPackage = function(flightPackage, hotel, packagePrice){
 
   this.flightPackage = flightPackage;
   this.hotel = hotel;
-  this.finalPrice = finalPrice;
+  this.packagePrice = packagePrice;
 
 }
 
