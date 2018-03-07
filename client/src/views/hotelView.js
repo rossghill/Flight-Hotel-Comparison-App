@@ -2,14 +2,14 @@ const HotelView = function(){
 
 }
 
-// HotelView.prototype.createHotelImage = function(HotelEntity){
-//   console.log(HotelEntity);
-//   let hotelImage = document.createElement("img");
-//   hotelImage.classList.add("hotel-image-class");
-//
-//   hotelImage.src = hotelEntity.bigImage;
-//   return hotelImage;
-// }
+HotelView.prototype.createHotelImage = function(hotelEntity){
+  console.log(hotelEntity);
+  let hotelImage = document.createElement("img");
+  hotelImage.classList.add("hotel-image-class");
+
+  hotelImage.src = hotelEntity.bigImage;
+  return hotelImage;
+}
 
 HotelView.prototype.createHotelName = function(hotelEntity){
   let hotelNameDiv  = document.createElement("div");
@@ -82,14 +82,14 @@ HotelView.prototype.createHotelView = function(hotelEntity){
   // console.log("createHotelView");
   // console.log(hotelEntity);
 
-  // let hotelImageDiv        = this.createHotelImage(hotelEntity);
+  let hotelImageDiv        = this.createHotelImage(hotelEntity);
   let hotelNameDiv         = this.createHotelName(hotelEntity);
   let hotelRatingDiv       = this.createHotelRating(hotelEntity);
   let hotelDescriptionDiv  = this.createHotelDescription(hotelEntity);
   let hotelAmenitiesDiv    = this.createHotelAmenities(hotelEntity);
   let hotelPriceDiv        = this.createHotelPrice(hotelEntity);
 
-  // mainHotelDiv.appendChild(hotelImageDiv);
+  mainHotelDiv.appendChild(hotelImageDiv);
   mainHotelDiv.appendChild(hotelNameDiv);
   mainHotelDiv.appendChild(hotelRatingDiv);
   mainHotelDiv.appendChild(hotelDescriptionDiv);
