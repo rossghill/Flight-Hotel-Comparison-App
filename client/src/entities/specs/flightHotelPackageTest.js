@@ -22,7 +22,7 @@ describe('Flight Hotel Package', function(){
 
     const hotelDetails = {
       "hotelName": "Hotel California",
-      "hotelPrice": 249.99,
+      "price": 249.99,
       "currency": "USD",
       "amenities": ["POOL", "RESTAURANT", "WI-FI"],
       "description": "You can check in any time you like, but you can never leave",
@@ -32,27 +32,26 @@ describe('Flight Hotel Package', function(){
       "latitude": 666.666,
       "longitude": 777.777,
     }
-    const hotel1 = new Hotel(hotelDetails);
+    const hotel = new Hotel(hotelDetails);
 
-    const packagePrice = hotel1.hotelPrice + flightPackage.flightPrice;
+    const packagePrice = hotel.hotelPrice + flightPackage.flightPrice;
 
-    fhp = new FlightHotelPackage(flightPackage, hotel1, packagePrice);
+    fhp = new FlightHotelPackage(flightPackage, hotel, packagePrice);
   });
 
   it('should have a flight package', function(){
-    console.log(fhp.flightPackage);
-    actual = fhp.flightPackage;
-    const expected = {
-    outboundFlights: {"origin": "LAX",
-    "destination": "LON",
-    "departureTime": "2018-03-16T12:50",
-    "arrivalTime": "2018-03-16T17:10"},
-    inboundFlights: {"origin": "LON",
-    "destination": "LAX",
-    "departureDate": "2018-05-23T00:00",
-    "arrivalTime": "2018-05-24T09:00"},
-    flightPrice: 900}
-    assert.deepStrictEqual(actual, expected);
+    actual = fhp.flightPackage.flightPrice;
+    assert.strictEqual(actual, 900);
+  });
+
+  it('should have a hotel', function(){
+    actual = fhp.hotel.hotelName;
+    assert.strictEqual(actual, "Hotel California")
+  });
+
+  it('should have a package price', function(){
+    actual = fhp.packagePrice;
+    assert.strictEqual(actual, 1149.99);
   });
 
 
