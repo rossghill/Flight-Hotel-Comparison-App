@@ -96,7 +96,8 @@ body {
 }
 
 #div-packages-map {
-  visibility: collapse;
+  /* visibility: collapse; */
+  width: 500px;
 }
 
 

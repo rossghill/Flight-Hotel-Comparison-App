@@ -4,7 +4,7 @@ const PackageListView = require("./views/packageListView");
 const PackageView     = require("./views/packageView");
 const HotelView       = require("./views/hotelView");
 const FlightView      = require("./views/flightView");
-
+// const MapView         = require ("./../build/map_wrapper");
 const initializeFlightR = function(){
   document.getElementById("button_get_flight").addEventListener("click", getPackages);
   document.getElementById("search-origin").addEventListener("input", getAirportCities);
@@ -49,14 +49,35 @@ let children        = document.getElementById('children').value;
 
 const populatePackages = function(){
   const packageListView = new PackageListView();
-  const flightHotelPackagesJSON = JSON.parse(this.responseText);
-  if(flightHotelPackagesJSON.flightHotelPackages)
+  const flightHotelPackagesEntity = JSON.parse(this.responseText);
+  // console.log(flightHotelPackagesEntity.flightHotelPackages.flightHotelPackage);
+
+  // Creation of the package list
+  if(flightHotelPackagesEntity.flightHotelPackages)
   {
-    packageListView.createPackageList(flightHotelPackagesJSON.flightHotelPackages);
+    packageListView.createPackageList(flightHotelPackagesEntity.flightHotelPackages);
+
+    flightHotelPackagesEntity.flightHotelPackages.forEach(function(hotelPackage){
+      console.log(hotelPackage.hotel);
+      // console.log(hotelPackage.hotel.latitude);
+      // console.log(hotelPackage.hotel.latitude);
+      let lat = hotelPackage.hotel.latitude;
+      let lang = hotelPackage.hotel.longitude;
+    });
+
+    console.log(flightHotelPackagesEntity.flightHotelPackages);
   }
   else{
       console.log("populatePackages, error : "+this.responseText);
   }
+
+  // console.log(flightHotelPackagesEntity.flightHotelPackages[0].hotel.latitude;);
+  // Cretation of the giant maps
+  // const generateBigMap = function() {
+  //   let flightHotelPackagesJSON = JSON.parse(this.responseText);
+  //   let coords = flightHotelPackagesJSON
+  // }
+
 }
 
 
@@ -102,7 +123,6 @@ const populateAirportCities = function(input){
   helper.setSelectSize(input.id, 5);
   helper.addEventListenerOnChangeSelectOriginOrDestination(input.id, "search-"+input.id);
 }
-
 
 
 
