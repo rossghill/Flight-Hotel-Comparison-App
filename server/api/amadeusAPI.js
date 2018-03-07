@@ -7,7 +7,8 @@ const AmadeusAPI = function(){
   this.numberOfHotelResults = 3;
   this.radius               = 10;
   this.onFlightsUpdate      = null;
-  this.onHotelsUpdate        = null;
+  this.onHotelsUpdate       = null;
+  this.onAirportCitiesUpdate = null;
 }
 
 
@@ -43,6 +44,20 @@ AmadeusAPI.prototype.searchHotels = function(location, checkInDate, checkOutDate
     }.bind(this));
 
 }
+
+
+AmadeusAPI.prototype.searchAirportCities = function(cityAirport){
+    let url = `https://api.sandbox.amadeus.com/v1.2/airports/autocomplete?apikey=${this.amadeusApiKey}&term=${cityAirport}`;
+    let request = new ServerRequest();
+    request.sendRequest(url, function(requestResponse){
+      this.onAirportCitiesUpdate(JSON.parse(requestResponse));
+    }.bind(this));
+
+}
+
+
+
+
 
 
 
