@@ -14,6 +14,7 @@ body {
 }
 
 #container-main {
+  padding: 10px 10px 10px 10px;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -21,6 +22,7 @@ body {
 
 
 #container-header {
+  width: auto;
   display: flex;
   flex-direction: row;
 }
@@ -33,6 +35,7 @@ body {
 }
 
 #container-search-result-bars {
+  width: 100%;
   margin-left: 10px;
   display: flex;
   flex-direction: column;
@@ -40,10 +43,12 @@ body {
 }
 
 #container-search-bar {
+  position: static;
+  padding: 10px 15px 10px 15px;
+  height: 50px;
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
-  border: 1px solid black;
+  /* border: 1px solid black; */
 }
 
 #button_get_flight {
@@ -54,6 +59,7 @@ body {
 }
 
 #container-result-bar {
+  padding: 10px 10px 10px 10px;
   margin-top: 10px;
   display: flex;
   flex-direction: row;
@@ -62,6 +68,9 @@ body {
 
 
 #container-body {
+/* background-color: #008aff; */
+  margin-top: 10px;
+  width: auto;
   height: 600px;
   display: flex;
   flex-direction: row;
@@ -69,19 +78,23 @@ body {
 }
 
 #container-extra-filters {
-  width: 195px;
-  margin-top: 10px;
+  /* background-color: white; */
+  width: 200px;
+  margin-right: 10px;
   border: 1px solid black;
+  display: flex;
+  flex-direction: row;
 }
 
 
 #container-packages {
-  width: 960px;
-  margin-top: 10px;
-  margin-left: 10px;
+  /* background-color: white; */
+  width: auto;
   border: 1px solid black;
+  display: flex;
+  flex-direction: row;
 }
 
-#div-package-map {
+#div-packages-map {
   visibility: collapse;
 }

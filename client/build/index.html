@@ -8,7 +8,6 @@
   </head>
   <body>
     <div id='container-main'>
-      <h1 align='center'>FlightR</h1>
       <br/>
 
       <!-- CONTAINS IMAGE, SEARCH & RESULTS DIVS -->
@@ -16,7 +15,8 @@
 
             <!-- COMPANY IMAGE & SLOGAN TO FLEX AS ROW -->
             <div id='div-company'>
-              <h2>IMAGE TO GO HERE</h2>
+              <!-- <h2>IMAGE TO GO HERE</h2> -->
+              <img id='logo' width="200px" height="200px" src="./images/skywatcher.jpg" alt=""></img>
             </div>
 
             <!-- SEARCH BAR & RESULTS TO FLEX AS COLUMN -->
@@ -28,11 +28,13 @@
                     <!-- SEARCH PARAMS -->
                     <div id='div-origin'>
                       <label for="origin">From:</label>
+                      <select id="origin" class="select-300"></select>
                       <input type="text" id="origin">
                     </div>
 
                     <div id="div-destination">
                       <label for="destination">To:</label>
+                      <select id="destination" class="select-300"></select>
                       <input type="text" id="destination">
                     </div>
 
