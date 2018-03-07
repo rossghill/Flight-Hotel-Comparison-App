@@ -13,13 +13,13 @@ PackageView.prototype.createPackageView = function(flightHotelPackage){
   const hotelView  = new HotelView();
   const hotelViewDiv = hotelView.createHotelView(flightHotelPackage.hotel);
 
-  let div = document.createElement('div');
-  div.classList.add('flex-row');
+  let packageViewDiv = document.createElement('div');
+  packageViewDiv.classList.add('flex-row');
 
-  div.appendChild(flightViewDiv);
-  div.appendChild(hotelViewDiv);
+  packageViewDiv.appendChild(flightViewDiv);
+  packageViewDiv.appendChild(hotelViewDiv);
 
-  return div;
+  return packageViewDiv;
 
 }
 
