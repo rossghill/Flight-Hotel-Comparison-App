@@ -1,8 +1,8 @@
 const FlightPackage = function(outboundFlights, inboundFlights, flightPrice){
 
-  this.outboundFlights = outboundFlights;
-  this.inboundFlights = inboundFlights;
-  this.flightPrice = parseFloat(flightPrice);
+  this.outboundFlights  = outboundFlights;
+  this.inboundFlights   = inboundFlights;
+  this.flightPrice      =  parseFloat(flightPrice);
 
 }
 

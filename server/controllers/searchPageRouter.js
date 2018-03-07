@@ -8,7 +8,6 @@ const searchPageRouter = new express.Router();
 searchPageRouter.get("/search-for-packages", function(req, res){
     let packageModel = new Package();
     packageModel.onflightHotelPackagesArrayUpdate = function(flightHotelPackages){
-      console.log(flightHotelPackages);
       res.send(flightHotelPackages);
     }
     packageModel.searchForFlightHotelPackages(req);

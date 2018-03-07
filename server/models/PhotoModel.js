@@ -1,25 +1,27 @@
 const PixabayAPI = require("./../api/pixabayAPI.js");
 
 const PhotoModel = function(){
-
+  this.onUpdateHotelPhotos = null;
 }
 
-PhotoHotelModel.prototype.GetListOfPhotosForHotel = function(){
+PhotoModel.prototype.getListOfPhotosForHotel = function(resultsCount){
   const pixabayAPI  = new PixabayAPI();
   let arrayOfPhotos = [];
 
   pixabayAPI.onUpdateHotelPhotos = function(photosFromPixabay){
-    if(photosFromPixabay != null && photosFromPixabay != undefined && Array.isArray(photosFromPixabay.hists))
+
+    if(photosFromPixabay != null && photosFromPixabay != undefined && Array.isArray(photosFromPixabay.hits))
     {
-      photosFromPixabay.hists.forEach(function(photo){
-        arrayOfPhotos.push(photo.webformatURL);
-      });
+        photosFromPixabay.hits.forEach(function(photo){
+          arrayOfPhotos.push(photo.webformatURL);
+        });
     }
 
-    return arrayOfPhotos;
-  }
+    this.onUpdateHotelPhotos(arrayOfPhotos);
 
-  pixabayAPI.GetListOfPhotosForHotel();
+  }.bind(this);
+
+  pixabayAPI.searchHotelPhotos(resultsCount);
 }
 
 
@@ -30,4 +32,4 @@ PhotoHotelModel.prototype.GetListOfPhotosForHotel = function(){
 
 
 
-module.exports = PhotoHotelModel;
+module.exports = PhotoModel;

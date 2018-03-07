@@ -9,17 +9,21 @@ const PixabayAPI = function(){
 
 
 
-PixabayAPI.prototype.searchHotelPhotos = function(){
+PixabayAPI.prototype.searchHotelPhotos = function(resultsCount){
 
   let url = `https://pixabay.com/api/?key=${this.pixabayApiKey}`;
   url += "&image_type=photo";
   url += "&orientation=horizontal";
   url += "&category=travel";
-  utl += "&q=hotel";
+  url += "&q=hotel";
   url += "&min-width=300"
+  url += `&per_page=${resultsCount}`
 
   let request = new ServerRequest();
   request.sendRequest(url, function(requestResponse){
-    this.onFlightsUpdate(JSON.parse(requestResponse));
+    this.onUpdateHotelPhotos(JSON.parse(requestResponse));
   }.bind(this));
 }
+
+
+module.exports = PixabayAPI;
