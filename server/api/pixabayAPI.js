@@ -3,12 +3,13 @@ const ApiKey        = require('./apiKey');
 
 
 const PixabayAPI = function(){
-  this.pixabayApiKey = new ApiKey().getPixabayAPIKey();
+  this.pixabayApiKey       = new ApiKey().getPixabayAPIKey();
+  this.onUpdateHotelPhotos = null;
 }
 
 
 
-AmadeusAPI.prototype.searchHotelPhotos = function(){
+PixabayAPI.prototype.searchHotelPhotos = function(){
 
   let url = `https://pixabay.com/api/?key=${this.pixabayApiKey}`;
   url += "&image_type=photo";
