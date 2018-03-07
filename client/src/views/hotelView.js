@@ -5,11 +5,12 @@ const HotelView = function(){
 HotelView.prototype.createHotelName = function(hotelEntity){
   console.log(hotelEntity);
   let hotelNameDiv  = document.createElement("div");
+  hotelNameDiv.classList.add("hotel-name-class")
   let hotelNameSpan = document.createElement("span");
 
   hotelNameDiv.appendChild(hotelNameSpan);
 
-  hotelNameSpan.innerText = hotelEntity.hotelName;
+  hotelNameSpan.innerText = "HOTEL: " + hotelEntity.hotelName;
   return hotelNameDiv;
 }
 
@@ -27,11 +28,12 @@ HotelView.prototype.createHotelRating = function(hotelEntity){
 HotelView.prototype.createHotelDescription = function(hotelEntity){
   console.log(hotelEntity);
   let hotelDescriptionDiv  = document.createElement("div")
+  hotelDescriptionDiv.classList.add("hotel-description-class")
   let hotelDescriptionSpan = document.createElement("span")
 
   hotelDescriptionDiv.appendChild(hotelDescriptionSpan);
 
-  hotelDescriptionSpan.innerText = hotelEntity.description;
+  hotelDescriptionSpan.innerText = "ABOUT THIS HOTEL: " + hotelEntity.description;
   return hotelDescriptionDiv;
 }
 
@@ -46,18 +48,20 @@ HotelView.prototype.createHotelDescription = function(hotelEntity){
 HotelView.prototype.createHotelAmenities = function(hotelEntity){
   console.log(hotelEntity);
   let hotelAmenitiesDiv  = document.createElement("div")
+  hotelAmenitiesDiv.classList.add("hotel-amenities-class")
   let hotelAmenitiesSpan = document.createElement("span")
 
   hotelAmenitiesDiv.appendChild(hotelAmenitiesSpan);
 
-  hotelAmenitiesSpan.innerText = hotelEntity.amenities;
+  hotelAmenitiesSpan.innerText = "FACILITIES: " + hotelEntity.amenities;
   return hotelAmenitiesDiv;
 }
 
 HotelView.prototype.createHotelView = function(hotelEntity){
   let mainHotelDiv = document.createElement("div")
-  console.log("createHotelView");
-  console.log(hotelEntity);
+  mainHotelDiv.classList.add('hotel-class')
+  // console.log("createHotelView");
+  // console.log(hotelEntity);
 
   let hotelNameDiv         = this.createHotelName(hotelEntity);
   let hotelRatingDiv       = this.createHotelRating(hotelEntity);

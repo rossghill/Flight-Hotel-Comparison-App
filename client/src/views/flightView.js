@@ -4,6 +4,7 @@ const FlightView = function(){
 
 FlightView.prototype.createFlight = function(flightEntity){
   let flightDiv = document.createElement("div");
+  flightDiv.classList.add("flight-class")
 
   //populate createFlightDiv
   let originSpan        = document.createElement("span")
@@ -11,10 +12,10 @@ FlightView.prototype.createFlight = function(flightEntity){
   let arrivalTimeSpan   = document.createElement("span")
   let destinationSpan   = document.createElement("span")
 
-  originSpan.innerText        = flightEntity.origin;
-  departureTimeSpan.innerText = flightEntity.departureTime;
-  arrivalTimeSpan.innerText   = flightEntity.arrivalTime;
-  destinationSpan.innerText   = flightEntity.destination;
+  originSpan.innerText        = "FROM: " + flightEntity.origin + "\n";
+  departureTimeSpan.innerText = "DEPART DATE/TIME: " + flightEntity.departureTime + "\n";
+  arrivalTimeSpan.innerText   = "ARRIVAL DATE/TIME: " + flightEntity.arrivalTime + "\n";
+  destinationSpan.innerText   = "TO: " + flightEntity.destination;
 
   flightDiv.appendChild(originSpan);
   flightDiv.appendChild(departureTimeSpan);
@@ -51,8 +52,9 @@ FlightView.prototype.createInboundFlight = function(inboundFlightEntity){
 FlightView.prototype.createFlightPriceAndChangeAction = function(flightPrice){
 
   let priceDiv         = document.createElement("div");
+  priceDiv.classList.add("flight-price-class")
   let priceSpan        = document.createElement("span");
-  priceSpan.innerText  = flightPrice;
+  priceSpan.innerText  = "\n  FLIGHT PRICE: £" + flightPrice;
 
   priceDiv.appendChild(priceSpan);
   return priceDiv;
@@ -61,6 +63,7 @@ FlightView.prototype.createFlightPriceAndChangeAction = function(flightPrice){
 
 FlightView.prototype.createFlightView = function(flightPackage){
   let mainFlightDiv     = document.createElement("div");
+  mainFlightDiv.classList.add('flight-main-class')
 
   let outboundFlightDiv = this.createOutboundFlight(flightPackage.outboundFlights);
   let inboundFlightDiv  = this.createInboundFlight(flightPackage.inboundFlights);

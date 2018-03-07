@@ -4,13 +4,50 @@ body {
 }
 
 .flex-row {
+  padding: 10px 10px 10px 10px;
   display: flex;
   flex-direction: row;
+  border: 1px solid black;
+
 }
 
 .flex-column {
   display: flex;
   flex-direction: column;
+}
+
+
+.flights-class {
+  padding: 10px 0px 0px 10px;
+  width: 300px;
+}
+
+.flight-class {
+  padding: 10px 0px 0px 10px;
+  font-size: 10px;
+}
+
+.flight-price-class {
+  padding: 0px 0px 10px 10px;
+  font-size: 10px;
+}
+
+
+.hotel-class {
+  padding: 10px 0px 10px 10px;
+  width: 500px;
+}
+
+.hotel-name-class {
+  padding: 0px 0px 10px 10px
+}
+
+.hotel-description-class {
+  padding: 0px 0px 10px 10px
+}
+
+.hotel-amenities-class {
+  padding: 0px 0px 10px 10px
 }
 
 #container-main {
@@ -98,7 +135,7 @@ body {
 #container-packages {
   /* background-color: white; */
   width: auto;
-  border: 1px solid black;
+  /* border: 1px solid black; */
   display: flex;
   flex-direction: row;
 }
