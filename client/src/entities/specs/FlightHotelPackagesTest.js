@@ -1,5 +1,7 @@
 const assert = require('assert');
-const flightHotelPackage = require('../flightHotelPackage');
+const FlightHotelPackage = require('../flightHotelPackage');
+const FlightHotelPackages = require('../flightHotelPackages');
+const FlightPackage = require('../flightPackage');
 const Hotel = require('../hotelEntity');
 
 
@@ -65,7 +67,12 @@ beforeEach(function() {
 });
 
 it('Flight hotel packages should have an array of flight hotel packages', function() {
-  const actual = 
-})
+  const actual = fhps.flightHotelPackages.length;
+  assert.deepStrictEqual(actual, 2);
+});
 
+it('Flight hotel package should have a flight package', function(){
+  const actual = fhps.flightPackages.inboundFlights.destination;
+  assert.strictEqual(actual, "LAX");
+})
 })
