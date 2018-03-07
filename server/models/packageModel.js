@@ -8,14 +8,18 @@ const FlightPackage         = require("./../../client/src/entities/flightPackage
 const AmadeusAPI            = require("./../api/AmadeusAPI");
 const FlightHotelPackages   = require("./../../client/src/entities/flightHotelPackages");
 const ServerHotelModel      = require("./serverHotelModel");
+const PhotoModel            = require("./photoModel.js");
 
 const Package = function(){
   this.requestForFlightDone              = false;
   this.requestForHotelDone               = false;
+  this.requestForHotelPhotos             = false;
   this.amadeusAPI                        = new AmadeusAPI();
+  this.photoModel                        = new PhotoModel();
   this.flightPackagesArray               = [];
   this.hotelEntitiesArray                = [];
   this.flightHotelPackagesArray          = [];
+  this.hotelImagesArray                  = [];
   this.onflightHotelPackagesArrayUpdate  = null;
 }
 
@@ -136,8 +140,9 @@ Package.prototype.searchForFlightHotelPackages = function(req){
     }
 
     this.requestForFlightDone = true;
-
-    if(this.requestForFlightDone && this.requestForHotelDone){
+    if(    this.requestForFlightDone
+        && this.requestForHotelDone
+        && this.requestForHotelPhotos){
       this.createFilghtHotelsPackages();
     }
 
@@ -160,25 +165,52 @@ Package.prototype.searchForFlightHotelPackages = function(req){
 
     this.requestForHotelDone = true;
 
-    if(this.requestForFlightDone && this.requestForHotelDone){
+    if(    this.requestForFlightDone
+        && this.requestForHotelDone
+        && this.requestForHotelPhotos){
       this.createFilghtHotelsPackages()
     }
   }.bind(this)
+
+
+  this.photoModel.getListOfPhotosForHotel(3);
+  this.photoModel.onUpdateHotelPhotos = function(hotelPhotos){
+    this.hotelImagesArray = hotelPhotos;
+
+    this.requestForHotelPhotos = true;
+
+    if(    this.requestForFlightDone
+        && this.requestForHotelDone
+        && this.requestForHotelPhotos){
+      this.createFilghtHotelsPackages()
+    }
+  }.bind(this)
+
+
 };
 
 Package.prototype.createFilghtHotelsPackages = function(){
 
   this.hotelEntitiesArray.forEach(function(hotel)
   {
+    let indexHotelImage = Math.ceil(Math.random() * this.hotelImagesArray.length);
+    if(indexHotelImage > 0)
+    {
+      hotel.smallImage    = this.hotelImagesArray[indexHotelImage];
+      hotel.bigImage      = this.hotelImagesArray[indexHotelImage];
+    }
+
     const flightPackage = this.flightPackagesArray[0];
     const flightPrice   = parseFloat(flightPackage.flightPrice);
     const hotelPrice    = parseFloat(hotel.hotelPrice);
     const packagePrice  = flightPrice + hotelPrice;
     const package       = this.createFlightHotelPackage(flightPackage, hotel, packagePrice)
+
     this.flightHotelPackagesArray.push(package);
   }.bind(this));
 
   let flightHotelPackages = new FlightHotelPackages(this.flightHotelPackagesArray, this.flightPackagesArray);
+  console.log(this.flightHotelPackagesArray);
   this.onflightHotelPackagesArrayUpdate(flightHotelPackages);
 }
 
