@@ -6,9 +6,12 @@ const HotelView       = require("./views/hotelView");
 const FlightView      = require("./views/flightView");
 
 const initializeFlightR = function(){
-  document.getElementById("button-get-flight").addEventListener("click", getPackages);
-  document.getElementById("search-origin").addEventListener("input", getAirportCities);
-  document.getElementById("search-destination").addEventListener("input", getAirportCities);
+  domHelper = new DOMHelper();
+  document.getElementById("button-get-flight").addEventListener(    "click",    getPackages);
+  document.getElementById("search-origin").addEventListener(        "input",    getAirportCities);
+  document.getElementById("search-destination").addEventListener(   "input",    getAirportCities);
+  document.getElementById("checkbox-list-map-mode").addEventListener("click",   domHelper.checkboxToggleVisibility.bind(this, "checkbox-list-map-mode", "div-packages-list", "div-packages-map"));
+  domHelper.changeDisplay("div-packages-map", false);
 }
 
 const getPackages = function(){
@@ -20,12 +23,12 @@ let returnDate      = document.getElementById('returnDate').value;
 let adults          = document.getElementById('adults').value;
 let children        = document.getElementById('children').value;
 
-// origin = "LON";
-// destination = "CDG";
-// departureDate= "2018-06-10";
-// returnDate = "2018-06-17";
-// adults = 2;
-// children = 1;
+origin = "LON";
+destination = "CDG";
+departureDate= "2018-06-10";
+returnDate = "2018-06-17";
+adults = 2;
+children = 1;
 
   const request = new XMLHttpRequest()
   let url = "http://localhost:3000/search-for-packages?";
@@ -36,15 +39,9 @@ let children        = document.getElementById('children').value;
   url += `&adults=${adults}`;
   url += `&children=${children}`;
 
-  console.log(url);
-
   request.open("GET", url);
   request.addEventListener("load", populatePackages);
   request.send();
-  // console.log("getPackages");
-  // clientRequest = new ClientRequest();
-  // clientRequest.sendRequestGetFlight(getPackagesCallBack);
-
 }
 
 const populatePackages = function(){

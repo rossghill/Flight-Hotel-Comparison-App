@@ -12,8 +12,7 @@ ul {
   padding: 10px 10px 10px 10px;
   display: flex;
   flex-direction: row;
-  border: 1px solid black;
-
+  /* border: 1px solid black; */
 }
 
 .flex-column {
@@ -72,6 +71,7 @@ ul {
 .hotel-image-class {
   width: 300px;
   padding: 0px 0px 10px 10px;
+  position: relative;
 }
 
 #banner {
@@ -175,7 +175,7 @@ ul {
 }
 
 #div-packages-map {
-  visibility: collapse;
+
 }
 
 
