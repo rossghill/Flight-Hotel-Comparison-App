@@ -9,17 +9,21 @@ const AmadeusAPI            = require("./../api/AmadeusAPI");
 const FlightHotelPackages   = require("./../../client/src/entities/flightHotelPackages");
 const ServerHotelModel      = require("./serverHotelModel");
 const PhotoModel            = require("./photoModel.js");
+const DescriptionAPI        = require("./../api/DescriptionAPI");
 
 const Package = function(){
   this.requestForFlightDone              = false;
   this.requestForHotelDone               = false;
   this.requestForHotelPhotos             = false;
+  this.requestForDescription             = false;
   this.amadeusAPI                        = new AmadeusAPI();
   this.photoModel                        = new PhotoModel();
+  this.descriptionAPI                    = new DescriptionAPI();
   this.flightPackagesArray               = [];
   this.hotelEntitiesArray                = [];
   this.flightHotelPackagesArray          = [];
   this.hotelImagesArray                  = [];
+  this.hotelDescriptionArray             = [];
   this.onflightHotelPackagesArrayUpdate  = null;
 }
 
@@ -110,9 +114,6 @@ let hotelEntity = serverHotelModel.createHotelEntityDefaults();
 //coordinates
         hotelEntity.latitude = hotelJson.location.latitude;
         hotelEntity.longitude = hotelJson.location.longitude;
-
-        console.log(hotelEntity);
-        // const newHotel = new HotelEntity(hotelDetails);
         return hotelEntity;
 
 }
@@ -142,7 +143,8 @@ Package.prototype.searchForFlightHotelPackages = function(req){
     this.requestForFlightDone = true;
     if(    this.requestForFlightDone
         && this.requestForHotelDone
-        && this.requestForHotelPhotos){
+        && this.requestForHotelPhotos
+        && this.requestForDescription){
       this.createFilghtHotelsPackages();
     }
 
@@ -167,13 +169,14 @@ Package.prototype.searchForFlightHotelPackages = function(req){
 
     if(    this.requestForFlightDone
         && this.requestForHotelDone
-        && this.requestForHotelPhotos){
+        && this.requestForHotelPhotos
+        && this.requestForDescription){
       this.createFilghtHotelsPackages()
     }
   }.bind(this)
 
 
-  this.photoModel.getListOfPhotosForHotel(3);
+  this.photoModel.getListOfPhotosForHotel(100);
   this.photoModel.onUpdateHotelPhotos = function(hotelPhotos){
     this.hotelImagesArray = hotelPhotos;
 
@@ -181,23 +184,49 @@ Package.prototype.searchForFlightHotelPackages = function(req){
 
     if(    this.requestForFlightDone
         && this.requestForHotelDone
-        && this.requestForHotelPhotos){
+        && this.requestForHotelPhotos
+        && this.requestForDescription){
       this.createFilghtHotelsPackages()
     }
   }.bind(this)
 
 
+  this.descriptionAPI.getShortDescrition()
+  this.descriptionAPI.onUpdateDescription = function(descriptions){
+
+    if(Array.isArray(descriptions))
+    {
+        descriptions.forEach(function(description){
+        this.hotelDescriptionArray.push(description.quote+" "+description.author);
+      }.bind(this));
+    }
+    else
+    {
+      this.hotelDescriptionArray.push("No description found");
+    }
+
+    this.requestForDescription = true;
+
+    if(    this.requestForFlightDone
+        && this.requestForHotelDone
+        && this.requestForHotelPhotos
+        && this.requestForDescription){
+          this.createFilghtHotelsPackages();
+    }
+  }.bind(this)
 };
 
 Package.prototype.createFilghtHotelsPackages = function(){
 
   this.hotelEntitiesArray.forEach(function(hotel)
   {
-    let indexHotelImage = Math.ceil(Math.random() * this.hotelImagesArray.length);
+    let indexHotelImage       = Math.floor(Math.random() * this.hotelImagesArray.length-1);
+    let indexHotelDescription = Math.floor(Math.random() * this.hotelDescriptionArray.length-1);
     if(indexHotelImage > 0)
     {
       hotel.smallImage    = this.hotelImagesArray[indexHotelImage];
       hotel.bigImage      = this.hotelImagesArray[indexHotelImage];
+      hotel.description   = this.hotelDescriptionArray[indexHotelDescription];
     }
 
     const flightPackage = this.flightPackagesArray[0];
@@ -210,7 +239,6 @@ Package.prototype.createFilghtHotelsPackages = function(){
   }.bind(this));
 
   let flightHotelPackages = new FlightHotelPackages(this.flightHotelPackagesArray, this.flightPackagesArray);
-  console.log(this.flightHotelPackagesArray);
   this.onflightHotelPackagesArrayUpdate(flightHotelPackages);
 }
 

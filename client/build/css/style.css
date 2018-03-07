@@ -4,11 +4,9 @@ body {
 }
 
 .flex-row {
-  padding: 10px 10px 10px 10px;
+  /* padding: 10px 10px 10px 10px; */
   display: flex;
   flex-direction: row;
-  border: 1px solid black;
-
 }
 
 .flex-column {
@@ -55,9 +53,16 @@ body {
 }
 
 .hotel-image-class {
-  width: 200px;
+  width: 300px;
   padding: 0px 0px 10px 10px;
+  position: relative;
 }
+
+/* .hotel-image-class:hover {
+  width: 500px;
+  padding: 0px 0px 10px 10px;
+  position: absolute;
+} */
 
 #container-main {
   padding: 10px 10px 10px 10px;

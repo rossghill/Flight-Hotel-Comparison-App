@@ -20,12 +20,12 @@ let returnDate      = document.getElementById('returnDate').value;
 let adults          = document.getElementById('adults').value;
 let children        = document.getElementById('children').value;
 
-// origin = "LON";
-// destination = "CDG";
-// departureDate= "2018-06-10";
-// returnDate = "2018-06-17";
-// adults = 2;
-// children = 1;
+origin = "LON";
+destination = "CDG";
+departureDate= "2018-06-10";
+returnDate = "2018-06-17";
+adults = 2;
+children = 1;
 
   const request = new XMLHttpRequest()
   let url = "http://localhost:3000/search-for-packages?";
@@ -36,15 +36,9 @@ let children        = document.getElementById('children').value;
   url += `&adults=${adults}`;
   url += `&children=${children}`;
 
-  console.log(url);
-
   request.open("GET", url);
   request.addEventListener("load", populatePackages);
   request.send();
-  // console.log("getPackages");
-  // clientRequest = new ClientRequest();
-  // clientRequest.sendRequestGetFlight(getPackagesCallBack);
-
 }
 
 const populatePackages = function(){

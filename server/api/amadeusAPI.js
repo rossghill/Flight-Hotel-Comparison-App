@@ -3,8 +3,8 @@ const ApiKey        = require('./apiKey');
 
 const AmadeusAPI = function(){
   this.amadeusApiKey        = new ApiKey().getAmadeusAPIKey();
-  this.numberOfFlightResult = 2;
-  this.numberOfHotelResults = 3;
+  this.numberOfFlightResult = 5;
+  this.numberOfHotelResults = 100;
   this.radius               = 10;
   this.onFlightsUpdate      = null;
   this.onHotelsUpdate       = null;
