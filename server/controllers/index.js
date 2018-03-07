@@ -6,6 +6,7 @@ const path              = require('path');
 const AmadeusAPI        = require("./../api/AmadeusAPI");
 
 router.use("/", searchPageRouter);
+router.use("/", favouritesRouter);
 
 // router.get("/", function(req, res){
 //
