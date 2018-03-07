@@ -5,8 +5,7 @@ const PackageListView = function(){
 }
 
 PackageListView.prototype.createPackageList = function(flightHotelPackages){
-  const ul = document.getElementById('ul-packages');
-
+  const ul = document.createElement('ul');
   for(flightHotelPackage of flightHotelPackages){
     const packageView = new PackageView();
     const div = packageView.createPackageView(flightHotelPackage);
@@ -14,6 +13,7 @@ PackageListView.prototype.createPackageList = function(flightHotelPackages){
     li.appendChild(div);
     ul.appendChild(li);
   }
+  document.getElementById("div-packages-list").appendChild(ul);
 }
 
 module.exports = PackageListView;
