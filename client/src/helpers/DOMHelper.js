@@ -80,4 +80,5 @@ DOMHelper.prototype.changeDisplay = function(elementId, isDisplayed)
 
 
 
+
 module.exports = DOMHelper;

@@ -176,7 +176,7 @@ Package.prototype.searchForFlightHotelPackages = function(req){
   }.bind(this)
 
 
-  this.photoModel.getListOfPhotosForHotel(100);
+  this.photoModel.getListOfPhotosForHotel(200);
   this.photoModel.onUpdateHotelPhotos = function(hotelPhotos){
     this.hotelImagesArray = hotelPhotos;
 

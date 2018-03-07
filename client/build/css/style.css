@@ -1,6 +1,17 @@
-body {
-    margin: 10;
-    padding: 10;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    background-color: #fff;
+    color: #3498db;
+    font-family: 'Lato', 'Arial', sans-serif; /* Additional polices in case Lato will not be available */
+    font-size: 20px;
+    font-weight: 300;
+    text-rendering: optimizeLegibility; /* best police rendering */
+    overflow-x: hidden;
 }
 
 .flex-row {
@@ -155,7 +166,7 @@ body {
 }
 
 #div-packages-map {
-  
+
 }
 
 
