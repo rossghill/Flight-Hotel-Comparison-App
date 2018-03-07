@@ -8,10 +8,10 @@ const bodyParser        = require('body-parser');
 
 
 
-server.use(router);
 server.use(bodyParser.json());
 server.use(bodyParser.urlencoded({extended: true}));
 server.use(express.static(path.join(__dirname, 'client/build')));
+server.use(router);
 
 
 server.listen(3000, function () {
