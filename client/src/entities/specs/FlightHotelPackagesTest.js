@@ -3,7 +3,7 @@ const flightHotelPackage = require('../flightHotelPackage');
 const Hotel = require('../hotelEntity');
 
 
-describe('Flight Hotel Packages', function() {
+describe('* Flight Hotel Packages *', function() {
 
 let fhps
 
@@ -13,7 +13,7 @@ beforeEach(function() {
   "destination": "LON",
   "departureTime": "2018-03-16T12:50",
   "arrivalTime": "2018-03-16T17:10"};
-  
+
   const inboundFlights = {"origin": "LON",
   "destination": "LAX",
   "departureDate": "2018-05-23T00:00",
@@ -61,6 +61,11 @@ beforeEach(function() {
 
 
   fhps = new FlightHotelPackages(fhpsArray, flightPackage);
+
+});
+
+it('Flight hotel packages should have an array of flight hotel packages', function() {
+  const actual = 
 })
 
 })
