@@ -1,10 +1,14 @@
 const mapWrapper = require('./../../build/map_wrapper')
 // _______________________________
+const MapView = function() {
+
+}
+
 let giantMap;
 
 MapView.prototype.createGiantMap = function(hotelPackages){
 
-  let div = document.getElementById("div-packages-map");
+  let mapDiv = document.getElementById("div-packages-map");
 
   centerLat = hotelPackages.hotel[0].latitude;
   centerLng = hotelPackages.hotel[0].longitude;
@@ -20,3 +24,5 @@ MapView.prototype.createGiantMap = function(hotelPackages){
      });
 
 }
+
+module.exports = MapView;

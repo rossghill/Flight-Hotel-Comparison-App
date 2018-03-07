@@ -64,7 +64,7 @@ const populatePackages = function(){
       // // console.log(hotelPackage.hotel.latitude);
       // let lat = hotelPackage.hotel.latitude;
       // let lang = hotelPackage.hotel.longitude;
-      createGiantMap(hotelPackage);
+      mapView.createGiantMap(hotelPackage);
     });
 
     console.log(flightHotelPackagesEntity.flightHotelPackages);
