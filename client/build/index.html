@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title>FlightR</title>
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/slider.css">
     <script src="bundle.js"></script>
   </head>
   <body>
@@ -79,7 +80,14 @@
                 <!-- RESULTS BAR -->
                 <div id='container-result-bar'>
                   <!-- <h2>RESULTS BAR</h2> -->
-                  <button id="map-view-button">VIEW HOTELS ON MAP!</button>
+                  <div>
+                    <span>List</span>
+                    <label class="switch">
+                      <input type="checkbox" id="checkbox-list-map-mode">
+                      <span class="slider round"></span>
+                    </label>
+                    <span>Map</span>
+                  </div>
                 </div>
 
           </div>

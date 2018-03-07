@@ -6,9 +6,12 @@ const HotelView       = require("./views/hotelView");
 const FlightView      = require("./views/flightView");
 
 const initializeFlightR = function(){
-  document.getElementById("button-get-flight").addEventListener("click", getPackages);
-  document.getElementById("search-origin").addEventListener("input", getAirportCities);
-  document.getElementById("search-destination").addEventListener("input", getAirportCities);
+  domHelper = new DOMHelper();
+  document.getElementById("button-get-flight").addEventListener(    "click",    getPackages);
+  document.getElementById("search-origin").addEventListener(        "input",    getAirportCities);
+  document.getElementById("search-destination").addEventListener(   "input",    getAirportCities);
+  document.getElementById("checkbox-list-map-mode").addEventListener("click",   domHelper.checkboxToggleVisibility.bind(this, "checkbox-list-map-mode", "div-packages-list", "div-packages-map"));
+  domHelper.changeDisplay("div-packages-map", false);
 }
 
 const getPackages = function(){
