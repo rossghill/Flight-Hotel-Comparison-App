@@ -39,19 +39,24 @@ body {
 }
 
 .hotel-name-class {
-  padding: 0px 0px 10px 10px
+  padding: 0px 0px 10px 10px;
 }
 
 .hotel-description-class {
-  padding: 0px 0px 10px 10px
+  padding: 0px 0px 10px 10px;
 }
 
 .hotel-amenities-class {
-  padding: 0px 0px 10px 10px
+  padding: 0px 0px 10px 10px;
 }
 
 .hotel-price-class {
-  padding: 0px 0px 10px 10px
+  padding: 0px 0px 10px 10px;
+}
+
+.hotel-image-class {
+  width: 200px;
+  padding: 0px 0px 10px 10px;
 }
 
 #container-main {

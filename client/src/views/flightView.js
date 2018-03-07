@@ -13,8 +13,8 @@ FlightView.prototype.createFlight = function(flightEntity){
   let destinationSpan   = document.createElement("span")
 
   originSpan.innerText        = "FROM: " + flightEntity.origin + "\n";
-  departureTimeSpan.innerText = "DEPART DATE/TIME: " + flightEntity.departureTime + "\n";
-  arrivalTimeSpan.innerText   = "ARRIVAL DATE/TIME: " + flightEntity.arrivalTime + "\n";
+  departureTimeSpan.innerText = "DEPART AT: " + flightEntity.departureTime.replace("T", " ") + "\n";
+  arrivalTimeSpan.innerText   = "ARRIVAL AT: " + flightEntity.arrivalTime.replace("T", " ") + "\n";
   destinationSpan.innerText   = "TO: " + flightEntity.destination;
 
   flightDiv.appendChild(originSpan);
@@ -54,7 +54,7 @@ FlightView.prototype.createFlightPriceAndChangeAction = function(flightPrice){
   let priceDiv         = document.createElement("div");
   priceDiv.classList.add("flight-price-class")
   let priceSpan        = document.createElement("span");
-  priceSpan.innerText  = "\n FLIGHT PRICE: £" + flightPrice;
+  priceSpan.innerText  = "\n FLIGHT PRICE: £" + flightPrice.toFixed(2);
 
   priceDiv.appendChild(priceSpan);
   return priceDiv;

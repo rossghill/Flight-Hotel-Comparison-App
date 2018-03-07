@@ -70,7 +70,7 @@ HotelView.prototype.createHotelPrice = function(hotelEntity){
 
   hotelPriceDiv.appendChild(hotelPriceSpan);
 
-  hotelPriceSpan.innerText  = "\n HOTEL PRICE: £" + hotelEntity.hotelPrice;
+  hotelPriceSpan.innerText  = "\n HOTEL PRICE: £" + hotelEntity.hotelPrice.toFixed(2);
   return hotelPriceDiv;
 }
 
