@@ -4,7 +4,8 @@ const PackageListView = require("./views/packageListView");
 const PackageView     = require("./views/packageView");
 const HotelView       = require("./views/hotelView");
 const FlightView      = require("./views/flightView");
-// const MapView         = require ("./../build/map_wrapper");
+const MapView         = require ("./views/mapView");
+
 const initializeFlightR = function(){
   document.getElementById("button_get_flight").addEventListener("click", getPackages);
   document.getElementById("search-origin").addEventListener("input", getAirportCities);
@@ -59,10 +60,11 @@ const populatePackages = function(){
 
     flightHotelPackagesEntity.flightHotelPackages.forEach(function(hotelPackage){
       console.log(hotelPackage.hotel);
-      // console.log(hotelPackage.hotel.latitude);
-      // console.log(hotelPackage.hotel.latitude);
-      let lat = hotelPackage.hotel.latitude;
-      let lang = hotelPackage.hotel.longitude;
+      // // console.log(hotelPackage.hotel.latitude);
+      // // console.log(hotelPackage.hotel.latitude);
+      // let lat = hotelPackage.hotel.latitude;
+      // let lang = hotelPackage.hotel.longitude;
+      createGiantMap(hotelPackage);
     });
 
     console.log(flightHotelPackagesEntity.flightHotelPackages);
