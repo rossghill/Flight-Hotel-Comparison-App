@@ -13,10 +13,12 @@ beforeEach(function() {
   "destination": "LON",
   "departureTime": "2018-03-16T12:50",
   "arrivalTime": "2018-03-16T17:10"};
+  
   const inboundFlights = {"origin": "LON",
   "destination": "LAX",
   "departureDate": "2018-05-23T00:00",
   "arrivalTime": "2018-05-24T09:00"}
+
   const flightPrice = 900;
   const flightPackage = new FlightPackage(outboundFlights, inboundFlights, flightPrice);
 
@@ -35,13 +37,13 @@ beforeEach(function() {
 
   const hotelDetails2 = {
     "hotelName": "Cats Hotel",
-    "hotelPrice": 249.99,
+    "hotelPrice": 49.99,
     "currency": "USD",
     "amenities": ["RESTAURANT", "WI-FI"],
     "description": "The only hotel owned and operated by cats",
-    "smallImage": "http://bxit.ly/2oLQcwQ",
-    "bigImage": "http://bxit.ly/1T09dWo",
-    "starRating": 5,
+    "smallImage": "http://www.styletails.com/wp-content/uploads/2016/06/VAC_china_luxury_cat_hotel.jpg",
+    "bigImage": "http://www.styletails.com/wp-content/uploads/2016/06/VAC_china_luxury_cat_hotel.jpg",
+    "starRating": 1,
     "latitude": 345.678,
     "longitude": 123.456,
   }
@@ -50,10 +52,15 @@ beforeEach(function() {
   const hotel2 = new Hotel(hotelDetails2);
 
   const packagePrice = hotel1.hotelPrice + flightPackage.flightPrice;
+  const packagePrice2 = hotel2.hotelPrice + flightPackage.flightPrice;
 
   fhp = new FlightHotelPackage(flightPackage, hotel1, packagePrice);
+  fhp2 = new FlightHotelPackage(flightPackage, hotel2, packagePrice2);
 
-  fhps = new FlightHotelPackages(flightHotelPackages, flightPackages)
+  fhpsArray = [fhp, fhp2];
+
+
+  fhps = new FlightHotelPackages(fhpsArray, flightPackage);
 })
 
 })
