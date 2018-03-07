@@ -71,7 +71,6 @@ const getAirportCities = function(){
     request.open("GET", url);
 
     let input = null;
-    console.log(this.id)
     if(this.id == "search-origin")
     {
       input = document.getElementById("origin");

@@ -33,7 +33,7 @@ FlightView.prototype.createInboundFlight = function(inboundFlightEntity){
 FlightView.prototype.createFlightPriceAndChangeAction = function(flightPrice){
 
   let priceDiv = document.createElement("div");
-  createFlightDiv.appendChild(priceDiv)
+  priceDiv.innerText = flightPrice;
   return priceDiv;
 }
 

@@ -60,7 +60,6 @@ Package.prototype.createFlightEntity = function(flightJson) {
 }
 
 Package.prototype.createHotelEntity = function (hotelJson) {
-
 let hotelDetails = {}
 //hotelDetails["hotelName"] = hotelJson.property_name;
         hotelDetails.hotelName  = hotelJson.property_name;
@@ -142,7 +141,6 @@ Package.prototype.searchForFlightHotelPackages = function(req){
   this.amadeusAPI.searchHotels(req.query.destination, req.query.departureDate, req.query.returnDate)
   this.amadeusAPI.onHotelsUpdate = function(hotels)
   {
-
     if(hotels.error === undefined)
     {
       for(hotelJson of hotels["results"]){
