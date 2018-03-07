@@ -24,6 +24,7 @@ HotelView.prototype.createHotelName = function(hotelEntity){
 
 HotelView.prototype.createHotelRating = function(hotelEntity){
   let hotelRatingDiv  = document.createElement("div")
+  hotelRatingDiv.classList.add("hotel-rating-class")
   let hotelRatingSpan = document.createElement("span")
 
   hotelRatingDiv.appendChild(hotelRatingSpan);

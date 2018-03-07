@@ -14,10 +14,16 @@ html {
     overflow-x: hidden;
 }
 
+ul {
+  list-style: none;
+}
+
 .flex-row {
-  /* padding: 10px 10px 10px 10px; */
+  margin-bottom: 10px;
+  padding: 10px 10px 10px 10px;
   display: flex;
   flex-direction: row;
+  border: 1px solid black;
 }
 
 .flex-column {
@@ -37,7 +43,10 @@ html {
 }
 
 .flight-price-class {
+  width: 190px;
+  color: white;
   padding: 0px 0px 10px 10px;
+  background-color: #4d94ff;
   /* font-size: 10px; */
 }
 
@@ -51,6 +60,10 @@ html {
   padding: 0px 0px 10px 10px;
 }
 
+.hotel-rating-class {
+  padding: 0px 0px 10px 10px;
+}
+
 .hotel-description-class {
   padding: 0px 0px 10px 10px;
 }
@@ -60,7 +73,10 @@ html {
 }
 
 .hotel-price-class {
+  width: 190px;
+  color: white;
   padding: 0px 0px 10px 10px;
+  background-color: #4d94ff;
 }
 
 .hotel-image-class {
@@ -69,11 +85,13 @@ html {
   position: relative;
 }
 
-/* .hotel-image-class:hover {
-  width: 500px;
-  padding: 0px 0px 10px 10px;
-  position: absolute;
-} */
+#banner {
+  /* width: 1200px; */
+  padding: 10px 0px 10px 0px;
+  position: static;
+  display: flex;
+  flex-direction: row;
+}
 
 #container-main {
   padding: 10px 10px 10px 10px;
@@ -105,8 +123,9 @@ html {
 }
 
 #container-search-bar {
+  width: 1000px;
   position: static;
-  padding: 10px 15px 10px 15px;
+  padding: 10px 0px 10px 10px;
   height: 50px;
   display: flex;
   flex-direction: row;
@@ -161,6 +180,7 @@ html {
   /* background-color: white; */
   width: auto;
   /* border: 1px solid black; */
+  margin-bottom: 10px;
   display: flex;
   flex-direction: row;
 }
