@@ -40,37 +40,53 @@ favouritesRouter.post('/favourites', function(req, res){
 });
 
 //update favourite:
-  // favouritesRouter.put('/favourites/:id', function(req, res){
-  //   const collection = db.collection('favourite_packages');
-  //   const objectId = new ObjectID(req.params.id);
-  //   const filterObject = {_id: objectId};
-  //   const updatedData = req.body;
-  //   collection.update(filterObject, updatedData, function(err, result){
-  //     if(err){
-  //       console.log(err);
-  //       res.status(500);
-  //       res.send();
-  //     }
-  //     res.send();
-  //   });
-  // });
+  favouritesRouter.put('/favourites/:id', function(req, res){
+    const collection = db.collection('favourite_packages');
+    const objectId = new ObjectID(req.params.id);
+    const filterObject = {_id: objectId};
+    const updatedData = req.body;
+    collection.update(filterObject, updatedData, function(err, result){
+      if(err){
+        console.log(err);
+        res.status(500);
+        res.send();
+      }
+      res.send();
+    });
+  });
 
 
 //delete favourite
-  // favouritesRouter.delete('/favourites/:id', function(req, res){
-  //   const collection = db.collection('favourite_packages');
-  //   const objectId = new ObjectID(req.params.id);
-  //   const filterObject = {_id: objectId};
-  //   collection.deleteMany(filterObject, function(err, result){
-  //     if(err){
-  //       console.log(err);
-  //       res.status(500);
-  //       res.send();
-  //     }
-  //     res.status(204);
-  //     res.send();
-  //   });
-  // });
+  favouritesRouter.delete('/favourites/:id', function(req, res){
+    const collection = db.collection('favourite_packages');
+    const objectId = new ObjectID(req.params.id);
+    const filterObject = {_id: objectId};
+    collection.deleteMany(filterObject, function(err, result){
+      if(err){
+        console.log(err);
+        res.status(500);
+        res.send();
+      }
+      res.status(204);
+      res.send();
+    });
+  });
+
+//delete all favourites
+  favouritesRouter.delete('/favourites', function(req, res){
+    const collection = db.collection('favourite_packages');
+    const filterObject = {};
+    collection.deleteMany(filterObject, function(err, result){
+      if(err){
+        console.log(err);
+        res.status(500);
+        res.send();
+      }
+      res.status(204);
+      res.send();
+    });
+  });
+
 
 
 });
