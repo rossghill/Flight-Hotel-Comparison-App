@@ -2,8 +2,16 @@ const HotelView = function(){
 
 }
 
+// HotelView.prototype.createHotelImage = function(HotelEntity){
+//   console.log(HotelEntity);
+//   let hotelImage = document.createElement("img");
+//   hotelImage.classList.add("hotel-image-class");
+//
+//   hotelImage.src = hotelEntity.bigImage;
+//   return hotelImage;
+// }
+
 HotelView.prototype.createHotelName = function(hotelEntity){
-  console.log(hotelEntity);
   let hotelNameDiv  = document.createElement("div");
   hotelNameDiv.classList.add("hotel-name-class")
   let hotelNameSpan = document.createElement("span");
@@ -15,7 +23,6 @@ HotelView.prototype.createHotelName = function(hotelEntity){
 }
 
 HotelView.prototype.createHotelRating = function(hotelEntity){
-  console.log(hotelEntity);
   let hotelRatingDiv  = document.createElement("div")
   let hotelRatingSpan = document.createElement("span")
 
@@ -26,7 +33,6 @@ HotelView.prototype.createHotelRating = function(hotelEntity){
 }
 
 HotelView.prototype.createHotelDescription = function(hotelEntity){
-  console.log(hotelEntity);
   let hotelDescriptionDiv  = document.createElement("div")
   hotelDescriptionDiv.classList.add("hotel-description-class")
   let hotelDescriptionSpan = document.createElement("span")
@@ -46,7 +52,6 @@ HotelView.prototype.createHotelDescription = function(hotelEntity){
 // }
 
 HotelView.prototype.createHotelAmenities = function(hotelEntity){
-  console.log(hotelEntity);
   let hotelAmenitiesDiv  = document.createElement("div")
   hotelAmenitiesDiv.classList.add("hotel-amenities-class")
   let hotelAmenitiesSpan = document.createElement("span")
@@ -57,21 +62,39 @@ HotelView.prototype.createHotelAmenities = function(hotelEntity){
   return hotelAmenitiesDiv;
 }
 
+HotelView.prototype.createHotelPrice = function(hotelEntity){
+  console.log(hotelEntity);
+  let hotelPriceDiv  = document.createElement("div");
+  hotelPriceDiv.classList.add("hotel-price-class");
+  let hotelPriceSpan = document.createElement("span");
+
+  hotelPriceDiv.appendChild(hotelPriceSpan);
+
+  hotelPriceSpan.innerText  = "\n HOTEL PRICE: £" + hotelEntity.hotelPrice;
+  return hotelPriceDiv;
+}
+
+
+
 HotelView.prototype.createHotelView = function(hotelEntity){
   let mainHotelDiv = document.createElement("div")
   mainHotelDiv.classList.add('hotel-class')
   // console.log("createHotelView");
   // console.log(hotelEntity);
 
+  // let hotelImageDiv        = this.createHotelImage(hotelEntity);
   let hotelNameDiv         = this.createHotelName(hotelEntity);
   let hotelRatingDiv       = this.createHotelRating(hotelEntity);
   let hotelDescriptionDiv  = this.createHotelDescription(hotelEntity);
-  let hotelAmenitiesDiv    = this.createHotelAmenities(hotelEntity)
+  let hotelAmenitiesDiv    = this.createHotelAmenities(hotelEntity);
+  let hotelPriceDiv        = this.createHotelPrice(hotelEntity);
 
-  mainHotelDiv.appendChild(hotelNameDiv)
-  mainHotelDiv.appendChild(hotelRatingDiv)
-  mainHotelDiv.appendChild(hotelDescriptionDiv)
-  mainHotelDiv.appendChild(hotelAmenitiesDiv)
+  // mainHotelDiv.appendChild(hotelImageDiv);
+  mainHotelDiv.appendChild(hotelNameDiv);
+  mainHotelDiv.appendChild(hotelRatingDiv);
+  mainHotelDiv.appendChild(hotelDescriptionDiv);
+  mainHotelDiv.appendChild(hotelAmenitiesDiv);
+  mainHotelDiv.appendChild(hotelPriceDiv);
 
   // let hotelMapDiv          = this.createHotelMap(hotelEntity);
   // let hotelPriceAddFaveDiv = this.createHotelPriceAndAddFaveAction(hotelEntity);

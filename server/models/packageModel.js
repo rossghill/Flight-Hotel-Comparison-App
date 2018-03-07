@@ -62,12 +62,12 @@ Package.prototype.createFlightEntity = function(flightJson) {
 
 Package.prototype.createHotelEntity = function (hotelJson) {
 const serverHotelModel = new ServerHotelModel();
-let hotelDetails = serverHotelModel.createHotelEntityDefaults();
+let hotelEntity = serverHotelModel.createHotelEntityDefaults();
 
 //hotelDetails["hotelName"] = hotelJson.property_name;
-        hotelDetails.hotelName  = hotelJson.property_name;
-        hotelDetails.price      = parseFloat(hotelJson.total_price.amount);
-        hotelDetails.currency   = hotelJson.total_price.currency;
+        hotelEntity.hotelName  = hotelJson.property_name;
+        hotelEntity.hotelPrice = parseFloat(hotelJson.total_price.amount);
+        hotelEntity.currency   = hotelJson.total_price.currency;
 
 //amenities
         let amenitiesArray = []
@@ -84,32 +84,32 @@ let hotelDetails = serverHotelModel.createHotelEntityDefaults();
             amenitiesArray.push("ACCESSIBLE_FACILITIES");
           }
         });
-        hotelDetails.amenities = amenitiesArray;
+        hotelEntity.amenities = amenitiesArray;
 //description
         let descriptionText = ""
         hotelJson.rooms[0].descriptions.forEach(function(textItem){
           descriptionText += textItem + " ";
         });
-        hotelDetails.description = descriptionText;
+        hotelEntity.description = descriptionText;
 
 //images
         if(hotelJson.images[0] !== undefined){
-        hotelDetails.smallImage = hotelJson.images[0].url
+        hotelEntity.smallImage = hotelJson.images[0].url
       }
         if(hotelJson.images[1] !== undefined){
-        hotelDetails.bigImage = hotelJson.images[1].url;
+        hotelEntity.bigImage = hotelJson.images[1].url;
       }
 //star rating
         if(hotelJson.awards[0] !== undefined){
-          hotelDetails.starRating = hotelJson.awards[0].rating;
+          hotelEntity.starRating = hotelJson.awards[0].rating;
       }
 //coordinates
-        hotelDetails.latitude = hotelJson.location.latitude;
-        hotelDetails.longitude = hotelJson.location.longitude;
+        hotelEntity.latitude = hotelJson.location.latitude;
+        hotelEntity.longitude = hotelJson.location.longitude;
 
-        console.log(hotelDetails);
+        console.log(hotelEntity);
         // const newHotel = new HotelEntity(hotelDetails);
-        return hotelDetails;
+        return hotelEntity;
 
 }
 

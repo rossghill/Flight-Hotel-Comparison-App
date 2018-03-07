@@ -54,7 +54,7 @@ FlightView.prototype.createFlightPriceAndChangeAction = function(flightPrice){
   let priceDiv         = document.createElement("div");
   priceDiv.classList.add("flight-price-class")
   let priceSpan        = document.createElement("span");
-  priceSpan.innerText  = "\n  FLIGHT PRICE: £" + flightPrice;
+  priceSpan.innerText  = "\n FLIGHT PRICE: £" + flightPrice;
 
   priceDiv.appendChild(priceSpan);
   return priceDiv;

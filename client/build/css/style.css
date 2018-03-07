@@ -24,12 +24,12 @@ body {
 
 .flight-class {
   padding: 10px 0px 0px 10px;
-  font-size: 10px;
+  /* font-size: 10px; */
 }
 
 .flight-price-class {
   padding: 0px 0px 10px 10px;
-  font-size: 10px;
+  /* font-size: 10px; */
 }
 
 
@@ -47,6 +47,10 @@ body {
 }
 
 .hotel-amenities-class {
+  padding: 0px 0px 10px 10px
+}
+
+.hotel-price-class {
   padding: 0px 0px 10px 10px
 }
 
