@@ -7,6 +7,7 @@ const FlightHotelPackage    = require("./../../client/src/entities/flightHotelPa
 const FlightPackage         = require("./../../client/src/entities/flightPackage");
 const AmadeusAPI            = require("./../api/AmadeusAPI");
 const FlightHotelPackages   = require("./../../client/src/entities/flightHotelPackages");
+const ServerHotelModel      = require("./serverHotelModel");
 
 const Package = function(){
   this.requestForFlightDone              = false;
@@ -60,7 +61,9 @@ Package.prototype.createFlightEntity = function(flightJson) {
 }
 
 Package.prototype.createHotelEntity = function (hotelJson) {
-let hotelDetails = {}
+const serverHotelModel = new ServerHotelModel();
+let hotelDetails = serverHotelModel.createHotelEntityDefaults();
+
 //hotelDetails["hotelName"] = hotelJson.property_name;
         hotelDetails.hotelName  = hotelJson.property_name;
         hotelDetails.price      = parseFloat(hotelJson.total_price.amount);
@@ -104,8 +107,10 @@ let hotelDetails = {}
         hotelDetails.latitude = hotelJson.location.latitude;
         hotelDetails.longitude = hotelJson.location.longitude;
 
-        const newHotel = new HotelEntity(hotelDetails);
-        return newHotel;
+        console.log(hotelDetails);
+        // const newHotel = new HotelEntity(hotelDetails);
+        return hotelDetails;
+
 }
 
 

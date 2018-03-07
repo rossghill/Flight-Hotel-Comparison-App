@@ -51,7 +51,7 @@ body {
   /* border: 1px solid black; */
 }
 
-#button_get_flight {
+#button-get-flight {
   width: 50px;
   background-color: #4d94ff;
   color: white;
@@ -66,6 +66,14 @@ body {
   border: 1px solid black;
 }
 
+#map-view-button {
+  padding: 10px 10px 10px 10px;
+  height: 50px;
+  width: 100px;
+  background-color: #4d94ff;
+  color: white;
+  font-weight: bold;
+}
 
 #container-body {
 /* background-color: #008aff; */

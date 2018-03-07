@@ -6,7 +6,7 @@ const HotelView       = require("./views/hotelView");
 const FlightView      = require("./views/flightView");
 
 const initializeFlightR = function(){
-  document.getElementById("button_get_flight").addEventListener("click", getPackages);
+  document.getElementById("button-get-flight").addEventListener("click", getPackages);
   document.getElementById("search-origin").addEventListener("input", getAirportCities);
   document.getElementById("search-destination").addEventListener("input", getAirportCities);
 }

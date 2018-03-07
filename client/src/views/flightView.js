@@ -25,7 +25,7 @@ FlightView.prototype.createFlight = function(flightEntity){
 }
 
 FlightView.prototype.createOutboundFlight = function(outboundFlightEntity){
-  console.log(outboundFlightEntity);
+  // console.log(outboundFlightEntity);
 
   let outboundFlightDiv = document.createElement("div");
   let outboundHeaderDiv = document.createElement("div");
@@ -40,7 +40,7 @@ FlightView.prototype.createOutboundFlight = function(outboundFlightEntity){
 FlightView.prototype.createInboundFlight = function(inboundFlightEntity){
   let inboundFlightDiv = document.createElement("div");
   let inboundHeaderDiv = document.createElement("div");
-  let inboundBodyDiv = this.createFlight(inboundFlightEntity[0]);
+  let inboundBodyDiv   = this.createFlight(inboundFlightEntity[0]);
 
   inboundFlightDiv.appendChild(inboundHeaderDiv);
   inboundFlightDiv.appendChild(inboundBodyDiv);
@@ -50,7 +50,7 @@ FlightView.prototype.createInboundFlight = function(inboundFlightEntity){
 
 FlightView.prototype.createFlightPriceAndChangeAction = function(flightPrice){
 
-  let priceDiv = document.createElement("div");
+  let priceDiv         = document.createElement("div");
   let priceSpan        = document.createElement("span");
   priceSpan.innerText  = flightPrice;
 
@@ -60,18 +60,17 @@ FlightView.prototype.createFlightPriceAndChangeAction = function(flightPrice){
 
 
 FlightView.prototype.createFlightView = function(flightPackage){
-  let mainDiv = document.createElement("div");
+  let mainFlightDiv     = document.createElement("div");
 
-  console.log(flightPackage);
   let outboundFlightDiv = this.createOutboundFlight(flightPackage.outboundFlights);
   let inboundFlightDiv  = this.createInboundFlight(flightPackage.inboundFlights);
   let priceDiv          = this.createFlightPriceAndChangeAction(flightPackage.flightPrice);
 
-  mainDiv.appendChild(outboundFlightDiv);
-  mainDiv.appendChild(inboundFlightDiv);
-  mainDiv.appendChild(priceDiv);
+  mainFlightDiv.appendChild(outboundFlightDiv);
+  mainFlightDiv.appendChild(inboundFlightDiv);
+  mainFlightDiv.appendChild(priceDiv);
   // console.log(flightPackage);
-  return mainDiv;
+  return mainFlightDiv;
 }
 
 
