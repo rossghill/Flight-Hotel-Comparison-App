@@ -1,8 +1,7 @@
-const FlightHotelPackages = function(flightHotelPackages, flightPackages, destinationAirportLatitude, destinationAirportLongitude){
+const FlightHotelPackages = function(flightHotelPackages, flightPackages){
   this.flightHotelPackages  = flightHotelPackages;
   this.flightPackages       = flightPackages;
-  this.destinationAirportLatitude = destinationAirportLatitude;
-  this.destinationAirportLongitude = destinationAirportLongitude;
+
 }
 
 module.exports = FlightHotelPackages;

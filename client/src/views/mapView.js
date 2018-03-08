@@ -26,5 +26,14 @@ MapView.prototype.createGiantMap = function(flightHotelPackagesEntity){
    });
  }
 
+ MapView.prototype.createSmallMap = function(smallMapDiv, hotelEntity)
+ {
+   let centerLat = hotelEntity.latitude;
+   let centerLng = hotelEntity.longitude;
+   let coords    = {lat:centerLat, lng:centerLng};
+   let smallMap  = new MapWrapper(smallMapDiv, coords, 12);
+   smallMap.addMarker(coords);
+ }
+
 
 module.exports = MapView;
