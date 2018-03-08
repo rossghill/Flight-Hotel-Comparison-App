@@ -16,6 +16,7 @@ const Package = function(){
   this.requestForHotelDone               = false;
   this.requestForHotelPhotos             = false;
   this.requestForDescription             = false;
+  this.requestForAirportLocation         = false;
   this.amadeusAPI                        = new AmadeusAPI();
   this.photoModel                        = new PhotoModel();
   this.descriptionAPI                    = new DescriptionAPI();
@@ -25,6 +26,16 @@ const Package = function(){
   this.hotelImagesArray                  = [];
   this.hotelDescriptionArray             = [];
   this.onflightHotelPackagesArrayUpdate  = null;
+  this.destinationAirportLatitude        = null;
+  this.destinationAirportLongitude       = null;
+}
+
+Package.prototype.checkRequestsStatus = function() {
+return(    this.requestForFlightDone
+        && this.requestForHotelDone
+        && this.requestForHotelPhotos
+        && this.requestForDescription
+        && this.requestForAirportLocation);
 }
 
 Package.prototype.createFlightPackages = function(flights){
@@ -141,11 +152,8 @@ Package.prototype.searchForFlightHotelPackages = function(req){
     }
 
     this.requestForFlightDone = true;
-    if(    this.requestForFlightDone
-        && this.requestForHotelDone
-        && this.requestForHotelPhotos
-        && this.requestForDescription){
-      this.createFilghtHotelsPackages();
+    if(this.checkRequestsStatus()){
+      this.createFlightHotelsPackages();
     }
 
   }.bind(this)
@@ -167,11 +175,8 @@ Package.prototype.searchForFlightHotelPackages = function(req){
 
     this.requestForHotelDone = true;
 
-    if(    this.requestForFlightDone
-        && this.requestForHotelDone
-        && this.requestForHotelPhotos
-        && this.requestForDescription){
-      this.createFilghtHotelsPackages()
+    if(this.checkRequestsStatus()){
+      this.createFlightHotelsPackages();
     }
   }.bind(this)
 
@@ -182,11 +187,8 @@ Package.prototype.searchForFlightHotelPackages = function(req){
 
     this.requestForHotelPhotos = true;
 
-    if(    this.requestForFlightDone
-        && this.requestForHotelDone
-        && this.requestForHotelPhotos
-        && this.requestForDescription){
-      this.createFilghtHotelsPackages()
+    if(this.checkRequestsStatus()){
+      this.createFlightHotelsPackages();
     }
   }.bind(this)
 
@@ -207,16 +209,29 @@ Package.prototype.searchForFlightHotelPackages = function(req){
 
     this.requestForDescription = true;
 
+    if(this.checkRequestsStatus()){
+      this.createFlightHotelsPackages();
+    }
+  }.bind(this)
+
+  this.amadeusAPI.searchAirportLocation(req.query.destination);
+  this.amadeusAPI.onAirportLocationUpdate = function(airportsRoot){
+
+    this.destinationAirportLatitude = airportsRoot.airports[0].location.latitude;
+    this.destinationAirportLongitude = airportsRoot.airports[0].location.longitude;
+
+    this.requestForAirportLocation = true;
     if(    this.requestForFlightDone
         && this.requestForHotelDone
         && this.requestForHotelPhotos
         && this.requestForDescription){
-          this.createFilghtHotelsPackages();
+          this.createFlightHotelsPackages();
     }
-  }.bind(this)
-};
 
-Package.prototype.createFilghtHotelsPackages = function(){
+  }.bind(this);
+}
+
+Package.prototype.createFlightHotelsPackages = function(){
 
   this.hotelEntitiesArray.forEach(function(hotel)
   {
@@ -238,8 +253,9 @@ Package.prototype.createFilghtHotelsPackages = function(){
     this.flightHotelPackagesArray.push(package);
   }.bind(this));
 
-  let flightHotelPackages = new FlightHotelPackages(this.flightHotelPackagesArray, this.flightPackagesArray);
+  let flightHotelPackages = new FlightHotelPackages(this.flightHotelPackagesArray, this.flightPackagesArray, this.destinationAirportLatitude, this.destinationAirportLongitude);
   this.onflightHotelPackagesArrayUpdate(flightHotelPackages);
 }
+
 
 module.exports = Package;
