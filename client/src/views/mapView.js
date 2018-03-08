@@ -1,4 +1,4 @@
-const mapWrapper = require('./../../build/map_wrapper')
+const MapWrapper = require('./../../build/map_wrapper')
 // _______________________________
 const MapView = function() {
 
@@ -9,20 +9,20 @@ MapView.prototype.createGiantMap = function(flightHotelPackages){
 
   let mapDiv = document.getElementById("div-packages-map");
 
-  let hotels = flightHotelPackages.flightHotelPackages;
 
-  centerLat = hotels[0].hotel.latitude;
-  centerLng = hotels[0].hotel.longitude;
+  let centerLat = flightHotelPackages[0].hotel.latitude;
+  let centerLng = flightHotelPackages[0].hotel.longitude;
 
   let coords = {lat:centerLat, lng:centerLng};
-  let giantMap = new MapWrapper(mapDiv, coords, 5);
+  let giantMap = new MapWrapper(mapDiv, coords, 15);
 
+  flightHotelPackages.forEach(function(flightHotelPackage){
 
-   hotels.forEach(function(hotel){
-     marker = new google.maps.Marker({
-       position: new google.maps.LatLng(hotel.latitude, hotel.longitude),
-       map: giantMap
-     });
+     let centerLat = flightHotelPackage.hotel.latitude;
+     let centerLng = flightHotelPackage.hotel.longitude;
+     let coords = {lat:centerLat, lng:centerLng};
+     giantMap.addMarker(coords);
+
    });
  }
 

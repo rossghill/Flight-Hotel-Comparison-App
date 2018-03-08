@@ -54,11 +54,11 @@ const populatePackages = function(){
   if(flightHotelPackagesEntity.flightHotelPackages)
   {
     packageListView.createPackageList(flightHotelPackagesEntity.flightHotelPackages);
-    //   let mapView = new MapView();
-    //   mapView.createGiantMap(flightHotelPackagesEntity.flightHotelPackages);
-    //
-    //
-    // console.log(flightHotelPackagesEntity.flightHotelPackages);
+      let mapView = new MapView();
+      mapView.createGiantMap(flightHotelPackagesEntity.flightHotelPackages);
+
+
+    console.log(flightHotelPackagesEntity.flightHotelPackages);
   }
   else{
       console.log("populatePackages, error : "+this.responseText);
