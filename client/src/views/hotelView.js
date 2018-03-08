@@ -63,17 +63,15 @@ HotelView.prototype.createHotelAmenities = function(hotelEntity){
 }
 
 HotelView.prototype.createHotelPrice = function(hotelEntity){
-  console.log(hotelEntity);
   let hotelPriceDiv  = document.createElement("div");
   hotelPriceDiv.classList.add("hotel-price-class");
   let hotelPriceSpan = document.createElement("span");
 
-  hotelPriceDiv.appendChild(hotelPriceSpan);
-
   hotelPriceSpan.innerText  = "\n HOTEL PRICE: £" + hotelEntity.hotelPrice.toFixed(2);
+
+  hotelPriceDiv.appendChild(hotelPriceSpan);
   return hotelPriceDiv;
 }
-
 
 
 HotelView.prototype.createHotelView = function(hotelEntity){

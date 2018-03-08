@@ -18,13 +18,25 @@ MiniMapView.prototype.createFaveButton = function() {
 
   faveButton.innerText = "Add To Favourites!"
 
+  faveButton.addEventListener("click", function(){
+    console.log("THIS BUTTON WORKS!");
+
+  })
+
   return faveButton;
 }
 
 
-MiniMapView.prototype.createPackagePrice = function() {
+MiniMapView.prototype.createPackagePrice = function(flightHotelPackage) {
   let packagePriceDiv = document.createElement("div")
   packagePriceDiv.classList.add("package-price-class");
+
+  let packagePriceSpan = document.createElement("span");
+
+  packagePriceSpan.innerText  = "\n PACKAGE PRICE: £" + flightHotelPackage.packagePrice.toFixed(2);
+
+  packagePriceDiv.appendChild(packagePriceSpan);
+
 
 
   return packagePriceDiv;
