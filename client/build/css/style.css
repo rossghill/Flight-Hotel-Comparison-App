@@ -179,10 +179,8 @@ ul {
 }
 
 #container-extra-filters {
-  /* background-color: white; */
-  margin-right: 10px;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 }
 
 
@@ -192,6 +190,18 @@ ul {
   margin-bottom: 10px;
   display: flex;
   flex-direction: row;
+}
+
+#flight-going-img {
+  padding: 10px 0px 0px 10px;
+  width: 15%;
+  height: 15%;
+}
+
+#flight-returning-img {
+  padding: 10px 0px 0px 10px;
+  width: 15%;
+  height: 15%;
 }
 
 #div-packages-map {
@@ -233,7 +243,7 @@ select option {
 
 #div-packages-map,
 #div-packages-list {
-  width: 85%;
+  width: 100%;
 }
 
 .mini-map-view-class {
@@ -244,9 +254,11 @@ select option {
 
 /* Styling hotel-flight packages */
 .div-package {
+  margin-top: 10px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   border-radius: 5px;
   width: 100%;
+  border: 1px solid #3498db;
 }
 
 
