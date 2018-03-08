@@ -183,6 +183,10 @@ ul {
   flex-direction: column;
 }
 
+#container-extra-filters div {
+  margin: 10px 5px;
+}
+
 
 #container-packages {
   /* background-color: white; */
@@ -245,7 +249,7 @@ select option {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   border-radius: 5px;
   width: 100%;
-  border: 1px solid #3498db;
+  padding: 20px;
 }
 
 
@@ -260,6 +264,14 @@ input {
 
 .input-100 {
   width: 100px;
+}
+
+.input-150 {
+  width: 150px;
+}
+
+.input-200 {
+  width: 200px;
 }
 
 .input-80 {

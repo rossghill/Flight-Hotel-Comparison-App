@@ -24,10 +24,20 @@ FlightHotelPackagesModel.prototype.getPriceMax = function(){
 }
 
 FlightHotelPackagesModel.prototype.filterTravelPackages = function(filters){
+
   let travelPackageFiltered = this.flightHotelPackages;
-  travelPackageFiltered = this.flightHotelPackages.filter(function(travelPackage){
+
+  travelPackageFiltered = travelPackageFiltered.filter(function(travelPackage){
     return travelPackage.packagePrice <= filters.budgetMax;
   });
+
+  if(filters.hotelName != "")
+  {
+    travelPackageFiltered = travelPackageFiltered.filter(function(travelPackage){
+      return travelPackage.hotel.hotelName.toLowerCase().includes(filters.hotelName.toLowerCase());
+    });
+  }
+
   return travelPackageFiltered;
 }
 
