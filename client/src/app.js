@@ -13,6 +13,28 @@ const initializeFlightR = function(){
   document.getElementById("search-destination").addEventListener(   "input",    getAirportCities);
   document.getElementById("checkbox-list-map-mode").addEventListener("click",   domHelper.checkboxToggleVisibility.bind(this, "checkbox-list-map-mode", "div-packages-list", "div-packages-map"));
   domHelper.changeDisplay("div-packages-map", false);
+
+//favouritesList modal
+  const modal = document.getElementById('modal-id');
+  const modalButton = document.getElementById('get-favourites-button');
+  const close = document.querySelector('.close')
+
+  modalButton.addEventListener('click', function(){
+    console.log('Favourites Button Clicked');
+    // modal.style.display = 'block';
+  });
+
+  // close.addEventListener('click', function(){
+  //   modal.style.display = 'none';
+  // });
+  //
+  // document.addEventListener('click', function(){
+  //   if(event.target === modal){
+  //     modal.style.display = 'none';
+  //   }
+  // });
+
+
 }
 
 const getPackages = function(){
