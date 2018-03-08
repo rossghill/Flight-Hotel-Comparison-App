@@ -7,14 +7,23 @@ const FlightHotelPackage    = require("./../../client/src/entities/flightHotelPa
 const FlightPackage         = require("./../../client/src/entities/flightPackage");
 const AmadeusAPI            = require("./../api/AmadeusAPI");
 const FlightHotelPackages   = require("./../../client/src/entities/flightHotelPackages");
+const ServerHotelModel      = require("./serverHotelModel");
+const PhotoModel            = require("./photoModel.js");
+const DescriptionAPI        = require("./../api/DescriptionAPI");
 
 const Package = function(){
   this.requestForFlightDone              = false;
   this.requestForHotelDone               = false;
+  this.requestForHotelPhotos             = false;
+  this.requestForDescription             = false;
   this.amadeusAPI                        = new AmadeusAPI();
+  this.photoModel                        = new PhotoModel();
+  this.descriptionAPI                    = new DescriptionAPI();
   this.flightPackagesArray               = [];
   this.hotelEntitiesArray                = [];
   this.flightHotelPackagesArray          = [];
+  this.hotelImagesArray                  = [];
+  this.hotelDescriptionArray             = [];
   this.onflightHotelPackagesArrayUpdate  = null;
 }
 
@@ -60,11 +69,13 @@ Package.prototype.createFlightEntity = function(flightJson) {
 }
 
 Package.prototype.createHotelEntity = function (hotelJson) {
-let hotelDetails = {}
+const serverHotelModel = new ServerHotelModel();
+let hotelEntity = serverHotelModel.createHotelEntityDefaults();
+
 //hotelDetails["hotelName"] = hotelJson.property_name;
-        hotelDetails.hotelName  = hotelJson.property_name;
-        hotelDetails.price      = parseFloat(hotelJson.total_price.amount);
-        hotelDetails.currency   = hotelJson.total_price.currency;
+        hotelEntity.hotelName  = hotelJson.property_name;
+        hotelEntity.hotelPrice = parseFloat(hotelJson.total_price.amount);
+        hotelEntity.currency   = hotelJson.total_price.currency;
 
 //amenities
         let amenitiesArray = []
@@ -81,31 +92,30 @@ let hotelDetails = {}
             amenitiesArray.push("ACCESSIBLE_FACILITIES");
           }
         });
-        hotelDetails.amenities = amenitiesArray;
+        hotelEntity.amenities = amenitiesArray;
 //description
         let descriptionText = ""
         hotelJson.rooms[0].descriptions.forEach(function(textItem){
           descriptionText += textItem + " ";
         });
-        hotelDetails.description = descriptionText;
+        hotelEntity.description = descriptionText;
 
 //images
         if(hotelJson.images[0] !== undefined){
-        hotelDetails.smallImage = hotelJson.images[0].url
+        hotelEntity.smallImage = hotelJson.images[0].url
       }
         if(hotelJson.images[1] !== undefined){
-        hotelDetails.bigImage = hotelJson.images[1].url;
+        hotelEntity.bigImage = hotelJson.images[1].url;
       }
 //star rating
         if(hotelJson.awards[0] !== undefined){
-          hotelDetails.starRating = hotelJson.awards[0].rating;
+          hotelEntity.starRating = hotelJson.awards[0].rating;
       }
 //coordinates
-        hotelDetails.latitude = hotelJson.location.latitude;
-        hotelDetails.longitude = hotelJson.location.longitude;
+        hotelEntity.latitude = hotelJson.location.latitude;
+        hotelEntity.longitude = hotelJson.location.longitude;
+        return hotelEntity;
 
-        const newHotel = new HotelEntity(hotelDetails);
-        return newHotel;
 }
 
 
@@ -131,8 +141,10 @@ Package.prototype.searchForFlightHotelPackages = function(req){
     }
 
     this.requestForFlightDone = true;
-
-    if(this.requestForFlightDone && this.requestForHotelDone){
+    if(    this.requestForFlightDone
+        && this.requestForHotelDone
+        && this.requestForHotelPhotos
+        && this.requestForDescription){
       this.createFilghtHotelsPackages();
     }
 
@@ -155,8 +167,51 @@ Package.prototype.searchForFlightHotelPackages = function(req){
 
     this.requestForHotelDone = true;
 
-    if(this.requestForFlightDone && this.requestForHotelDone){
+    if(    this.requestForFlightDone
+        && this.requestForHotelDone
+        && this.requestForHotelPhotos
+        && this.requestForDescription){
       this.createFilghtHotelsPackages()
+    }
+  }.bind(this)
+
+
+  this.photoModel.getListOfPhotosForHotel(200);
+  this.photoModel.onUpdateHotelPhotos = function(hotelPhotos){
+    this.hotelImagesArray = hotelPhotos;
+
+    this.requestForHotelPhotos = true;
+
+    if(    this.requestForFlightDone
+        && this.requestForHotelDone
+        && this.requestForHotelPhotos
+        && this.requestForDescription){
+      this.createFilghtHotelsPackages()
+    }
+  }.bind(this)
+
+
+  this.descriptionAPI.getShortDescrition()
+  this.descriptionAPI.onUpdateDescription = function(descriptions){
+
+    if(Array.isArray(descriptions))
+    {
+        descriptions.forEach(function(description){
+        this.hotelDescriptionArray.push(description.quote+" "+description.author);
+      }.bind(this));
+    }
+    else
+    {
+      this.hotelDescriptionArray.push("No description found");
+    }
+
+    this.requestForDescription = true;
+
+    if(    this.requestForFlightDone
+        && this.requestForHotelDone
+        && this.requestForHotelPhotos
+        && this.requestForDescription){
+          this.createFilghtHotelsPackages();
     }
   }.bind(this)
 };
@@ -165,11 +220,21 @@ Package.prototype.createFilghtHotelsPackages = function(){
 
   this.hotelEntitiesArray.forEach(function(hotel)
   {
+    let indexHotelImage       = Math.floor(Math.random() * this.hotelImagesArray.length-1);
+    let indexHotelDescription = Math.floor(Math.random() * this.hotelDescriptionArray.length-1);
+    if(indexHotelImage > 0)
+    {
+      hotel.smallImage    = this.hotelImagesArray[indexHotelImage];
+      hotel.bigImage      = this.hotelImagesArray[indexHotelImage];
+      hotel.description   = this.hotelDescriptionArray[indexHotelDescription];
+    }
+
     const flightPackage = this.flightPackagesArray[0];
     const flightPrice   = parseFloat(flightPackage.flightPrice);
     const hotelPrice    = parseFloat(hotel.hotelPrice);
     const packagePrice  = flightPrice + hotelPrice;
     const package       = this.createFlightHotelPackage(flightPackage, hotel, packagePrice)
+
     this.flightHotelPackagesArray.push(package);
   }.bind(this));
 
