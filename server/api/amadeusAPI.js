@@ -9,6 +9,7 @@ const AmadeusAPI = function(){
   this.onFlightsUpdate      = null;
   this.onHotelsUpdate       = null;
   this.onAirportCitiesUpdate = null;
+  this.onAirportLocationUpdate = null;
 }
 
 
@@ -55,6 +56,13 @@ AmadeusAPI.prototype.searchAirportCities = function(cityAirport){
 
 }
 
+AmadeusAPI.prototype.searchAirportLocation = function(IATAcode){
+  let url = `https://api.sandbox.amadeus.com/v1.2/location/${IATAcode}?apikey=${this.amadeusApiKey}`;
+  let request = new ServerRequest();
+  request.sendRequest(url, function(requestResponse){
+    this.onAirportLocationUpdate(JSON.parse(requestResponse));
+  }.bind(this));
+}
 
 
 

@@ -55,7 +55,7 @@ const populatePackages = function(){
   {
     packageListView.createPackageList(flightHotelPackagesEntity.flightHotelPackages);
       let mapView = new MapView();
-      mapView.createGiantMap(flightHotelPackagesEntity.flightHotelPackages);
+      mapView.createGiantMap(flightHotelPackagesEntity);
 
 
     console.log(flightHotelPackagesEntity.flightHotelPackages);

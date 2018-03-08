@@ -5,18 +5,18 @@ const MapView = function() {
 }
 
 
-MapView.prototype.createGiantMap = function(flightHotelPackages){
+MapView.prototype.createGiantMap = function(flightHotelPackagesEntity){
 
   let mapDiv = document.getElementById("div-packages-map");
 
 
-  let centerLat = flightHotelPackages[0].hotel.latitude;
-  let centerLng = flightHotelPackages[0].hotel.longitude;
+  let centerLat = flightHotelPackagesEntity.destinationAirportLatitude;
+  let centerLng = flightHotelPackagesEntity.destinationAirportLongitude;
 
   let coords = {lat:centerLat, lng:centerLng};
-  let giantMap = new MapWrapper(mapDiv, coords, 15);
+  let giantMap = new MapWrapper(mapDiv, coords, 12);
 
-  flightHotelPackages.forEach(function(flightHotelPackage){
+  flightHotelPackagesEntity.flightHotelPackages.forEach(function(flightHotelPackage){
 
      let centerLat = flightHotelPackage.hotel.latitude;
      let centerLng = flightHotelPackage.hotel.longitude;
