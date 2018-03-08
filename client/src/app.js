@@ -15,25 +15,24 @@ const initializeFlightR = function(){
   domHelper.changeDisplay("div-packages-map", false);
 
 //favouritesList modal
-  const modal = document.getElementById('modal-id');
+  const modal = document.getElementById('favourites-modal');
   const favouritesButton = document.getElementById('get-favourites-button');
   const close = document.querySelector('.close')
 
   favouritesButton.addEventListener('click', function(){
     console.log('Favourites Button Clicked');
-    // modal.style.display = 'block';
+    modal.style.display = 'block';
   });
 
-  // close.addEventListener('click', function(){
-  //   modal.style.display = 'none';
-  // });
-  //
-  // document.addEventListener('click', function(){
-  //   if(event.target === modal){
-  //     modal.style.display = 'none';
-  //   }
-  // });
+  close.addEventListener('click', function(){
+    modal.style.display = 'none';
+  });
 
+  document.addEventListener('click', function(){
+    if(event.target === modal){
+      modal.style.display = 'none';
+    }
+  });
 
 }
 
