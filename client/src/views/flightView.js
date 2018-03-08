@@ -32,7 +32,7 @@ FlightView.prototype.createOutboundFlight = function(outboundFlightEntity){
   let outboundHeaderDiv = document.createElement("div");
   let outboundBodyDiv = this.createFlight(outboundFlightEntity[0]);
 
-  flightGoingImg.src = "./../../client/build/images/flight-going.jpg"
+  flightGoingImg.img = "./images/flight-going.jpg"
 
   outboundFlightDiv.appendChild(flightGoingImg)
   outboundFlightDiv.appendChild(outboundHeaderDiv);
@@ -47,7 +47,7 @@ FlightView.prototype.createInboundFlight = function(inboundFlightEntity){
   let inboundHeaderDiv = document.createElement("div");
   let inboundBodyDiv   = this.createFlight(inboundFlightEntity[0]);
 
-  flightReturningImg.src = "./../../client/build/images/flight-returning.jpg"
+  flightReturningImg.src = "./images/flight-returning.jpg"
 
   inboundFlightDiv.appendChild(flightReturningImg)
   inboundFlightDiv.appendChild(inboundHeaderDiv);
