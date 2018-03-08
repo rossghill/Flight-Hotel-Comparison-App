@@ -126,6 +126,14 @@ ul {
   flex-wrap: wrap;
 }
 
+#get-favourites-button {
+  margin-left: 600px;
+  padding: 10px 10px 10px 10px;
+  color: white;
+  background-color: #4d94ff;
+  font-weight: bold;
+}
+
 #container-search-bar {
   padding: 10px 0px 10px 10px;
   display: flex;

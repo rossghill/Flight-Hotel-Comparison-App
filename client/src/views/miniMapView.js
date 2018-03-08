@@ -1,3 +1,5 @@
+const FavouritesList = require('./../requests/favouritesList')
+
 const MiniMapView = function() {
 
 }
@@ -12,15 +14,15 @@ MiniMapView.prototype.createMiniMap = function(hotelEntity) {
 }
 
 
-MiniMapView.prototype.createFaveButton = function() {
+MiniMapView.prototype.createFaveButton = function(flightHotelPackage) {
   let faveButton = document.createElement("button")
   faveButton.classList.add("fave-button-class");
 
   faveButton.innerText = "Add To Favourites!"
 
   faveButton.addEventListener("click", function(){
-    console.log("THIS BUTTON WORKS!");
-
+    const favouritesList = new FavouritesList("http://localhost:3000/favourites");
+    favouritesList.post(createRequestComplete, flightHotelPackage);
   })
 
   return faveButton;
