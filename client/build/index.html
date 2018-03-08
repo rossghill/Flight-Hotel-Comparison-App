@@ -14,12 +14,13 @@
   </head>
   <body>
     <div id='container-main'>
-      <br/>
-      <img id='banner' src="./images/banner.jpg" alt=""></img>
+
+      <!-- <div>
+        <img id='banner' src="./images/banner.jpg" alt=""></img>
+     </div> -->
 
       <!-- CONTAINS IMAGE, SEARCH & RESULTS DIVS -->
       <div id='container-header'>
-
             <!-- COMPANY IMAGE & SLOGAN TO FLEX AS ROW -->
             <div id='div-company'>
               <!-- <h2>IMAGE TO GO HERE</h2> -->
@@ -34,19 +35,21 @@
 
                     <!-- SEARCH PARAMS -->
                     <div id='div-origin'>
-                      <!-- <div class="flex-row"> -->
-                        <label for="origin">From:</label>
-                        <input type="text" id="search-origin">
-                      <!-- </div> -->
-                      <select id="origin" class="select-300"></select>
+                      <label for="origin">From:</label>
+                      <div class="flex-row-flex-end">
+                        <input type="text" id="search-origin" class="input-100">
+                        <select id="origin" class="select-300"></select>
+                      </div>
+
                     </div>
 
                     <div id="div-destination">
-                      <!-- <div class="flex-row"> -->
-                        <label for="destination">To:</label>
-                        <input type="text" id="search-destination">
-                      <!-- </div> -->
-                      <select id="destination" class="select-300"></select>
+                      <label for="destination">To:</label>
+                      <div class="flex-row-flex-end">
+                        <input type="text" id="search-destination" class="input-100">
+                        <select id="destination" class="select-300"></select>
+                      </div>
+
                     </div>
 
                     <div id="div-departureDate">
@@ -66,14 +69,14 @@
                     <div id="div-adults">
                       <div class="flex-column">
                         <label for="adults">Adults:</label>
-                        <input type="number" id="adults" value="1">
+                        <input type="number" id="adults" value="1" min="0" class="input-80">
                       </div>
                     </div>
 
                     <div id="div-children">
                       <div class="flex-column">
                         <label for="children">Children:</label>
-                        <input type="number" id="children" value="0">
+                        <input type="number" id="children" value="0" min="0" class="input-80">
                       </div>
                     </div>
 
@@ -86,18 +89,14 @@
                 <!-- RESULTS BAR -->
                 <div id='container-result-bar'>
                   <!-- <h2>RESULTS BAR</h2> -->
-                  <div>
                     <span>List</span>
                     <label class="switch">
                       <input type="checkbox" id="checkbox-list-map-mode">
                       <span class="slider round"></span>
                     </label>
                     <span>Map</span>
-                  </div>
                 </div>
-
-          </div>
-
+            </div>
       </div>
 
       <!-- CONTAINS EXTRA FILTERS AND PACKAGE DEALS DIVS -->
