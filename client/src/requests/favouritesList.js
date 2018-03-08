@@ -11,12 +11,12 @@ FavouritesList.prototype.get = function(callback){
   const request = new XMLHttpRequest();
   request.open('GET', this.url);
   request.addEventListener('load', function(){
-    if(this.status !== 200) {
-    return;
-  }
-  const responseBody = JSON.parse(this.responseText);
-  callback(responseBody);
-});
+    if(this.status !== 200)
+    {
+      return;
+    }
+    const responseBody = JSON.parse(this.responseText);
+    callback(responseBody);
   });
   request.send();
 }
@@ -44,7 +44,6 @@ FavouritesList.prototype.post = function(callback, payload){
     callback(responseBody);
   });
   request.send(JSON.stringify(payload));
-});
 }
 
 //callback:
@@ -67,4 +66,4 @@ FavouritesList.prototype.delete = function(callback){
   request.send();
 }
 
-module.exports = FavouritesListList;
+module.exports = FavouritesList;
