@@ -1,4 +1,5 @@
 const FavouritesList = require('./../requests/favouritesList')
+const MapWrapper = require('./../../build/map_wrapper')
 
 const MiniMapView = function() {
 
@@ -9,6 +10,13 @@ MiniMapView.prototype.createMiniMap = function(hotelEntity) {
   let miniMapDiv = document.createElement("div")
   miniMapDiv.classList.add("mini-map-class");
 
+  let hotelLat = hotelEntity.latitude;
+  let hotelLng = hotelEntity.longitude;
+  let coords = {lat: hotelLat, lng: hotelLng}
+
+  let miniMap = new MapWrapper(miniMapDiv, coords, 20);
+
+  miniMap.addMarker(coords);
 
   return miniMapDiv;
 }
@@ -51,6 +59,8 @@ MiniMapView.prototype.createMiniMapView = function(flightHotelPackage) {
   let miniMapDiv      = this.createMiniMap(flightHotelPackage.hotel)
   let faveButton   = this.createFaveButton(flightHotelPackage)
   let packagePriceDiv = this.createPackagePrice(flightHotelPackage)
+
+  console.log(miniMapDiv);
 
   miniMapView.appendChild(miniMapDiv)
   miniMapView.appendChild(faveButton)

@@ -236,6 +236,10 @@ select option {
   width: 85%;
 }
 
+.mini-map-view-class {
+  height: 250px;
+  width: 250px;
+}
 
 
 /* Styling hotel-flight packages */
