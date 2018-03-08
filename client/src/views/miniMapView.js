@@ -4,7 +4,7 @@ const MapView = require('./mapView');
 
 
 const MiniMapView = function() {
-  
+
 
 }
 
@@ -36,15 +36,6 @@ const createRequestComplete = function(newFavourite){
   console.log("New Favourite: " + newFavourite);
 
 }
-
-MiniMapView.prototype.createMiniMap = function(hotelEntity) {
-  let miniMapDiv = document.createElement("div")
-  miniMapDiv.classList.add("mini-map-class");
-
-
-  return miniMapDiv;
-}
-
 
 MiniMapView.prototype.createPackagePrice = function(flightHotelPackage) {
   let packagePriceDiv = document.createElement("div")
