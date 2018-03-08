@@ -3,7 +3,6 @@ const HotelView = function(){
 }
 
 HotelView.prototype.createHotelImage = function(hotelEntity){
-  console.log(hotelEntity);
   let hotelImage = document.createElement("img");
   hotelImage.classList.add("hotel-image-class");
 
