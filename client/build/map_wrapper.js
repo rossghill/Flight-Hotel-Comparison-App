@@ -13,4 +13,11 @@ MapWrapper.prototype.addMarker = function(coords) {
   });
 }
 
+MapWrapper.prototype.addMarkerWithHotelPopup = function(coords) {
+  const marker = new google.maps.Marker({
+    position: coords,
+    map: this.googleMap
+  });
+}
+
 module.exports = MapWrapper;

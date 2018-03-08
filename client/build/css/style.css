@@ -60,6 +60,7 @@ ul {
 .hotel-class {
   padding: 10px 0px 10px 10px;
   width: 50%;
+  border-radius: 10px;
 }
 
 .hotel-name-class {
@@ -87,8 +88,7 @@ ul {
 
 .hotel-image-class {
   width: 300px;
-  padding: 0px 0px 10px 10px;
-  position: relative;
+  padding: 10px;
 }
 
 #banner {
@@ -277,4 +277,5 @@ div {
   width: 200px;
   height: 200px;
   margin: 10px;
+  border-radius: 10px;
 }
