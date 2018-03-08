@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>FlightR</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Lato:100,300,300i,400');
+    </style>
+    <link rel="stylesheet" href="./css/normalize.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/checkbox_slider.css">
+    <link rel="stylesheet" href="./css/slider.css">
+    <link rel="stylesheet" href="./css/homepage.css">
+    <link rel="stylesheet" href="./css/modal.css">
+    <script src="bundle.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js"></script>
+  </head>
+  <body>
+    <div id='container-main'>
+
+      <!-- <div>
+        <img id='banner' src="./images/banner.jpg" alt=""></img>
+     </div> -->
+
+      <!-- CONTAINS IMAGE, SEARCH & RESULTS DIVS -->
+      <div id='container-header'>
+            <!-- COMPANY IMAGE & SLOGAN TO FLEX AS ROW -->
+            <div id='div-company'>
+              <!-- <h2>IMAGE TO GO HERE</h2> -->
+              <img id='logo' src="./images/go.jpg" alt=""></img>
+            </div>
+
+            <!-- SEARCH BAR & RESULTS TO FLEX AS COLUMN -->
+            <div id='container-search-result-bars'>
+
+                <!-- MAIN SEARCH BAR & GO BUTTON -->
+                <div id='container-search-bar'>
+
+                    <!-- SEARCH PARAMS -->
+                    <div id='div-origin'>
+                      <label for="origin">From:</label>
+                      <div class="flex-row-flex-end">
+                        <input type="text" id="search-origin" class="input-100">
+                        <select id="origin" class="select-300"></select>
+                      </div>
+
+                    </div>
+
+                    <div id="div-destination">
+                      <label for="destination">To:</label>
+                      <div class="flex-row-flex-end">
+                        <input type="text" id="search-destination" class="input-100">
+                        <select id="destination" class="select-300"></select>
+                      </div>
+
+                    </div>
+
+                    <div id="div-departureDate">
+                      <div class="flex-column">
+                        <label for="departureDate">Depart:</label>
+                        <input type="date" id="departureDate">
+                      </div>
+                    </div>
+
+                    <div id="div-returnDate">
+                      <div class="flex-column">
+                        <label for="Return Date">Return:</label>
+                        <input type="date" id="returnDate">
+                      </div>
+                    </div>
+
+                    <div id="div-adults">
+                      <div class="flex-column">
+                        <label for="adults">Adults:</label>
+                        <input type="number" id="adults" value="1" min="0" class="input-80">
+                      </div>
+                    </div>
+
+                    <div id="div-children">
+                      <div class="flex-column">
+                        <label for="children">Children:</label>
+                        <input type="number" id="children" value="0" min="0" class="input-80">
+                      </div>
+                    </div>
+
+                    <!-- GO! BUTTON -->
+                    <button id="button-get-flight">GO!</button>
+
+
+                </div>
+
+                <!-- RESULTS BAR -->
+                <div id='container-result-bar'>
+                  <!-- <h2>RESULTS BAR</h2> -->
+                    <span>List</span>
+                    <label class="switch">
+                      <input type="checkbox" id="checkbox-list-map-mode">
+                      <span class="slider round"></span>
+                    </label>
+                    <span>Map</span>
+
+                    <button id='get-favourites-button'>VIEW FAVOURITES!</button>
+                </div>
+            </div>
+      </div>
+
+      <section id="favourites-modal" class="modal-class">
+        <div class="modal-content">
+          <div class="modal-header">
+            <span class="close">&times;</span>
+            <h2>Saved Packages</h2>
+          </div>
+          <div class="modal-body"></div>
+          <!-- <div class="modal-footer"></div> -->
+        </div>
+      </section>
+
+
+      <!-- CONTAINS EXTRA FILTERS AND PACKAGE DEALS DIVS -->
+      <div id='container-body'>
+
+            <!-- EXTRA FILTERS -->
+            <div id='container-extra-filters'>
+
+            </div>
+
+
+            <!-- PACKAGES -->
+            <div id='container-packages'>
+
+                <div id='div-packages-list'>
+                  <!-- <h2>PACKAGES LIST</h2> -->
+                </div>
+
+                <!-- LARGE MAP OF ALL HOTELS -->
+                <div id='div-packages-map'>
+                  <h2>PACKAGES MAP</h2>
+                </div>
+
+            </div>
+
+      </div>
+
+    </div>
+  </body>
+</html>
