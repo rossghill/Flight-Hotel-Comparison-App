@@ -1,5 +1,3 @@
-const MapView         = require ("./../build/map_wrapper");
-
 const MapWrapper = function (container, coords, zoom) {
   this.googleMap = new google.maps.Map(container, {
     center: coords,
@@ -13,3 +11,5 @@ MapWrapper.prototype.addMarker = function(coords) {
     position: coords,
     map: this.googleMap
   });
+
+module.exports = MapWrapper;

@@ -58,14 +58,8 @@ const populatePackages = function(){
   {
     packageListView.createPackageList(flightHotelPackagesEntity.flightHotelPackages);
 
-    flightHotelPackagesEntity.flightHotelPackages.forEach(function(hotelPackage){
-      console.log(hotelPackage.hotel);
-      // // console.log(hotelPackage.hotel.latitude);
-      // // console.log(hotelPackage.hotel.latitude);
-      // let lat = hotelPackage.hotel.latitude;
-      // let lang = hotelPackage.hotel.longitude;
-      mapView.createGiantMap(hotelPackage);
-    });
+      mapView.createGiantMap(flightHotelPackagesEntity.flightHotelPackages);
+
 
     console.log(flightHotelPackagesEntity.flightHotelPackages);
   }

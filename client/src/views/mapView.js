@@ -6,23 +6,25 @@ const MapView = function() {
 
 let giantMap;
 
-MapView.prototype.createGiantMap = function(hotelPackages){
+MapView.prototype.crateGiantMap = function(flightHotelPackages){
 
   let mapDiv = document.getElementById("div-packages-map");
 
-  centerLat = hotelPackages.hotel[0].latitude;
-  centerLng = hotelPackages.hotel[0].longitude;
+  let hotels = flightHotelPackages.flightHotelPackages;
+
+  centerLat = hotels[0].hotel.latitude;
+  centerLng = hotels[0].hotel.longitude;
 
   let coords = {lat:centerLat, lng:centerLng};
   let giantMap = new MapWrapper(mapDiv, coords, 5);
 
 
-   for (i = 0; i < hotelPackages.length; i++) {
+   hotels.forEach(function(hotel){
      marker = new google.maps.Marker({
-       position: new google.maps.LatLng(hotelPackages.hotel.latitude, hotelPackages.hotel.longitude),
+       position: new google.maps.LatLng(hotel.latitude, hotel.longitude),
        map: giantMap
      });
+   });
 
-}
 
 module.exports = MapView;
