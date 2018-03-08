@@ -57,7 +57,6 @@ MiniMapView.prototype.createMiniMapView = function(flightHotelPackage) {
   miniMapView.appendChild(faveButton)
   miniMapView.appendChild(packagePriceDiv)
 
-
   return miniMapView;
 }
 
