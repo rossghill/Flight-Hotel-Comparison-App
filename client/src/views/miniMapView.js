@@ -13,6 +13,7 @@ MiniMapView.prototype.createMiniMap = function(hotelEntity) {
   let hotelLat = hotelEntity.latitude;
   let hotelLng = hotelEntity.longitude;
   let coords = {lat: hotelLat, lng: hotelLng}
+  console.log(coords);
 
   let miniMap = new MapWrapper(miniMapDiv, coords, 20);
 
@@ -65,7 +66,6 @@ MiniMapView.prototype.createMiniMapView = function(flightHotelPackage) {
   miniMapView.appendChild(miniMapDiv)
   miniMapView.appendChild(faveButton)
   miniMapView.appendChild(packagePriceDiv)
-
 
   return miniMapView;
 }
