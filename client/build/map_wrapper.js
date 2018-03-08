@@ -11,5 +11,6 @@ MapWrapper.prototype.addMarker = function(coords) {
     position: coords,
     map: this.googleMap
   });
+}
 
 module.exports = MapWrapper;

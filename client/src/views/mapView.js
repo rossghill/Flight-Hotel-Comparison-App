@@ -4,9 +4,8 @@ const MapView = function() {
 
 }
 
-let giantMap;
 
-MapView.prototype.crateGiantMap = function(flightHotelPackages){
+MapView.prototype.createGiantMap = function(flightHotelPackages){
 
   let mapDiv = document.getElementById("div-packages-map");
 
@@ -25,6 +24,7 @@ MapView.prototype.crateGiantMap = function(flightHotelPackages){
        map: giantMap
      });
    });
+ }
 
 
 module.exports = MapView;
