@@ -4,6 +4,9 @@ const MapView = require('./mapView');
 
 
 const MiniMapView = function() {
+  
+
+}
 
 MiniMapView.prototype.createMiniMap = function(hotelEntity) {
   let miniMapDiv = document.createElement("div");
