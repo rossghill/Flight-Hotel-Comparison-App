@@ -1,20 +1,16 @@
 const FavouritesList = require('./../requests/favouritesList')
 
+
+
 const MiniMapView = function() {
 
 }
 
 
-MiniMapView.prototype.createMiniMap = function(hotelEntity) {
-  let miniMapDiv = document.createElement("div")
-  miniMapDiv.classList.add("mini-map-class");
-
-
-  return miniMapDiv;
-}
 
 
 MiniMapView.prototype.createFaveButton = function(flightHotelPackage) {
+  console.log(flightHotelPackage);
   let faveButton = document.createElement("button")
   faveButton.classList.add("fave-button-class");
 
@@ -26,6 +22,19 @@ MiniMapView.prototype.createFaveButton = function(flightHotelPackage) {
   })
 
   return faveButton;
+}
+
+const createRequestComplete = function(newFavourite){
+  console.log("New Favourite: " + newFavourite);
+
+}
+
+MiniMapView.prototype.createMiniMap = function(hotelEntity) {
+  let miniMapDiv = document.createElement("div")
+  miniMapDiv.classList.add("mini-map-class");
+
+
+  return miniMapDiv;
 }
 
 
