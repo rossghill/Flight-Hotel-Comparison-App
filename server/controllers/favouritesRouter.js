@@ -24,8 +24,9 @@ MongoClient.connect(url, function(err, client){
 //add favourite
 favouritesRouter.post('/favourites', function(req, res){
   const collection = db.collection('favourite_packages');
-  const favouriteToSave = req.body;
-  console.log(req);
+  
+  //this is accessing the favourite key with value of "payload" on the body request
+  const favouriteToSave = req.body.favourite;
   collection.save(favouriteToSave, function(err, result){
     if(err){
       console.log(err);

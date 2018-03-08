@@ -34,8 +34,10 @@ const getFavouritesListRequestComplete = function(allFavouritesList){
 
 //POST:
 FavouritesList.prototype.post = function(callback, payload){
+  console.log("hiya");
   const request = new XMLHttpRequest();
   request.open('POST', this.url)
+  request.setRequestHeader("Content-Type", "application/json");
   request.addEventListener('load', function(){
     if(this.status !== 201){
       return;
@@ -43,7 +45,10 @@ FavouritesList.prototype.post = function(callback, payload){
     const responseBody = JSON.parse(this.responseText);
     callback(responseBody);
   });
-  request.send(JSON.stringify(payload));
+  
+  //made the payload a value of the key "favourite" to be be passed into the reg.body
+  request.send(JSON.stringify({favourite: payload}));
+
 }
 
 //callback:

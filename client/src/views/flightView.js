@@ -32,7 +32,7 @@ FlightView.prototype.createOutboundFlight = function(outboundFlightEntity){
   let outboundHeaderDiv = document.createElement("div");
   let outboundBodyDiv = this.createFlight(outboundFlightEntity[0]);
 
-  flightGoingImg.img = "./images/flight-going.jpg"
+  flightGoingImg.src = "./images/flight-going.jpg"
 
   outboundFlightDiv.appendChild(flightGoingImg)
   outboundFlightDiv.appendChild(outboundHeaderDiv);
