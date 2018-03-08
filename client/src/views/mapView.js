@@ -27,14 +27,17 @@ MapView.prototype.createGiantMap = function(flightHotelPackagesEntity){
 
  MapView.prototype.createSmallMap = function(smallMapDiv, hotelEntity)
  {
-   console.log(smallMapDiv);
    console.log(hotelEntity);
-   
+
    let centerLat = hotelEntity.latitude;
    let centerLng = hotelEntity.longitude;
    let coords    = {lat:centerLat, lng:centerLng};
    let smallMap  = new MapWrapper(smallMapDiv, coords, 12);
    smallMap.addMarker(coords);
+
+   let contentString = "Info goes here";
+
+   let infowindow = new InfoWindow(contentString);
  }
 
 
