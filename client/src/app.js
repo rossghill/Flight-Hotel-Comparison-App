@@ -16,10 +16,10 @@ const initializeFlightR = function(){
 
 //favouritesList modal
   const modal = document.getElementById('modal-id');
-  const modalButton = document.getElementById('get-favourites-button');
+  const favouritesButton = document.getElementById('get-favourites-button');
   const close = document.querySelector('.close')
 
-  modalButton.addEventListener('click', function(){
+  favouritesButton.addEventListener('click', function(){
     console.log('Favourites Button Clicked');
     // modal.style.display = 'block';
   });
