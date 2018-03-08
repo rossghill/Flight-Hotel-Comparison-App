@@ -4,6 +4,7 @@ const PackageListView = require("./views/packageListView");
 const PackageView     = require("./views/packageView");
 const HotelView       = require("./views/hotelView");
 const FlightView      = require("./views/flightView");
+const MapView         = require ("./views/mapView");
 
 const initializeFlightR = function(){
   domHelper = new DOMHelper();
@@ -46,14 +47,30 @@ children = 1;
 
 const populatePackages = function(){
   const packageListView = new PackageListView();
-  const flightHotelPackagesJSON = JSON.parse(this.responseText);
-  if(flightHotelPackagesJSON.flightHotelPackages)
+  const flightHotelPackagesEntity = JSON.parse(this.responseText);
+  // console.log(flightHotelPackagesEntity.flightHotelPackages.flightHotelPackage);
+
+  // Creation of the package list
+  if(flightHotelPackagesEntity.flightHotelPackages)
   {
-    packageListView.createPackageList(flightHotelPackagesJSON.flightHotelPackages);
+    packageListView.createPackageList(flightHotelPackagesEntity.flightHotelPackages);
+
+      mapView.createGiantMap(flightHotelPackagesEntity.flightHotelPackages);
+
+
+    console.log(flightHotelPackagesEntity.flightHotelPackages);
   }
   else{
       console.log("populatePackages, error : "+this.responseText);
   }
+
+  // console.log(flightHotelPackagesEntity.flightHotelPackages[0].hotel.latitude;);
+  // Cretation of the giant maps
+  // const generateBigMap = function() {
+  //   let flightHotelPackagesJSON = JSON.parse(this.responseText);
+  //   let coords = flightHotelPackagesJSON
+  // }
+
 }
 
 
@@ -99,7 +116,6 @@ const populateAirportCities = function(input){
   helper.setSelectSize(input.id, 5);
   helper.addEventListenerOnChangeSelectOriginOrDestination(input.id, "search-"+input.id);
 }
-
 
 
 
