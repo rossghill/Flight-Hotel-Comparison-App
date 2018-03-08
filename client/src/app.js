@@ -1,10 +1,17 @@
-const DOMHelper       = require("./helpers/DOMHelper");
-const ClientRequest   = require("./requests/clientRequest");
-const PackageListView = require("./views/packageListView");
-const PackageView     = require("./views/packageView");
-const HotelView       = require("./views/hotelView");
-const FlightView      = require("./views/flightView");
-const MapView         = require ("./views/mapView");
+const DOMHelper                 = require("./helpers/DOMHelper");
+const ClientRequest             = require("./requests/clientRequest");
+const PackageListView           = require("./views/packageListView");
+const PackageView               = require("./views/packageView");
+const HotelView                 = require("./views/hotelView");
+const FlightView                = require("./views/flightView");
+const MapView                   = require("./views/mapView");
+const ExtraFiltersView          = require("./views/ExtraFiltersView");
+const FlightHotelPackagesModel  = require("./models/flightHotelPackagesModel");
+
+let travelPackageList         = [];
+let travelPackageListFiltered = [];
+let flightHotelPackagesEntity = null;
+
 
 const initializeFlightR = function(){
   domHelper = new DOMHelper();
@@ -45,34 +52,58 @@ children = 1;
   request.send();
 }
 
-const populatePackages = function(){
-  const packageListView = new PackageListView();
-  const flightHotelPackagesEntity = JSON.parse(this.responseText);
-  // console.log(flightHotelPackagesEntity.flightHotelPackages.flightHotelPackage);
-
-  // Creation of the package list
+const populatePackages = function()
+{
+  flightHotelPackagesEntity = JSON.parse(this.responseText);
   if(flightHotelPackagesEntity.flightHotelPackages)
   {
-    packageListView.createPackageList(flightHotelPackagesEntity.flightHotelPackages);
-      let mapView = new MapView();
-      mapView.createGiantMap(flightHotelPackagesEntity);
+      travelPackageList         = flightHotelPackagesEntity.flightHotelPackages
+      travelPackageListFiltered = flightHotelPackagesEntity.flightHotelPackages
+
+      populateTravelPackageListAndMap();
+      populateExtraFilters();
   }
   else{
-      console.log("populatePackages, error : "+this.responseText);
+      console.log("populatePackages, error : " + this.responseText);
   }
-
-  // console.log(flightHotelPackagesEntity.flightHotelPackages[0].hotel.latitude;);
-  // Cretation of the giant maps
-  // const generateBigMap = function() {
-  //   let flightHotelPackagesJSON = JSON.parse(this.responseText);
-  //   let coords = flightHotelPackagesJSON
-  // }
-
 }
 
 
+const populateTravelPackageListAndMap = function()
+{
+    resetTravelPackageListAndMap();
 
+    // Populate the list of packages
+    const packageListView = new PackageListView();
+    packageListView.createPackageList(travelPackageListFiltered);
 
+    // Populate the giant view
+    // let mapView = new MapView();
+    // mapView.createGiantMap(flightHotelPackagesEntity);
+}
+
+const resetTravelPackageListAndMap = function()
+{
+  document.getElementById("div-packages-list").innerHTML = "";
+}
+
+const populateExtraFilters = function()
+{
+  let flightHotelPackagesModel = new FlightHotelPackagesModel(travelPackageList);
+  let extraFiltersView         = new ExtraFiltersView(updateTravelPackageList);
+  extraFiltersView.createExtraFilters(flightHotelPackagesModel.getPriceMin(),
+                                      flightHotelPackagesModel.getPriceMax());
+  extraFiltersView.updateCurrentBudgetLabel();
+}
+
+const updateTravelPackageList = function(filterEvent)
+{
+  let extraFiltersView         = new ExtraFiltersView();
+  let flightHotelPackagesModel = new FlightHotelPackagesModel(travelPackageList);
+  travelPackageListFiltered    = flightHotelPackagesModel.filterTravelPackages(extraFiltersView.getExtraFilterValues());
+  extraFiltersView.updateCurrentBudgetLabel();
+  populateTravelPackageListAndMap();
+}
 
 const getAirportCities = function(){
   if(this.value != "")
@@ -102,7 +133,8 @@ const getAirportCities = function(){
   }
 }
 
-const populateAirportCities = function(input){
+const populateAirportCities = function(input)
+{
   const airportCitiesArray          = JSON.parse(this.responseText);
   const airportCitiesArrayForSelect = airportCitiesArray.map(function(airportCity){
     return {"value": airportCity.value, "label": airportCity.label};
@@ -113,7 +145,6 @@ const populateAirportCities = function(input){
   helper.setSelectSize(input.id, 5);
   helper.addEventListenerOnChangeSelectOriginOrDestination(input.id, "search-"+input.id);
 }
-
 
 
 document.addEventListener("DOMContentLoaded", initializeFlightR);

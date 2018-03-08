@@ -18,7 +18,6 @@ MiniMapView.prototype.createMiniMap = function(hotelEntity) {
 
 
 MiniMapView.prototype.createFaveButton = function(flightHotelPackage) {
-  console.log(flightHotelPackage);
   let faveButton = document.createElement("button")
   faveButton.classList.add("fave-button-class");
 
