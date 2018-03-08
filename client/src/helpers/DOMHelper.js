@@ -29,10 +29,10 @@ DOMHelper.prototype.setSelectSize = function(selectId, size){
   const select  = document.getElementById(selectId);
   if(size == 1)
   {
-    select.style.position = "static";
+    select.style.position = "relative";
   }
   else{
-    select.style.position = "absolute";
+    select.style.position = "relative";
   }
   select.size   = size;
 }
@@ -74,6 +74,7 @@ DOMHelper.prototype.changeDisplay = function(elementId, isDisplayed)
     document.getElementById(elementId).style.display    = "none";
   }
 }
+
 
 
 

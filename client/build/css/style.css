@@ -1,6 +1,17 @@
-body {
-    margin: 10;
-    padding: 10;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    background-color: #fff;
+    color: #3498db;
+    font-family: 'Lato', 'Arial', sans-serif; /* Additional polices in case Lato will not be available */
+    font-size: 20px;
+    font-weight: 300;
+    text-rendering: optimizeLegibility; /* best police rendering */
+    overflow-x: hidden;
 }
 
 ul {
@@ -8,11 +19,17 @@ ul {
 }
 
 .flex-row {
-  margin-bottom: 10px;
-  padding: 10px 10px 10px 10px;
+  /* margin-bottom: 10px; */
+  /* padding: 10px 10px 10px 10px; */
   display: flex;
   flex-direction: row;
-  border: 1px solid black;
+  /* border: 1px solid black; */
+}
+
+.flex-row-flex-end {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
 }
 
 .flex-column {
@@ -23,7 +40,7 @@ ul {
 
 .flights-class {
   padding: 10px 0px 0px 10px;
-  width: 300px;
+  width: 30%;
 }
 
 .flight-class {
@@ -32,7 +49,7 @@ ul {
 }
 
 .flight-price-class {
-  width: 190px;
+  width: 100%;
   color: white;
   padding: 0px 0px 10px 10px;
   background-color: #4d94ff;
@@ -42,7 +59,7 @@ ul {
 
 .hotel-class {
   padding: 10px 0px 10px 10px;
-  width: 500px;
+  width: 50%;
 }
 
 .hotel-name-class {
@@ -91,20 +108,18 @@ ul {
 
 
 #container-header {
-  width: auto;
   display: flex;
   flex-direction: row;
+  width: 100%;
 }
 
 
 #div-company {
   display: flex;
   flex-direction: row;
-  border: 1px solid black;
 }
 
 #container-search-result-bars {
-  width: 100%;
   margin-left: 10px;
   display: flex;
   flex-direction: column;
@@ -112,16 +127,16 @@ ul {
 }
 
 #container-search-bar {
-  width: 1000px;
-  position: static;
   padding: 10px 0px 10px 10px;
-  height: 50px;
   display: flex;
+  align-items: flex-end;
   flex-direction: row;
-  /* border: 1px solid black; */
+  flex-wrap: wrap;
+  width: 100%:
 }
 
 #button-get-flight {
+  height: 40px;
   width: 50px;
   background-color: #4d94ff;
   color: white;
@@ -129,11 +144,12 @@ ul {
 }
 
 #container-result-bar {
-  padding: 10px 10px 10px 10px;
-  margin-top: 10px;
+  /* padding: 10px 10px 10px 10px; */
+  /* margin-top: 10px; */
   display: flex;
   flex-direction: row;
-  border: 1px solid black;
+  align-items: center;
+  /* border: 1px solid black; */
 }
 
 #map-view-button {
@@ -148,18 +164,15 @@ ul {
 #container-body {
 /* background-color: #008aff; */
   margin-top: 10px;
-  width: auto;
-  height: 600px;
+  width: 100%;
+  height: 50vw;
   display: flex;
   flex-direction: row;
-  /* visibility: collapse; */
 }
 
 #container-extra-filters {
   /* background-color: white; */
-  width: 200px;
   margin-right: 10px;
-  border: 1px solid black;
   display: flex;
   flex-direction: row;
 }
@@ -167,7 +180,6 @@ ul {
 
 #container-packages {
   /* background-color: white; */
-  width: auto;
   /* border: 1px solid black; */
   margin-bottom: 10px;
   display: flex;
@@ -182,6 +194,67 @@ ul {
 
 
 
+select {
+  padding: 5px 5px;
+  height: 40px;
+}
+select option {
+  line-height: 20px;
+}
+
 .select-300 {
   width: 300px;
+}
+
+#destination,
+#origin {
+  font-size: 60%;
+
+}
+
+/* Styling layout proportion */
+#div-company,
+#container-extra-filters {
+  width: 15%;
+}
+
+#container-search-result-bars,
+#container-packages {
+  width: 85%;
+}
+
+#div-packages-map,
+#div-packages-list {
+  width: 85%;
+}
+
+
+
+/* Styling hotel-flight packages */
+.div-package {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 5px;
+  width: 100%;
+}
+
+
+
+/* input */
+input {
+  padding: 3px 5px;
+  font-size: 80%;
+  height: 40px;
+  font-weight: 200px;
+}
+
+.input-100 {
+  width: 100px;
+}
+
+.input-80 {
+  width: 80px;
+}
+
+div {
+  /* border: 1px solid black; */
 }

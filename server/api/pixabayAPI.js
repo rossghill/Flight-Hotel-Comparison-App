@@ -15,7 +15,7 @@ PixabayAPI.prototype.searchHotelPhotos = function(resultsCount){
   url += "&image_type=photo";
   url += "&orientation=horizontal";
   url += "&category=travel";
-  url += "&q=hotel";
+  url += "&q=hotel+nature";
   url += "&min-width=300";
   url += "&min-height=300";
   url += `&per_page=${resultsCount}`;
