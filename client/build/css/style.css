@@ -236,6 +236,10 @@ select option {
   width: 85%;
 }
 
+.mini-map-view-class {
+  height: 250px;
+  width: 250px;
+}
 
 
 /* Styling hotel-flight packages */
@@ -265,4 +269,12 @@ input {
 
 div {
   /* border: 1px solid black; */
+}
+
+
+/* Minimap */
+.div-mini-map {
+  width: 200px;
+  height: 200px;
+  margin: 10px;
 }
