@@ -49,7 +49,7 @@ FlightView.prototype.createInboundFlight = function(inboundFlightEntity){
 
   flightReturningImg.src = "./../../client/build/images/flight-returning.jpg"
 
-  outboundFlightDiv.appendChild(flightGoingImg)
+  inboundFlightDiv.appendChild(flightReturningImg)
   inboundFlightDiv.appendChild(inboundHeaderDiv);
   inboundFlightDiv.appendChild(inboundBodyDiv);
 
