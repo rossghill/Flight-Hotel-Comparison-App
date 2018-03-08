@@ -27,6 +27,9 @@ MapView.prototype.createGiantMap = function(flightHotelPackagesEntity){
 
  MapView.prototype.createSmallMap = function(smallMapDiv, hotelEntity)
  {
+   console.log(smallMapDiv);
+   console.log(hotelEntity);
+   
    let centerLat = hotelEntity.latitude;
    let centerLng = hotelEntity.longitude;
    let coords    = {lat:centerLat, lng:centerLng};

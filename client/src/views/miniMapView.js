@@ -8,7 +8,7 @@ const MiniMapView = function() {
 
 MiniMapView.prototype.createMiniMap = function(hotelEntity) {
   let miniMapDiv = document.createElement("div");
-  miniMapDiv.classList.add("mini-map-class");
+  miniMapDiv.classList.add("div-mini-map");
   mapView        = new MapView();
   mapView.createSmallMap(miniMapDiv, hotelEntity);
   return miniMapDiv;
