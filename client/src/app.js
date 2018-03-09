@@ -1,4 +1,4 @@
-const DOMHelper       = require("./helpers/DOMHelper");
+const DOMHelper       = require("./entities/helpers/DOMHelper");
 const ClientRequest   = require("./requests/clientRequest");
 const PackageListView = require("./views/packageListView");
 const PackageView     = require("./views/packageView");
@@ -15,28 +15,10 @@ const initializeFlightR = function(){
   document.getElementById("checkbox-list-map-mode").addEventListener("click",   domHelper.checkboxToggleVisibility.bind(this, "checkbox-list-map-mode", "div-packages-list", "div-packages-map"));
   domHelper.changeDisplay("div-packages-map", false);
 
-//favouritesList modal
-const favouritesModal = new Modal();
-favouritesModal.createFavouritesModal()
-  // const modal = document.getElementById('favourites-modal');
-  // const favouritesButton = document.getElementById('get-favourites-button');
-  // const close = document.querySelector('.close')
-  //
-  // favouritesButton.addEventListener('click', function(){
-  //   console.log('Favourites Button Clicked');
-  //   modal.style.display = 'block';
-  // });
-  //
-  // close.addEventListener('click', function(){
-  //   modal.style.display = 'none';
-  // });
-  //
-  // document.addEventListener('click', function(){
-  //   if(event.target === modal){
-  //     modal.style.display = 'none';
-  //   }
-  // });
-
+//favouritesList and loading modal
+const pageModals = new Modal();
+pageModals.createFavouritesModal();
+pageModals.createLoadingModal();
 }
 
 const getPackages = function(){
