@@ -24,11 +24,11 @@ FavouritesList.prototype.get = function(callback){
 
 
 //callback: (in app.js or wherever the .get function above is called):
-const getFavouritesListRequestComplete = function(allFavouritesList){
-  allFavouritesList.forEach(function(favourite){
-    favouritesView.addFavourite(favourite);
-  });
-}
+// const getFavouritesListRequestComplete = function(allFavouritesList){
+//   allFavouritesList.forEach(function(favourite){
+//     favouritesView.addFavourite(favourite);
+//   });
+// }
 //need to have a favouritesView set up!
 
 
@@ -45,7 +45,7 @@ FavouritesList.prototype.post = function(callback, payload){
     const responseBody = JSON.parse(this.responseText);
     callback(responseBody);
   });
-  
+
   //made the payload a value of the key "favourite" to be be passed into the reg.body
   request.send(JSON.stringify({favourite: payload}));
 

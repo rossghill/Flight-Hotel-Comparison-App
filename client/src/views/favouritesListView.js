@@ -4,28 +4,23 @@ const FavouritesListView = function(){
 
 }
 
-FavouritesListView.prototype.createFavouritesView = function(flightHotelPackage){
-  const flightView = new FlightView();
-  const flightViewDiv = flightView.createFlightView(flightHotelPackage.flightPackage);
+FavouritesListView.prototype.createFavouritesView = function(flightHotelPackages, displayMinimap){
+  const div = document.querySelector(".modal-body");
+  div.innerHTML = "";
+  const ul  = document.createElement("ul");
 
-  const hotelView  = new HotelView();
-  const hotelViewDiv = hotelView.createHotelView(flightHotelPackage.hotel);
+  for(flightHotelPackage of flightHotelPackages)
+  {
+    const packageView = new PackageView();
+    const div = packageView.createPackageView(flightHotelPackage, displayMinimap);
+    let li = document.createElement('li');
+    li.appendChild(div);
+    ul.appendChild(li);
+  }
 
-  const miniMapView = new MiniMapView();
-  const miniMapViewDiv = miniMapView.createMiniMapView(flightHotelPackage);
+  div.appendChild(ul);
+}
 
-  const favouritesModal = document.getElementById('favourites-modal')
-
-  // let favouritesViewDiv = document.createElement('div');
-  // favouritesViewDiv.id = "modal"
-  // favouritesViewDiv.classList.add('flex-row');
-  // favouritesViewDiv.classList.add('div-package');
-  //
-  // favouritesViewDiv.appendChild(flightViewDiv);
-  // favouritesViewDiv.appendChild(hotelViewDiv);
-  // favouritesViewDiv.appendChild(miniMapViewDiv);
-
-  return favouritesViewDiv;
 
 
 
