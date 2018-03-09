@@ -11,7 +11,12 @@ html {
     font-size: 20px;
     font-weight: 300;
     text-rendering: optimizeLegibility; /* best police rendering */
+    text-shadow: 0.5px 0.5px #000000;
     overflow-x: hidden;
+}
+
+body {
+  /* background-image: url("https://image.ibb.co/k9RB7n/color19.png"); */
 }
 
 ul {
@@ -46,6 +51,12 @@ ul {
 .flight-class {
   padding: 10px 0px 0px 10px;
   /* font-size: 10px; */
+}
+
+.flight-main-class {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .flight-price-class {
@@ -124,6 +135,7 @@ ul {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
+  background-image: url("http://bit.ly/2FGlz5B");
 }
 
 #get-favourites-button {

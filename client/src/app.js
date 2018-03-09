@@ -1,13 +1,13 @@
-const DOMHelper                 = require("./helpers/DOMHelper");
-const ClientRequest             = require("./requests/clientRequest");
-const PackageListView           = require("./views/packageListView");
-const PackageView               = require("./views/packageView");
-const HotelView                 = require("./views/hotelView");
-const FlightView                = require("./views/flightView");
-const MapView                   = require("./views/mapView");
+const DOMHelper       = require("./entities/helpers/DOMHelper");
+const ClientRequest   = require("./requests/clientRequest");
+const PackageListView = require("./views/packageListView");
+const PackageView     = require("./views/packageView");
+const HotelView       = require("./views/hotelView");
+const FlightView      = require("./views/flightView");
+const MapView         = require ("./views/mapView");
 const ExtraFiltersView          = require("./views/ExtraFiltersView");
 const FlightHotelPackagesModel  = require("./models/flightHotelPackagesModel");
-const Modal                     = require ("./../build/modal");
+const Modal           = require ("./../build/modal");
 
 let travelPackageList         = [];
 let travelPackageListFiltered = [];
@@ -87,7 +87,7 @@ const populateTravelPackageListAndMap = function()
     const packageListView = new PackageListView();
     let displayMinimap = document.getElementById("checkbox-display-minimap").checked;
     packageListView.createPackageList(travelPackageListFiltered, displayMinimap);
-    packagesMapView.populateMapWithHotels(travelPackageListFiltered);
+    packagesMapView.populateMapWithHotelsInfoBoxes(travelPackageListFiltered);
 }
 
 const populateExtraFilters = function()
