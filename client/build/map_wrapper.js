@@ -35,11 +35,7 @@ MapWrapper.prototype.addMarkerWithInfoWindow = function(hotelEntity) {
     map: this.googleMap
   });
 
-  console.log(contentDiv);
-  console.log('before click');
-
   marker.addListener('click', function(){
-    console.log('clicked');
     infowindow.open(this.googleMap,marker);
           });
   this.markers.push(marker);
