@@ -53,6 +53,12 @@ ul {
   /* font-size: 10px; */
 }
 
+.flight-main-class {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 .flight-price-class {
   width: 100%;
   color: white;
