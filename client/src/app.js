@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 const DOMHelper                 = require("./helpers/DOMHelper");
 const ClientRequest             = require("./requests/clientRequest");
 const PackageListView           = require("./views/packageListView");
@@ -8,21 +7,12 @@ const FlightView                = require("./views/flightView");
 const MapView                   = require("./views/mapView");
 const ExtraFiltersView          = require("./views/ExtraFiltersView");
 const FlightHotelPackagesModel  = require("./models/flightHotelPackagesModel");
+const Modal                     = require ("./../build/modal");
 
 let travelPackageList         = [];
 let travelPackageListFiltered = [];
 let flightHotelPackagesEntity = null;
 let packagesMapView           = null;
-=======
-const DOMHelper       = require("./entities/helpers/DOMHelper");
-const ClientRequest   = require("./requests/clientRequest");
-const PackageListView = require("./views/packageListView");
-const PackageView     = require("./views/packageView");
-const HotelView       = require("./views/hotelView");
-const FlightView      = require("./views/flightView");
-const MapView         = require ("./views/mapView");
-const Modal           = require ("./../build/modal");
->>>>>>> develop
 
 const initializeFlightR = function(){
   domHelper = new DOMHelper();
