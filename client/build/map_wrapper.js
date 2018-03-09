@@ -13,10 +13,16 @@ MapWrapper.prototype.addMarker = function(coords) {
   });
 }
 
-const InfoWindow = function(text) {
-  this.infoWindow = new google.maps.infoWindow({
-    content: text;
-  });
-}
+// const InfoWindow = function(text) {
+//   this.infoWindow = new google.maps.infoWindow({
+//     content: text;
+//   });
+// }
+
+// const addInfoWindow = function(text) {
+//   const infoWindow = new google.maps.InfoWindow({
+//     content: text
+//   })
+// }
 
 module.exports = MapWrapper;
