@@ -72,6 +72,9 @@ ul {
   padding: 10px 0px 0px 10px;
   width: 50%;
   border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .hotel-name-class {
@@ -136,6 +139,7 @@ ul {
   flex-direction: column;
   flex-wrap: wrap;
   background-image: url("http://bit.ly/2FGlz5B");
+  background-size: 100%;
 }
 
 #get-favourites-button {
