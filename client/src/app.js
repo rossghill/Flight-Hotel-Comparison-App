@@ -5,6 +5,7 @@ const PackageView     = require("./views/packageView");
 const HotelView       = require("./views/hotelView");
 const FlightView      = require("./views/flightView");
 const MapView         = require ("./views/mapView");
+const Modal           = require ("./../build/modal");
 
 const initializeFlightR = function(){
   domHelper = new DOMHelper();
@@ -15,24 +16,26 @@ const initializeFlightR = function(){
   domHelper.changeDisplay("div-packages-map", false);
 
 //favouritesList modal
-  const modal = document.getElementById('favourites-modal');
-  const favouritesButton = document.getElementById('get-favourites-button');
-  const close = document.querySelector('.close')
-
-  favouritesButton.addEventListener('click', function(){
-    console.log('Favourites Button Clicked');
-    modal.style.display = 'block';
-  });
-
-  close.addEventListener('click', function(){
-    modal.style.display = 'none';
-  });
-
-  document.addEventListener('click', function(){
-    if(event.target === modal){
-      modal.style.display = 'none';
-    }
-  });
+const favouritesModal = new Modal();
+favouritesModal.createFavouritesModal()
+  // const modal = document.getElementById('favourites-modal');
+  // const favouritesButton = document.getElementById('get-favourites-button');
+  // const close = document.querySelector('.close')
+  //
+  // favouritesButton.addEventListener('click', function(){
+  //   console.log('Favourites Button Clicked');
+  //   modal.style.display = 'block';
+  // });
+  //
+  // close.addEventListener('click', function(){
+  //   modal.style.display = 'none';
+  // });
+  //
+  // document.addEventListener('click', function(){
+  //   if(event.target === modal){
+  //     modal.style.display = 'none';
+  //   }
+  // });
 
 }
 

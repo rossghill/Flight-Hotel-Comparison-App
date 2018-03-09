@@ -1,10 +1,15 @@
-const app = function(){
-//Slide-in modal:
-const modal = document.getElementById('modal-id');
-const modalButton = document.getElementById('modal-button');
+const Modal = function(){
+}
+
+
+//Favourites modal:
+Modal.prototype.createFavouritesModal = function(){
+const modal = document.getElementById('favourites-modal');
+const favouritesButton = document.getElementById('get-favourites-button');
 const close = document.querySelector('.close')
 
-modalButton.addEventListener('click', function(){
+favouritesButton.addEventListener('click', function(){
+  console.log('Favourites Button Clicked');
   modal.style.display = 'block';
 });
 
@@ -17,6 +22,8 @@ document.addEventListener('click', function(){
     modal.style.display = 'none';
   }
 });
+}
+
 
 //Pop-up modal:
 const modal2 = document.getElementById('modal-id2');
@@ -49,5 +56,5 @@ document.addEventListener('click', function(){
 });
 
 
-}
-document.addEventListener('DOMContentLoaded', app);
+
+module.exports = Modal;
