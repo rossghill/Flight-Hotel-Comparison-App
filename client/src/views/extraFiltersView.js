@@ -9,9 +9,9 @@ ExtraFiltersView.prototype.createBudgetFilter = function(minPrice, maxPrice){
 
   let input   = document.createElement('input');
   input.type  = "range";
-  input.min   = minPrice;
-  input.max   = maxPrice;
-  input.value = maxPrice;
+  input.min   = Math.floor(minPrice);
+  input.max   = Math.floor(maxPrice);
+  input.value = Math.floor(maxPrice);
   input.classList.add("input-150");
   input.id    = "filter-budget";
   input.addEventListener("change", this.callBack);
@@ -76,10 +76,37 @@ ExtraFiltersView.prototype.createStarRatingFilter = function()
   return mainDiv;
 }
 
+ExtraFiltersView.prototype.createSortings = function()
+{
+  let div             = document.createElement("div");
+  div.classList.add("div-sorting-packages");
+  let select          = document.createElement("select");
+  select.id           = "select-sorting-packages";
+  select.addEventListener("change", this.callBack);
+  div.appendChild(select);
+
+  let sortingOptions  = [ {value: "price-asc",         label: "Price - => +"},
+                          {value: "price-desc",        label: "Price + => -"},
+                          {value: "startRating-desc",  label: "Rating + => -"},
+                          {value: "startRating-asc",   label: "Rating - => +"}];
+
+  sortingOptions.forEach(function(sorting){
+    let option        = document.createElement("option");
+    option.value      = sorting.value;
+    option.innerText  = sorting.label;
+    select.appendChild(option);
+  });
+
+  return div;
+}
+
 ExtraFiltersView.prototype.createExtraFilters = function(minPrice, maxPrice)
 {
   let divHookForExtraFilters    = document.getElementById("container-extra-filters");
   divHookForExtraFilters.innerHTML = "";
+
+  let createSortings            = this.createSortings();
+  divHookForExtraFilters.appendChild(createSortings);
 
   let divBudgetFilter           = this.createBudgetFilter(minPrice, maxPrice);
   divHookForExtraFilters.appendChild(divBudgetFilter);
@@ -105,13 +132,14 @@ ExtraFiltersView.prototype.getExtraFilterValues = function(){
   let startRating2 = document.getElementById("filter-star-rating-2").checked;
   let startRating1 = document.getElementById("filter-star-rating-1").checked;
   let startRating0 = document.getElementById("filter-star-rating-0").checked;
-
+  let sorting      = document.getElementById("select-sorting-packages").value;
   return  { budgetMax: budgetMax, hotelName: hotelName,
-            starRating: [{"checked": startRating4, "value": "4"},
-                         {"checked": startRating3, "value": "3"},
-                         {"checked": startRating2, "value": "2"},
-                         {"checked": startRating1, "value": "1"},
-                         {"checked": startRating0, "value": ""}]
+            starRating: [{"checked": startRating4, "value": 4},
+                         {"checked": startRating3, "value": 3},
+                         {"checked": startRating2, "value": 2},
+                         {"checked": startRating1, "value": 1},
+                         {"checked": startRating0, "value": 0}],
+            sortTravelPackage:sorting
           };
 }
 

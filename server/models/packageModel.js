@@ -121,7 +121,14 @@ let hotelEntity = serverHotelModel.createHotelEntityDefaults();
 //star rating
         if(hotelJson.awards[0] !== undefined){
           hotelEntity.starRating = hotelJson.awards[0].rating;
-      }
+        }
+
+        if(hotelEntity.starRating === ""){
+          hotelEntity.starRating = "0";
+        }
+
+        hotelEntity.starRating = parseInt(hotelEntity.starRating);
+
 //coordinates
         hotelEntity.latitude = hotelJson.location.latitude;
         hotelEntity.longitude = hotelJson.location.longitude;
