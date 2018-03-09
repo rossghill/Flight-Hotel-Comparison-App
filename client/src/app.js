@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 const DOMHelper                 = require("./helpers/DOMHelper");
 const ClientRequest             = require("./requests/clientRequest");
 const PackageListView           = require("./views/packageListView");
@@ -12,6 +13,16 @@ let travelPackageList         = [];
 let travelPackageListFiltered = [];
 let flightHotelPackagesEntity = null;
 let packagesMapView           = null;
+=======
+const DOMHelper       = require("./entities/helpers/DOMHelper");
+const ClientRequest   = require("./requests/clientRequest");
+const PackageListView = require("./views/packageListView");
+const PackageView     = require("./views/packageView");
+const HotelView       = require("./views/hotelView");
+const FlightView      = require("./views/flightView");
+const MapView         = require ("./views/mapView");
+const Modal           = require ("./../build/modal");
+>>>>>>> develop
 
 const initializeFlightR = function(){
   domHelper = new DOMHelper();
@@ -20,6 +31,11 @@ const initializeFlightR = function(){
   document.getElementById("search-destination").addEventListener(   "input",    getAirportCities);
   document.getElementById("checkbox-list-map-mode").addEventListener("click",   domHelper.checkboxToggleVisibility.bind(this, "checkbox-list-map-mode", "div-packages-list", "div-packages-map"));
   domHelper.changeDisplay("div-packages-map", false);
+
+//favouritesList and loading modal
+const pageModals = new Modal();
+pageModals.createFavouritesModal();
+pageModals.createLoadingModal();
 }
 
 const getPackages = function(){

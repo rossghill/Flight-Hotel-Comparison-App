@@ -14,14 +14,16 @@ FavouritesListView.prototype.createFavouritesView = function(flightHotelPackage)
   const miniMapView = new MiniMapView();
   const miniMapViewDiv = miniMapView.createMiniMapView(flightHotelPackage);
 
-  let favouritesViewDiv = document.createElement('div');
-  favouritesViewDiv.id = "modal"
-  favouritesViewDiv.classList.add('flex-row');
-  favouritesViewDiv.classList.add('div-package');
+  const favouritesModal = document.getElementById('favourites-modal')
 
-  favouritesViewDiv.appendChild(flightViewDiv);
-  favouritesViewDiv.appendChild(hotelViewDiv);
-  favouritesViewDiv.appendChild(miniMapViewDiv);
+  // let favouritesViewDiv = document.createElement('div');
+  // favouritesViewDiv.id = "modal"
+  // favouritesViewDiv.classList.add('flex-row');
+  // favouritesViewDiv.classList.add('div-package');
+  //
+  // favouritesViewDiv.appendChild(flightViewDiv);
+  // favouritesViewDiv.appendChild(hotelViewDiv);
+  // favouritesViewDiv.appendChild(miniMapViewDiv);
 
   return favouritesViewDiv;
 
