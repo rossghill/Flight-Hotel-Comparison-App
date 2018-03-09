@@ -25,20 +25,23 @@ MapWrapper.prototype.addMarkerWithInfoWindow = function(hotelEntity) {
   let lng = hotelEntity.longitude;
   let coords = {lat: lat, lng: lng};
 
+
+  let contentDiv = new HotelView().createHotelView(hotelEntity);
+  let infowindow = new google.maps.InfoWindow({
+    content: contentDiv});
+
   const marker = new google.maps.Marker({
     position: coords,
     map: this.googleMap
   });
 
-  let infowindow = new google.maps.InfoWindow();
-  let content = new HotelView().createHotelView(hotelEntity);
+  console.log(contentDiv);
+  console.log('before click');
 
-  this.googleMap.event.addListener(marker,'click', (function(marker,content,infowindow){
-          return function() {
-             infowindow.setContent(content);
-             infowindow.open(this.googleMap,marker);
-          };
-      }));
+  marker.addListener('click', function(){
+    console.log('clicked');
+    infowindow.open(this.googleMap,marker);
+          });
   this.markers.push(marker);
 }
 
@@ -51,6 +54,7 @@ MapWrapper.prototype.removeAllMarker = function() {
 const addInfoWindow = function(text) {
   const infoWindow = new google.maps.InfoWindow({
     content: text
-  })
+  });
+};
 
 module.exports = MapWrapper;
