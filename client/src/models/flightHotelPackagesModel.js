@@ -36,6 +36,23 @@ FlightHotelPackagesModel.prototype.filterTravelPackages = function(filters){
     travelPackageFiltered = travelPackageFiltered.filter(function(travelPackage){
       return travelPackage.hotel.hotelName.toLowerCase().includes(filters.hotelName.toLowerCase());
     });
+  };
+
+
+  let nbStarRatingsActive = filters.starRating.filter(function(rating){
+    return rating.checked;
+  }).length;
+
+  if(nbStarRatingsActive > 0)
+  {
+    filters.starRating.forEach(function(rating){
+      if(! rating.checked)
+      {
+        travelPackageFiltered = travelPackageFiltered.filter(function(travelPackage){
+          return travelPackage.hotel.starRating !== rating.value;
+        });
+      }
+    });
   }
 
   return travelPackageFiltered;

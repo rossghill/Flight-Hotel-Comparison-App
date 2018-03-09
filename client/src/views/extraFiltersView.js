@@ -2,19 +2,6 @@ const ExtraFiltersView = function(callBack){
   this.callBack = callBack;
 }
 
-
-ExtraFiltersView.prototype.createExtraFilters = function(minPrice, maxPrice){
-  let divHookForExtraFilters  = document.getElementById("container-extra-filters");
-  divHookForExtraFilters.innerHTML = "";
-
-  let divBudgetFilter         = this.createBudgetFilter(minPrice, maxPrice);
-  divHookForExtraFilters.appendChild(divBudgetFilter);
-
-  let divHotelNameFilter      = this.createHotelNameFilter();
-  divHookForExtraFilters.appendChild(divHotelNameFilter);
-}
-
-
 ExtraFiltersView.prototype.createBudgetFilter = function(minPrice, maxPrice){
 
   let div     = document.createElement('div');
@@ -35,7 +22,6 @@ ExtraFiltersView.prototype.createBudgetFilter = function(minPrice, maxPrice){
 
   div.appendChild(label);
   div.appendChild(input);
-
   return div;
 }
 
@@ -58,15 +44,75 @@ ExtraFiltersView.prototype.createHotelNameFilter = function(){
   return div;
 }
 
-ExtraFiltersView.prototype.updateCurrentBudgetLabel = function(){
+ExtraFiltersView.prototype.createStarRatingFilter = function()
+{
+  let mainDiv            = document.createElement('div');
+  mainDiv.className      = "flex-column";
+
+  for(let starsCounter = 4; starsCounter >= 0; starsCounter--)
+  {
+
+    let div       = document.createElement("div");
+    div.classList.add("flex-row-flex-center");
+
+    let checkbox  = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.id   = `filter-star-rating-${starsCounter}`;
+    checkbox.classList.add("checkbox-star-rating");
+    checkbox.addEventListener("click", this.callBack);
+    div.appendChild(checkbox);
+
+    for(let starImageCounter = 0 ; starImageCounter < starsCounter; starImageCounter++)
+    {
+      let image       = document.createElement("img");
+      image.className = "star-image";
+      image.src       = "./images/star.png";
+      div.appendChild(image);
+    }
+
+    mainDiv.appendChild(div);
+  };
+
+  return mainDiv;
+}
+
+ExtraFiltersView.prototype.createExtraFilters = function(minPrice, maxPrice)
+{
+  let divHookForExtraFilters    = document.getElementById("container-extra-filters");
+  divHookForExtraFilters.innerHTML = "";
+
+  let divBudgetFilter           = this.createBudgetFilter(minPrice, maxPrice);
+  divHookForExtraFilters.appendChild(divBudgetFilter);
+
+  let divHotelNameFilter        = this.createHotelNameFilter();
+  divHookForExtraFilters.appendChild(divHotelNameFilter);
+
+  let divHotelStarRatingFilter  = this.createStarRatingFilter();
+  divHookForExtraFilters.appendChild(divHotelStarRatingFilter);
+}
+
+ExtraFiltersView.prototype.updateCurrentBudgetLabel = function()
+{
   document.getElementById("label-filter-budget").innerText = "Budget £ " + Math.round(document.getElementById("filter-budget").value);
 }
 
 
 ExtraFiltersView.prototype.getExtraFilterValues = function(){
-  let budgetMax = parseFloat(document.getElementById("filter-budget").value);
-  let hotelName = document.getElementById("filter-hotelName").value;
-  return  {budgetMax: budgetMax, hotelName: hotelName};
+  let budgetMax    = parseFloat(document.getElementById("filter-budget").value);
+  let hotelName    = document.getElementById("filter-hotelName").value;
+  let startRating4 = document.getElementById("filter-star-rating-4").checked;
+  let startRating3 = document.getElementById("filter-star-rating-3").checked;
+  let startRating2 = document.getElementById("filter-star-rating-2").checked;
+  let startRating1 = document.getElementById("filter-star-rating-1").checked;
+  let startRating0 = document.getElementById("filter-star-rating-0").checked;
+
+  return  { budgetMax: budgetMax, hotelName: hotelName,
+            starRating: [{"checked": startRating4, "value": "4"},
+                         {"checked": startRating3, "value": "3"},
+                         {"checked": startRating2, "value": "2"},
+                         {"checked": startRating1, "value": "1"},
+                         {"checked": startRating0, "value": ""}]
+          };
 }
 
 

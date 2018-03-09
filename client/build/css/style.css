@@ -37,6 +37,12 @@ ul {
   align-items: flex-end;
 }
 
+.flex-row-flex-center {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
 .flex-column {
   display: flex;
   flex-direction: column;
@@ -193,6 +199,7 @@ ul {
 #container-extra-filters {
   display: flex;
   flex-direction: column;
+  background-color: white;
 }
 
 #container-extra-filters div {
@@ -280,7 +287,7 @@ select option {
 
 
 /* input */
-input {
+input[type=text], input[type=number], input[type=date] {
   padding: 3px 5px;
   font-size: 80%;
   height: 40px;
@@ -314,4 +321,19 @@ div {
   height: 200px;
   margin: 10px;
   border-radius: 10px;
+}
+
+
+/* Extra filters */
+.star-image {
+  width: 20px;
+  height: 20px;
+  margin-left: 5px;
+  padding: 0px;
+}
+
+.checkbox-star-rating {
+  margin: 5px;
+  padding: 0px;
+  height: 20px;
 }

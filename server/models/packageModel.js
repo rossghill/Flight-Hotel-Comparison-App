@@ -217,8 +217,16 @@ Package.prototype.searchForFlightHotelPackages = function(req){
   this.amadeusAPI.searchAirportLocation(req.query.destination);
   this.amadeusAPI.onAirportLocationUpdate = function(airportsRoot){
 
-    this.destinationAirportLatitude = airportsRoot.airports[0].location.latitude;
-    this.destinationAirportLongitude = airportsRoot.airports[0].location.longitude;
+    if(airportsRoot.error === undefined)
+    {
+      this.destinationAirportLatitude  = airportsRoot.airports[0].location.latitude;
+      this.destinationAirportLongitude = airportsRoot.airports[0].location.longitude;
+    }
+    else
+    {
+      this.destinationAirportLatitude  = 0;
+      this.destinationAirportLongitude = 0;
+    }
 
     this.requestForAirportLocation = true;
     if(    this.requestForFlightDone
@@ -227,7 +235,6 @@ Package.prototype.searchForFlightHotelPackages = function(req){
         && this.requestForDescription){
           this.createFlightHotelsPackages();
     }
-
   }.bind(this);
 }
 
