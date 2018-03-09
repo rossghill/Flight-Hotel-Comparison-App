@@ -19,12 +19,8 @@ favouritesButton.addEventListener('click', function(){
 });
 
 const getFavouritesListRequestComplete = function(allFavourites){
-  console.log("AAAAAAARGH");
   const favourites = new FavouritesListView();
-  favourites.createFavouritesView(allFavourites)
-  // allFavourites.forEach(function(favourite){
-  //   favouritesView.addFavourite(favourite);
-  // });
+  favourites.createFavouritesView(allFavourites);
 }
 
 close.addEventListener('click', function(){

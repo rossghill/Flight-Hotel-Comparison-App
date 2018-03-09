@@ -21,17 +21,6 @@ FavouritesList.prototype.get = function(callback){
   request.send();
 }
 
-
-
-//callback: (in app.js or wherever the .get function above is called):
-// const getFavouritesListRequestComplete = function(allFavouritesList){
-//   allFavouritesList.forEach(function(favourite){
-//     favouritesView.addFavourite(favourite);
-//   });
-// }
-//need to have a favouritesView set up!
-
-
 //POST:
 FavouritesList.prototype.post = function(callback, payload){
   console.log("hiya");
