@@ -1,6 +1,6 @@
 //***WORK IN PROGRESS!***
 
-//when using FavouritesListList, pass in http://localhost:3000/favourites as the argument.
+//when using FavouritesList, pass in http://localhost:3000/favourites as the argument.
 
 const FavouritesList = function(url){
   this.url = url;
@@ -21,17 +21,6 @@ FavouritesList.prototype.get = function(callback){
   request.send();
 }
 
-
-
-//callback: (in app.js or wherever the .get function above is called):
-const getFavouritesListRequestComplete = function(allFavouritesList){
-  allFavouritesList.forEach(function(favourite){
-    favouritesView.addFavourite(favourite);
-  });
-}
-//need to have a favouritesView set up!
-
-
 //POST:
 FavouritesList.prototype.post = function(callback, payload){
   console.log("hiya");
@@ -45,7 +34,7 @@ FavouritesList.prototype.post = function(callback, payload){
     const responseBody = JSON.parse(this.responseText);
     callback(responseBody);
   });
-  
+
   //made the payload a value of the key "favourite" to be be passed into the reg.body
   request.send(JSON.stringify({favourite: payload}));
 
@@ -59,9 +48,9 @@ const createRequestComplete = function(newFavourite){
 
 
 //DELETE:
-FavouritesList.prototype.delete = function(callback){
+FavouritesList.prototype.delete = function(id){
   const request = new XMLHttpRequest();
-  request.open('DELETE', this.url);
+  request.open('DELETE', this.url + "/" + id);
   request.addEventListener('load', function(){
     if(this.status !== 204){
       return;
@@ -70,5 +59,9 @@ FavouritesList.prototype.delete = function(callback){
   });
   request.send();
 }
+
+
+
+
 
 module.exports = FavouritesList;

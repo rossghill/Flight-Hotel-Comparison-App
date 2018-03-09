@@ -23,17 +23,39 @@ MiniMapView.prototype.createMiniMap = function(flightHotelPackage) {
 
 
 MiniMapView.prototype.createFaveButton = function(flightHotelPackage) {
-  let faveButton = document.createElement("button")
-  faveButton.classList.add("fave-button-class");
+  const favouritesList = new FavouritesList("http://localhost:3000/favourites");
+  if(flightHotelPackage._id === undefined){
+    let faveButton = document.createElement("button");
+    faveButton.classList.add("fave-button-class");
 
-  faveButton.innerText = "Add To Favourites!"
+    faveButton.innerText = "Add To Favourites!"
 
-  faveButton.addEventListener("click", function(){
-    const favouritesList = new FavouritesList("http://localhost:3000/favourites");
-    favouritesList.post(createRequestComplete, flightHotelPackage);
-  })
+    faveButton.addEventListener("click", function(){
+      favouritesList.post(createRequestComplete, flightHotelPackage);
+    });
 
-  return faveButton;
+    return faveButton;
+  } else {
+    const deleteButton = document.createElement("button");
+    // deleteButton.id = 'delete-button';
+    deleteButton.innerText = 'Delete!';
+    deleteButton.addEventListener('click', function(){
+      favouritesList.delete(flightHotelPackage._id);
+    });
+    return deleteButton;
+  }
+
+  // let faveButton = document.createElement("button")
+  // faveButton.classList.add("fave-button-class");
+  //
+  // faveButton.innerText = "Add To Favourites!"
+  //
+  // faveButton.addEventListener("click", function(){
+  //   const favouritesList = new FavouritesList("http://localhost:3000/favourites");
+  //   favouritesList.post(createRequestComplete, flightHotelPackage);
+  // })
+  //
+  // return faveButton;
 }
 
 const createRequestComplete = function(newFavourite){
@@ -61,11 +83,11 @@ MiniMapView.prototype.createMiniMapView = function(flightHotelPackage) {
   miniMapView.classList.add("mini-map-view-class")
 
   let miniMapDiv      = this.createMiniMap(flightHotelPackage)
-  let faveButton      = this.createFaveButton(flightHotelPackage)
+  let faveActionButton      = this.createFaveButton(flightHotelPackage)
   let packagePriceDiv = this.createPackagePrice(flightHotelPackage)
 
   miniMapView.appendChild(miniMapDiv)
-  miniMapView.appendChild(faveButton)
+  miniMapView.appendChild(faveActionButton)
   miniMapView.appendChild(packagePriceDiv)
 
   return miniMapView;

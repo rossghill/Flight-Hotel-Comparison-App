@@ -75,9 +75,12 @@ ul {
 
 
 .hotel-class {
-  padding: 10px 0px 10px 10px;
+  padding: 10px 0px 0px 10px;
   width: 50%;
   border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .hotel-name-class {
@@ -97,7 +100,7 @@ ul {
 }
 
 .hotel-price-class {
-  width: 190px;
+  width: 100%;
   color: white;
   padding: 0px 0px 10px 10px;
   background-color: #4d94ff;
@@ -142,6 +145,7 @@ ul {
   flex-direction: column;
   flex-wrap: wrap;
   background-image: url("http://bit.ly/2FGlz5B");
+  background-size: 100%;
 }
 
 #get-favourites-button {
