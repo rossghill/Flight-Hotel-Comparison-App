@@ -13,6 +13,19 @@ MapView.prototype.populateMapWithHotels = function(travelPackages){
     let centerLng = travelPackage.hotel.longitude;
     let coords    = {lat:centerLat, lng:centerLng};
     this.map.addMarker(coords);
+
+  }.bind(this));
+}
+
+MapView.prototype.populateMapWithHotelsInfoBoxes = function(travelPackages){
+ this.removeAllMarkers();
+ travelPackages.forEach(function(travelPackage)
+ {
+    let centerLat = travelPackage.hotel.latitude;
+    let centerLng = travelPackage.hotel.longitude;
+    let coords    = {lat:centerLat, lng:centerLng};
+    this.map.addMarkerWithInfoWindow(travelPackage.hotel);
+
   }.bind(this));
 }
 

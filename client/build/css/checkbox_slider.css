@@ -20,6 +20,7 @@
   background-color: #ccc;
   -webkit-transition: .4s;
   transition: .4s;
+  padding-left: 10px;
 }
 
 .checkbox-slider:before {

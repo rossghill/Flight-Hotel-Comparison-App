@@ -87,7 +87,7 @@ const populateTravelPackageListAndMap = function()
     const packageListView = new PackageListView();
     let displayMinimap = document.getElementById("checkbox-display-minimap").checked;
     packageListView.createPackageList(travelPackageListFiltered, displayMinimap);
-    packagesMapView.populateMapWithHotels(travelPackageListFiltered);
+    packagesMapView.populateMapWithHotelsInfoBoxes(travelPackageListFiltered);
 }
 
 const populateExtraFilters = function()
