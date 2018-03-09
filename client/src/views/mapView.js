@@ -47,8 +47,6 @@ google.maps.event.addListener(marker,'click', (function(marker,content,infowindo
 
  MapView.prototype.createSmallMap = function(smallMapDiv, hotelEntity)
  {
-   console.log(hotelEntity);
-
    let centerLat = hotelEntity.latitude;
    let centerLng = hotelEntity.longitude;
    let coords    = {lat:centerLat, lng:centerLng};
