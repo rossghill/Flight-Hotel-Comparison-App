@@ -1,6 +1,6 @@
 //***WORK IN PROGRESS!***
 
-//when using FavouritesListList, pass in http://localhost:3000/favourites as the argument.
+//when using FavouritesList, pass in http://localhost:3000/favourites as the argument.
 
 const FavouritesList = function(url){
   this.url = url;
@@ -48,9 +48,9 @@ const createRequestComplete = function(newFavourite){
 
 
 //DELETE:
-FavouritesList.prototype.delete = function(callback){
+FavouritesList.prototype.delete = function(id){
   const request = new XMLHttpRequest();
-  request.open('DELETE', this.url);
+  request.open('DELETE', this.url + "/" + id);
   request.addEventListener('load', function(){
     if(this.status !== 204){
       return;
@@ -59,5 +59,9 @@ FavouritesList.prototype.delete = function(callback){
   });
   request.send();
 }
+
+
+
+
 
 module.exports = FavouritesList;

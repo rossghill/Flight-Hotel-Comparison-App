@@ -23,6 +23,7 @@ MiniMapView.prototype.createMiniMap = function(flightHotelPackage) {
 
 
 MiniMapView.prototype.createFaveButton = function(flightHotelPackage) {
+  const favouritesList = new FavouritesList("http://localhost:3000/favourites");
   if(flightHotelPackage._id === undefined){
     let faveButton = document.createElement("button");
     faveButton.classList.add("fave-button-class");
@@ -30,17 +31,16 @@ MiniMapView.prototype.createFaveButton = function(flightHotelPackage) {
     faveButton.innerText = "Add To Favourites!"
 
     faveButton.addEventListener("click", function(){
-      const favouritesList = new FavouritesList("http://localhost:3000/favourites");
       favouritesList.post(createRequestComplete, flightHotelPackage);
     });
 
     return faveButton;
   } else {
     const deleteButton = document.createElement("button");
-    deleteButton.id = 'delete-button';
-    deleteButton.innerText = 'Delete';
+    // deleteButton.id = 'delete-button';
+    deleteButton.innerText = 'Delete!';
     deleteButton.addEventListener('click', function(){
-      console.log("Gonna delete!");
+      favouritesList.delete(flightHotelPackage._id);
     });
     return deleteButton;
   }
