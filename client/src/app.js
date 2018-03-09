@@ -11,7 +11,7 @@ const FlightHotelPackagesModel  = require("./models/flightHotelPackagesModel");
 let travelPackageList         = [];
 let travelPackageListFiltered = [];
 let flightHotelPackagesEntity = null;
-
+let packagesMapView           = null;
 
 const initializeFlightR = function(){
   domHelper = new DOMHelper();
@@ -55,8 +55,14 @@ children = 1;
 const populatePackages = function()
 {
   flightHotelPackagesEntity = JSON.parse(this.responseText);
+
   if(flightHotelPackagesEntity.flightHotelPackages)
   {
+      packagesMapView = new MapView(    document.getElementById("div-packages-map"),
+                                        flightHotelPackagesEntity.destinationAirportLatitude,
+                                        flightHotelPackagesEntity.destinationAirportLongitude,
+                                        12);
+
       travelPackageList         = flightHotelPackagesEntity.flightHotelPackages
       travelPackageListFiltered = flightHotelPackagesEntity.flightHotelPackages
 
@@ -71,20 +77,11 @@ const populatePackages = function()
 
 const populateTravelPackageListAndMap = function()
 {
-    resetTravelPackageListAndMap();
-
     // Populate the list of packages
     const packageListView = new PackageListView();
-    packageListView.createPackageList(travelPackageListFiltered);
-
-    // Populate the giant view
-    // let mapView = new MapView();
-    // mapView.createGiantMap(flightHotelPackagesEntity);
-}
-
-const resetTravelPackageListAndMap = function()
-{
-  document.getElementById("div-packages-list").innerHTML = "";
+    let displayMinimap = document.getElementById("checkbox-display-minimap").checked;
+    packageListView.createPackageList(travelPackageListFiltered, displayMinimap);
+    packagesMapView.populateMapWithHotels(travelPackageListFiltered);
 }
 
 const populateExtraFilters = function()

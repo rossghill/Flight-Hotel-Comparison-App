@@ -4,6 +4,8 @@ const MapWrapper = function (container, coords, zoom) {
     zoom: zoom,
     mapTypeId: 'roadmap'
   });
+
+  this.markers = [];
 }
 
 MapWrapper.prototype.addMarker = function(coords) {
@@ -11,6 +13,7 @@ MapWrapper.prototype.addMarker = function(coords) {
     position: coords,
     map: this.googleMap
   });
+  this.markers.push(marker);
 }
 
 MapWrapper.prototype.addMarkerWithHotelPopup = function(coords) {
@@ -18,6 +21,13 @@ MapWrapper.prototype.addMarkerWithHotelPopup = function(coords) {
     position: coords,
     map: this.googleMap
   });
+  this.markers.push(marker);
+}
+
+MapWrapper.prototype.removeAllMarker = function() {
+  this.markers.forEach(function(marker){
+    marker.setMap(null);
+  }.bind(this))
 }
 
 module.exports = MapWrapper;

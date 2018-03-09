@@ -90,16 +90,25 @@
                 </div>
 
                 <!-- RESULTS BAR -->
-                <div id='container-result-bar'>
-                  <!-- <h2>RESULTS BAR</h2> -->
-                    <span>List</span>
-                    <label class="switch">
-                      <input type="checkbox" id="checkbox-list-map-mode">
-                      <span class="checkbox-slider round"></span>
-                    </label>
-                    <span>Map</span>
-
-                    <button id='get-favourites-button'>VIEW FAVOURITES!</button>
+                <div style="display: flex; justify-content: space-between; align-items: center">
+                    <!-- <h2>RESULTS BAR</h2> -->
+                    <div style="display: flex; align-items: center"
+                      <span>Display mode List</span>
+                        <label class="switch">
+                          <input type="checkbox" id="checkbox-list-map-mode">
+                          <span class="checkbox-slider round"></span>
+                        </label>
+                      <span>Map</span>
+                      <span>Display MiniMap No</span>
+                        <label class="switch">
+                          <input type="checkbox" id="checkbox-display-minimap" checked>
+                          <span class="checkbox-slider round"></span>
+                        </label>
+                      <span>Yes</span>
+                    </div>
+                    <div>
+                        <button id='get-favourites-button'>VIEW FAVOURITES!</button>
+                    </div>
                 </div>
             </div>
       </div>
@@ -116,13 +125,12 @@
             <!-- PACKAGES -->
             <div id='container-packages'>
 
+                <!-- List of flyght and hotels -->
                 <div id='div-packages-list'>
-                  <!-- <h2>PACKAGES LIST</h2> -->
                 </div>
 
                 <!-- LARGE MAP OF ALL HOTELS -->
                 <div id='div-packages-map'>
-                  <h2>PACKAGES MAP</h2>
                 </div>
 
             </div>

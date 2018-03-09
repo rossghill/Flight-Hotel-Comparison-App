@@ -52,7 +52,7 @@ ExtraFiltersView.prototype.createHotelNameFilter = function(){
   input.type            = "text";
   input.classList.add("input-150");
   input.id              = "filter-hotelName";
-  input.addEventListener("keyup", this.callBack);
+  input.addEventListener("input", this.callBack);
   div.appendChild(input);
 
   return div;

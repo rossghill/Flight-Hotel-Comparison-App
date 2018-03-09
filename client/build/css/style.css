@@ -127,7 +127,6 @@ ul {
 }
 
 #get-favourites-button {
-  margin-left: 600px;
   padding: 10px 10px 10px 10px;
   color: white;
   background-color: #4d94ff;
@@ -157,6 +156,7 @@ ul {
   display: flex;
   flex-direction: row;
   align-items: center;
+  width: 100%;
   /* border: 1px solid black; */
 }
 

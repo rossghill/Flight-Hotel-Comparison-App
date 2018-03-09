@@ -7,15 +7,22 @@ const PackageView = function(){
 }
 
 
-PackageView.prototype.createPackageView = function(flightHotelPackage){
+PackageView.prototype.createPackageView = function(flightHotelPackage, displayMinimap){
   const flightView = new FlightView();
   const flightViewDiv = flightView.createFlightView(flightHotelPackage.flightPackage);
 
   const hotelView  = new HotelView();
   const hotelViewDiv = hotelView.createHotelView(flightHotelPackage.hotel);
 
-  const miniMapView = new MiniMapView();
-  const miniMapViewDiv = miniMapView.createMiniMapView(flightHotelPackage);
+  let miniMapViewDiv = document.createElement('div');
+  miniMapViewDiv.className = "mini-map-view-class";
+
+  if(displayMinimap)
+  {
+    const miniMapView = new MiniMapView();
+    miniMapViewDiv    = miniMapView.createMiniMapView(flightHotelPackage);
+  }
+
 
   let packageViewDiv = document.createElement('div');
   packageViewDiv.classList.add('flex-row');

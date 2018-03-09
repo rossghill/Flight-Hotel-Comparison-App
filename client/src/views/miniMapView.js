@@ -8,11 +8,16 @@ const MiniMapView = function() {
 
 }
 
-MiniMapView.prototype.createMiniMap = function(hotelEntity) {
+MiniMapView.prototype.createMiniMap = function(flightHotelPackage) {
   let miniMapDiv = document.createElement("div");
-  miniMapDiv.classList.add("div-mini-map");
-  mapView        = new MapView();
-  mapView.createSmallMap(miniMapDiv, hotelEntity);
+  miniMapDiv.className="div-mini-map";
+  let mapView = new MapView(miniMapDiv,
+                            flightHotelPackage.hotel.latitude,
+                            flightHotelPackage.hotel.longitude,
+                            15);
+
+  mapView.populateMapWithHotels([flightHotelPackage]);
+
   return miniMapDiv;
 }
 
@@ -55,7 +60,7 @@ MiniMapView.prototype.createMiniMapView = function(flightHotelPackage) {
   let miniMapView = document.createElement("div")
   miniMapView.classList.add("mini-map-view-class")
 
-  let miniMapDiv      = this.createMiniMap(flightHotelPackage.hotel)
+  let miniMapDiv      = this.createMiniMap(flightHotelPackage)
   let faveButton      = this.createFaveButton(flightHotelPackage)
   let packagePriceDiv = this.createPackagePrice(flightHotelPackage)
 
