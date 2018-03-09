@@ -116,3 +116,10 @@
   width: 70%;
   box-shadow: 10px, 10px, 10px, black;
 }
+
+#load-gif {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+}
