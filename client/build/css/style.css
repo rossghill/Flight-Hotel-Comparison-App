@@ -69,7 +69,7 @@ ul {
 
 
 .hotel-class {
-  padding: 10px 0px 10px 10px;
+  padding: 10px 0px 0px 10px;
   width: 50%;
   border-radius: 10px;
 }
@@ -91,7 +91,7 @@ ul {
 }
 
 .hotel-price-class {
-  width: 190px;
+  width: 100%;
   color: white;
   padding: 0px 0px 10px 10px;
   background-color: #4d94ff;
