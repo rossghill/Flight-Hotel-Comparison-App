@@ -4,6 +4,7 @@ const MapView = function() {
 
 }
 
+// -----------------------------
 
 MapView.prototype.createGiantMap = function(flightHotelPackagesEntity){
 
@@ -17,29 +18,32 @@ MapView.prototype.createGiantMap = function(flightHotelPackagesEntity){
 
   flightHotelPackagesEntity.flightHotelPackages.forEach(function(flightHotelPackage){
 
+
     let contentString = "Info goes here";
 
      let centerLat = flightHotelPackage.hotel.latitude;
      let centerLng = flightHotelPackage.hotel.longitude;
      let coords = {lat:centerLat, lng:centerLng};
-     giantMap.addMarker(coords);
+     // giantMap.addMarker(coords);
 
-     var contentString = 'test';
+  var marker = new google.maps.Marker({
+          map: giantMap, title: hotel , position: coords
+        });
+        map.setCenter(marker.getPosition())
 
-      var infowindow = new google.maps.InfoWindow({
-        content: contentString
-      });
 
-      var marker = new google.maps.Marker({
-        position: uluru,
-        map: giantMap,
-        title: 'Uluru (Ayers Rock)'
-      });
-      marker.addListener('click', function() {
-        infowindow.open(map, marker);
-      });
+  var infowindow = new google.maps.InfoWindow()
 
-   });
+google.maps.event.addListener(marker,'click', (function(marker,content,infowindow){
+        return function() {
+           infowindow.setContent(contentString);
+           infowindow.open(giantMap,marker);
+        };
+    })(marker,content,infowindow));
+
+  });
+
+  // --------------------------
 
  MapView.prototype.createSmallMap = function(smallMapDiv, hotelEntity)
  {

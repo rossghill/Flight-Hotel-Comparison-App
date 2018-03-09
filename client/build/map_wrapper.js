@@ -19,10 +19,10 @@ MapWrapper.prototype.addMarker = function(coords) {
 //   });
 // }
 
-// const addInfoWindow = function(text) {
-//   const infoWindow = new google.maps.InfoWindow({
-//     content: text
-//   })
-// }
+const addInfoWindow = function(text) {
+  const infoWindow = new google.maps.InfoWindow({
+    content: text
+  })
+}
 
 module.exports = MapWrapper;
