@@ -77,7 +77,9 @@ DOMHelper.prototype.changeDisplay = function(elementId, isDisplayed)
 
 
 
-
+DOMHelper.prototype.innerText = function(elementId, text){
+  document.getElementById(elementId).innerText = text;
+}
 
 
 

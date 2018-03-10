@@ -23,6 +23,7 @@ const initializeFlightR = function(){
   document.getElementById("checkbox-list-map-mode").addEventListener("click",   domHelper.checkboxToggleVisibility.bind(this, "checkbox-list-map-mode", "div-packages-list", "div-packages-map"));
   domHelper.changeDisplay("div-packages-map", false);
 
+  document.getElementById("button-show-all").addEventListener("click", showAllResult);
   //favouritesList and loading modal
   const pageModals = new Modal();
   pageModals.createFavouritesModal();
@@ -95,6 +96,7 @@ const updateTravelPackageList = function(filterEvent)
   travelPackageListFiltered    = flightHotelPackagesModel.filterTravelPackages(extraFiltersView.getExtraFilterValues());
   extraFiltersView.updateCurrentBudgetLabel();
   populateTravelPackageListAndMap();
+  updateResultCounter();
 }
 
 
@@ -105,6 +107,11 @@ const populateExtraFilters = function()
   extraFiltersView.createExtraFilters(flightHotelPackagesModel.getPriceMin(),
                                       flightHotelPackagesModel.getPriceMax());
   extraFiltersView.updateCurrentBudgetLabel();
+  updateResultCounter();
+}
+
+const updateResultCounter= function(){
+  domHelper.innerText("span-result-counter", `${travelPackageListFiltered.length} out of ${travelPackageList.length}`);
 }
 
 const getAirportCities = function(){
@@ -146,6 +153,11 @@ const populateAirportCities = function(input)
   helper.createSelectOptions(input.id, airportCitiesArrayForSelect);
   helper.setSelectSize(input.id, 5);
   helper.addEventListenerOnChangeSelectOriginOrDestination(input.id, "search-"+input.id);
+}
+
+const showAllResult = function(){
+  populateExtraFilters();
+  updateTravelPackageList();
 }
 
 

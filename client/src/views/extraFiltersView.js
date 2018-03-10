@@ -85,10 +85,10 @@ ExtraFiltersView.prototype.createSortings = function()
   select.addEventListener("change", this.callBack);
   div.appendChild(select);
 
-  let sortingOptions  = [ {value: "price-asc",         label: "Price - => +"},
-                          {value: "price-desc",        label: "Price + => -"},
-                          {value: "startRating-desc",  label: "Rating + => -"},
-                          {value: "startRating-asc",   label: "Rating - => +"}];
+  let sortingOptions  = [ {value: "price-asc",         label: "Price - > +"},
+                          {value: "price-desc",        label: "Price + > -"},
+                          {value: "startRating-desc",  label: "Rating + > -"},
+                          {value: "startRating-asc",   label: "Rating - > +"}];
 
   sortingOptions.forEach(function(sorting){
     let option        = document.createElement("option");
