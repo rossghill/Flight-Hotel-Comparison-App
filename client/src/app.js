@@ -48,17 +48,17 @@ let children        = document.getElementById('children').value;
   url += `&adults=${adults}`;
   url += `&children=${children}`;
 
-  request.open("GET", url);
-  request.addEventListener("load", populatePackages);
-  request.send();
+  // request.open("GET", url);
+  // request.addEventListener("load", populatePackages);
+  // request.send();
 
-  //populatePackages();
+  populatePackages();
 }
 
 const populatePackages = function()
 {
-  flightHotelPackagesEntity = JSON.parse(this.responseText);
-
+  //flightHotelPackagesEntity = JSON.parse(this.responseText);
+  flightHotelPackagesEntity = JSON.parse(mimicData());
   if(flightHotelPackagesEntity.flightHotelPackages)
   {
       packagesMapView = new MapView(    document.getElementById("div-packages-map"),

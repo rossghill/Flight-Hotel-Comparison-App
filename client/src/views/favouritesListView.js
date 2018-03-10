@@ -9,13 +9,14 @@ FavouritesListView.prototype.createFavouritesView = function(flightHotelPackages
   div.innerHTML = "";
   const ul  = document.createElement("ul");
 
+
   for(flightHotelPackage of flightHotelPackages)
   {
-    const packageView = new PackageView();
-    const div = packageView.createPackageView(flightHotelPackage, true);
-    let li = document.createElement('li');
-    li.appendChild(div);
-    ul.appendChild(li);
+    // // const packageview = new PackageView();
+    // // const div = packageView.createPackageView(flightHotelPackage, true);
+    // let li = document.createElement('li');
+    // li.appendChild(div);
+    // ul.appendChild(li);
   }
 
   div.appendChild(ul);

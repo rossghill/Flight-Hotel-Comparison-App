@@ -1,4 +1,4 @@
-const HotelView = require('./../src/views/hotelView');
+const PackageView = require('./../src/views/packageView');
 const HotelEntity = require('./../src/entities/hotelEntity');
 
 const MapWrapper = function (container, coords, zoom) {
@@ -19,15 +19,15 @@ MapWrapper.prototype.addMarker = function(coords) {
       this.markers.push(marker);
 }
 
-MapWrapper.prototype.addMarkerWithInfoWindow = function(hotelEntity) {
+MapWrapper.prototype.addMarkerWithInfoWindow = function(travelPackage) {
 
-  let lat = hotelEntity.latitude;
-  let lng = hotelEntity.longitude;
+  let lat = travelPackage.hotel.latitude;
+  let lng = travelPackage.hotel.longitude;
   let coords = {lat: lat, lng: lng};
 
-
-  let contentDiv = new HotelView().createHotelView(hotelEntity);
-  let infowindow = new google.maps.InfoWindow({
+  let packageView = new PackageView();
+  let contentDiv  = packageView.createPackageView(travelPackage, true);
+  let infowindow  = new google.maps.InfoWindow({
     content: contentDiv});
 
   const marker = new google.maps.Marker({

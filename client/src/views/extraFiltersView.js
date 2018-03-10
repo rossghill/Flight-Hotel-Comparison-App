@@ -82,6 +82,7 @@ ExtraFiltersView.prototype.createSortings = function()
   div.classList.add("div-sorting-packages");
   let select          = document.createElement("select");
   select.id           = "select-sorting-packages";
+  select.classList.add("select-150");
   select.addEventListener("change", this.callBack);
   div.appendChild(select);
 

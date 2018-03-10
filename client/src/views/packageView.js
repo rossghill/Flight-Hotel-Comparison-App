@@ -1,6 +1,6 @@
-const FlightView = require('./flightView');
-const HotelView = require('./hotelView');
-const MiniMapView = require('./miniMapView');
+const FlightView    = require('./flightView');
+const HotelView     = require('./hotelView');
+const MiniMapView   = require('./miniMapView');
 
 const PackageView = function(){
 
@@ -13,6 +13,7 @@ PackageView.prototype.createPackageView = function(flightHotelPackage, displayMi
 
   const hotelView  = new HotelView();
   const hotelViewDiv = hotelView.createHotelView(flightHotelPackage.hotel);
+  hotelViewDiv.classList.add("section-hotel");
 
   let miniMapViewDiv = document.createElement('div');
   miniMapViewDiv.className = "mini-map-view-class";

@@ -1,5 +1,7 @@
-const FlightView = function(){
+const DOMHelper = require("./../entities/helpers/DOMHelper");
 
+const FlightView = function(){
+  domHelper = new DOMHelper();
 }
 
 FlightView.prototype.createFlight = function(flightEntity){
@@ -7,81 +9,86 @@ FlightView.prototype.createFlight = function(flightEntity){
   flightDiv.classList.add("flight-class")
 
   //populate createFlightDiv
-  let originSpan        = document.createElement("span")
-  let departureTimeSpan = document.createElement("span")
-  let arrivalTimeSpan   = document.createElement("span")
-  let destinationSpan   = document.createElement("span")
+  let originSpan        = document.createElement("p")
+  let destinationSpan   = document.createElement("p")
 
-  originSpan.innerText        = "FROM: " + flightEntity.origin + "\n";
-  departureTimeSpan.innerText = "DEPART AT: " + flightEntity.departureTime.replace("T", " ") + "\n";
-  arrivalTimeSpan.innerText   = "ARRIVAL AT: " + flightEntity.arrivalTime.replace("T", " ") + "\n";
-  destinationSpan.innerText   = "TO: " + flightEntity.destination;
+  originSpan.innerText        = flightEntity.origin+" "+flightEntity.departureTime;
+  destinationSpan.innerText   = flightEntity.destination+" "+flightEntity.arrivalTime;
 
   flightDiv.appendChild(originSpan);
-  flightDiv.appendChild(departureTimeSpan);
-  flightDiv.appendChild(arrivalTimeSpan);
   flightDiv.appendChild(destinationSpan);
 
   return flightDiv;
 }
 
-FlightView.prototype.createOutboundFlight = function(outboundFlightEntity){
-  // console.log(outboundFlightEntity);
-  let flightGoingImg = document.createElement("img");
-  let outboundFlightDiv = document.createElement("div");
-  let outboundHeaderDiv = document.createElement("div");
-  let outboundBodyDiv = this.createFlight(outboundFlightEntity[0]);
+FlightView.prototype.createFlightWay = function(flightEntities, way){
 
-  flightGoingImg.id  = "flight-going-img"
-  flightGoingImg.src = "./images/flight-going.jpg"
+  let imageName   = "";
+  let headerLabel = "";
 
-  outboundFlightDiv.appendChild(flightGoingImg)
-  outboundFlightDiv.appendChild(outboundHeaderDiv);
-  outboundFlightDiv.appendChild(outboundBodyDiv);
+  if(way === "outbound"){
+    imageName   = "flight-going.jpg";
+    headerLabel = "Outbound";
+  }
+  else
+  {
+    imageName   = "flight-returning.jpg";
+    headerLabel = "Inbound";
+  }
 
-  return outboundFlightDiv;
+  let headerFlightDiv         = domHelper.createDivElement("flex-row-flex-center");
+  let flightImg               = domHelper.createImageElement(imageName);
+  flightImg.className         = "image-flight";
+  headerFlightDiv.appendChild(flightImg)
+
+  let flightWay               = domHelper.createDivElement()
+  flightWay.innerText         = headerLabel
+  headerFlightDiv.appendChild(flightWay);
+
+  let bodyFlightDiv         = this.createFlight(flightEntities[0]);
+
+  let flightDiv             = domHelper.createDivElement("div-flight-way");
+  flightDiv.appendChild(headerFlightDiv);
+  flightDiv.appendChild(bodyFlightDiv);
+
+  return flightDiv;
 }
 
-FlightView.prototype.createInboundFlight = function(inboundFlightEntity){
-  let flightReturningImg = document.createElement("img");
-  let inboundFlightDiv = document.createElement("div");
-  let inboundHeaderDiv = document.createElement("div");
-  let inboundBodyDiv   = this.createFlight(inboundFlightEntity[0]);
-
-  flightReturningImg.id  = "flight-returning-img"
-  flightReturningImg.src = "./images/flight-returning.jpg"
-
-  inboundFlightDiv.appendChild(flightReturningImg)
-  inboundFlightDiv.appendChild(inboundHeaderDiv);
-  inboundFlightDiv.appendChild(inboundBodyDiv);
-
-  return inboundFlightDiv;
-}
 
 FlightView.prototype.createFlightPriceAndChangeAction = function(flightPrice){
 
-  let priceDiv         = document.createElement("div");
-  priceDiv.classList.add("flight-price-class")
-  let priceSpan        = document.createElement("span");
-  priceSpan.innerText  = "\n FLIGHT PRICE: £" + flightPrice.toFixed(2);
+  let divPriceAndChangeAction = domHelper.createDivElement("div-flight-footer");
 
+  let priceDiv         = domHelper.createDivElement("div-flight-price");
+  let priceSpan        = document.createElement("span");
+  priceSpan.innerText  = "£ " + flightPrice.toFixed(2);
   priceDiv.appendChild(priceSpan);
-  return priceDiv;
+  divPriceAndChangeAction.appendChild(priceDiv);
+
+  let action = domHelper.createDivElement();
+  let button = domHelper.createButtonElement("button-blue", "CHANGE");
+  action.appendChild(button);
+  divPriceAndChangeAction.appendChild(action);
+
+
+  return divPriceAndChangeAction;
 }
 
 
 FlightView.prototype.createFlightView = function(flightPackage){
-  let mainFlightDiv     = document.createElement("div");
-  mainFlightDiv.classList.add('flight-main-class')
-
-  let outboundFlightDiv = this.createOutboundFlight(flightPackage.outboundFlights);
-  let inboundFlightDiv  = this.createInboundFlight(flightPackage.inboundFlights);
+  let mainFlightDiv     = domHelper.createDivElement("section-flight");
+  let outboundFlightDiv = this.createFlightWay(flightPackage.outboundFlights, "outbound");
+  let inboundFlightDiv  = this.createFlightWay(flightPackage.inboundFlights,  "inbound");
   let priceDiv          = this.createFlightPriceAndChangeAction(flightPackage.flightPrice);
 
-  mainFlightDiv.appendChild(outboundFlightDiv);
-  mainFlightDiv.appendChild(inboundFlightDiv);
+  let flightWays = domHelper.createDivElement("div-flight-main");
+
+  flightWays.appendChild(outboundFlightDiv);
+  flightWays.appendChild(inboundFlightDiv);
+
+  mainFlightDiv.appendChild(flightWays);
   mainFlightDiv.appendChild(priceDiv);
-  // console.log(flightPackage);
+
   return mainFlightDiv;
 }
 

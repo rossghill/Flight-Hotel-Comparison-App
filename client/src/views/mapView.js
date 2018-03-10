@@ -1,4 +1,4 @@
-const MapWrapper = require('./../../build/map_wrapper')
+const MapWrapper = require('./../../build/map_wrapper');
 
 const MapView   = function(container, centerLat, centerLng, zoomLevel) {
   let coords    = {lat:centerLat, lng:centerLng};
@@ -18,13 +18,15 @@ MapView.prototype.populateMapWithHotels = function(travelPackages){
 }
 
 MapView.prototype.populateMapWithHotelsInfoBoxes = function(travelPackages){
+
  this.removeAllMarkers();
+
  travelPackages.forEach(function(travelPackage)
  {
     let centerLat = travelPackage.hotel.latitude;
     let centerLng = travelPackage.hotel.longitude;
     let coords    = {lat:centerLat, lng:centerLng};
-    this.map.addMarkerWithInfoWindow(travelPackage.hotel);
+    this.map.addMarkerWithInfoWindow(travelPackage);
 
   }.bind(this));
 }

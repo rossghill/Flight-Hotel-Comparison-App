@@ -1,0 +1,144 @@
+
+/* 3 main section of a travel package */
+.section-flight {
+  width: 30%;
+  max-width: 250px;
+  display: flex;
+  flex-direction: column;
+}
+
+.section-hotel {
+  width: 50%;
+  margin-left: 50px;
+  display: flex;
+  flex-direction: column;
+}
+
+.section-mini-map {
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+
+/* Section Outbound / Inbound */
+
+.div-flight-main {
+  height: 230px;
+}
+
+.div-flight-footer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  height: 50px;
+}
+
+.div-flight-way {
+  margin-bottom: 20px;
+}
+
+.flight-class p {
+  margin: 0px 5px;
+  font-size: 90%;
+}
+
+
+.image-flight {
+  width: 30px;
+  margin-right: 10px;
+}
+
+.div-flight-price {
+  width: 120px;
+  padding: 5px 10px;
+  border: 1px solid #3498db;
+  text-align: center;
+}
+
+
+
+/* Section hotel */
+
+.div-hotel-main {
+  height: 230px;
+}
+
+.div-hotel-footer {
+  height: 50px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.hotel-header-star-rating {
+  width: 20px;
+  margin-right: 3px;
+}
+
+
+.hotel-name {
+  font-weight: 400;
+  margin-right: 20px;
+}
+
+.image-hotel {
+  width: 260px;
+  min-width: 260px;
+  height: 150px;
+  border-radius: 5px;
+  margin-top: 5px;
+}
+
+.div-hotel-right-part {
+  margin-left: 10px;
+}
+
+.hotel-description {
+  font-size: 90%;
+  height: 130px;
+  margin-top: 5px;
+}
+
+.image-amenity {
+  width: 30px;
+  margin-left: 10px;
+}
+
+.div-hotel-price {
+  width: 120px;
+  padding: 5px 10px;
+  border: 1px solid #3498db;
+  text-align: center;
+  margin-right: 50px;
+}
+
+.div-package-price {
+  padding: 5px 10px;
+  border: 1px solid #f368e0;
+  text-align: center;
+  color: #f368e0;
+}
+
+
+/** Minimap **/
+
+
+.div-mini-map {
+  width: 200px;
+  height: 180px;
+  border-radius: 10px;
+  margin-top: 20px;
+}
+
+.div-minimap-footer {
+  height: 50px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}

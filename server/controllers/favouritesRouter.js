@@ -1,8 +1,8 @@
-const express = require('express');
-const favouritesRouter = new express.Router();
-const MongoClient = require('mongodb').MongoClient;
-const ObjectID = require('mongodb').ObjectID;
-const url = 'mongodb://localhost:27017';
+const express           = require('express');
+const favouritesRouter  = new express.Router();
+const MongoClient       = require('mongodb').MongoClient;
+const ObjectID          = require('mongodb').ObjectID;
+const url               = 'mongodb://localhost:27017';
 
 MongoClient.connect(url, function(err, client){
   const db = client.db('go_app_db');
@@ -24,7 +24,7 @@ MongoClient.connect(url, function(err, client){
 //add favourite
 favouritesRouter.post('/favourites', function(req, res){
   const collection = db.collection('favourite_packages');
-  
+
   //this is accessing the favourite key with value of "payload" on the body request
   const favouriteToSave = req.body.favourite;
   collection.save(favouriteToSave, function(err, result){

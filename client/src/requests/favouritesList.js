@@ -1,7 +1,6 @@
-//***WORK IN PROGRESS!***
-
 //when using FavouritesList, pass in http://localhost:3000/favourites as the argument.
-
+const FavouritesListView = require('./../views/favouritesListView');
+const PackageView = require('./../views/packageView');
 const FavouritesList = function(url){
   this.url = url;
 }
@@ -55,7 +54,13 @@ FavouritesList.prototype.delete = function(id){
     if(this.status !== 204){
       return;
     }
-    callback();
+
+    const favouritesList = new FavouritesList("http://localhost:3000/favourites");
+    favouritesList.get(function(allFavourites){
+      const favourites = new FavouritesListView();
+      favourites.createFavouritesView(allFavourites);
+    });
+
   });
   request.send();
 }

@@ -1,11 +1,10 @@
-const FavouritesList = require('./../requests/favouritesList');
-const MapView = require('./mapView');
-
+const FavouritesList  = require('./../requests/favouritesList');
+const MapView         = require('./mapView');
+const DOMHelper       = require("./../entities/helpers/DOMHelper");
 
 
 const MiniMapView = function() {
-
-
+  domHelper = new DOMHelper();
 }
 
 MiniMapView.prototype.createMiniMap = function(flightHotelPackage) {
@@ -23,72 +22,47 @@ MiniMapView.prototype.createMiniMap = function(flightHotelPackage) {
 
 
 MiniMapView.prototype.createFaveButton = function(flightHotelPackage) {
-  const favouritesList = new FavouritesList("http://localhost:3000/favourites");
-  if(flightHotelPackage._id === undefined){
-    let faveButton = document.createElement("button");
-    faveButton.classList.add("fave-button-class");
+  const favouritesList  = new FavouritesList("http://localhost:3000/favourites");
+  let minimapFooter     = domHelper.createDivElement("div-minimap-footer");
+  let button            = document.createElement("button");
+  minimapFooter.appendChild(button);
 
-    faveButton.innerText = "Add To Favourites!"
+  if(flightHotelPackage._id === undefined)
+  {
+    button.classList.add("button-pink-bg");
+    button.innerText = "ADD TO FAVOURITES !"
 
-    faveButton.addEventListener("click", function(){
+    button.addEventListener("click", function(){
       favouritesList.post(createRequestComplete, flightHotelPackage);
     });
 
-    return faveButton;
-  } else {
-    const deleteButton = document.createElement("button");
-    // deleteButton.id = 'delete-button';
-    deleteButton.innerText = 'Delete!';
-    deleteButton.addEventListener('click', function(){
+  }
+  else
+  {
+
+    button.innerText = 'DELETE';
+    button.addEventListener('click', function(){
       favouritesList.delete(flightHotelPackage._id);
     });
-    return deleteButton;
   }
 
-  // let faveButton = document.createElement("button")
-  // faveButton.classList.add("fave-button-class");
-  //
-  // faveButton.innerText = "Add To Favourites!"
-  //
-  // faveButton.addEventListener("click", function(){
-  //   const favouritesList = new FavouritesList("http://localhost:3000/favourites");
-  //   favouritesList.post(createRequestComplete, flightHotelPackage);
-  // })
-  //
-  // return faveButton;
+  return minimapFooter;
 }
 
 const createRequestComplete = function(newFavourite){
   console.log("New Favourite: " + newFavourite);
-
 }
 
-MiniMapView.prototype.createPackagePrice = function(flightHotelPackage) {
-  let packagePriceDiv = document.createElement("div")
-  packagePriceDiv.classList.add("package-price-class");
-
-  let packagePriceSpan = document.createElement("span");
-
-  packagePriceSpan.innerText  = "\n PACKAGE PRICE: £" + flightHotelPackage.packagePrice.toFixed(2);
-
-  packagePriceDiv.appendChild(packagePriceSpan);
-
-
-
-  return packagePriceDiv;
-}
 
 MiniMapView.prototype.createMiniMapView = function(flightHotelPackage) {
   let miniMapView = document.createElement("div")
-  miniMapView.classList.add("mini-map-view-class")
+  miniMapView.classList.add("section-mini-map")
 
-  let miniMapDiv      = this.createMiniMap(flightHotelPackage)
-  let faveActionButton      = this.createFaveButton(flightHotelPackage)
-  let packagePriceDiv = this.createPackagePrice(flightHotelPackage)
+  let miniMapDiv        = this.createMiniMap(flightHotelPackage)
+  let faveActionButton  = this.createFaveButton(flightHotelPackage)
 
   miniMapView.appendChild(miniMapDiv)
   miniMapView.appendChild(faveActionButton)
-  miniMapView.appendChild(packagePriceDiv)
 
   return miniMapView;
 }

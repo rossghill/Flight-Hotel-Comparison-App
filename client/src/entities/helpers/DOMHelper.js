@@ -82,5 +82,78 @@ DOMHelper.prototype.innerText = function(elementId, text){
 }
 
 
+DOMHelper.prototype.createImageElement = function(imageName, className){
+  let image = document.createElement("img");
+  image.src = `./images/${imageName}`;
+
+  if(className != null && className != undefined){
+    image.className = className;
+  }
+
+  return image;
+}
+
+DOMHelper.prototype.createImageElementWithSrc = function(createImageElementWithSrc, className){
+  let image = document.createElement("img");
+  image.src = createImageElementWithSrc;
+
+  if(className != null && className != undefined){
+    image.className = className;
+  }
+
+  return image;
+}
+
+
+DOMHelper.prototype.createDivElement = function(className){
+  let div = document.createElement("div");
+
+  if(className != null && className != undefined){
+    div.className = className;
+  }
+  return div;
+}
+
+DOMHelper.prototype.createButtonElement = function(className, label){
+  let button = document.createElement("button");
+
+  if(className != null && className != undefined){
+    button.className = className;
+  }
+
+  if(label != null && label != undefined){
+    button.innerText = label;
+  }
+
+  return button;
+}
+
+DOMHelper.prototype.createSpan = function(className, text){
+  let span = document.createElement("span");
+
+  if(className != null && className != undefined){
+    span.className = className;
+  }
+
+  if(text != null && text != undefined){
+    span.innerText = text;
+  }
+
+  return span;
+}
+
+DOMHelper.prototype.createParagraphe = function(className, text){
+  let p = document.createElement("p");
+
+  if(className != null && className != undefined){
+    p.className = className;
+  }
+
+  if(text != null && text != undefined){
+    p.innerText = text;
+  }
+
+  return p;
+}
 
 module.exports = DOMHelper;

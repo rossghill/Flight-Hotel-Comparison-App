@@ -1,5 +1,6 @@
 const FavouritesList = require('./../src/requests/favouritesList');
 const FavouritesListView = require('./../src/views/favouritesListView');
+const PackageView = require('./../src/views/packageView');
 
 const Modal = function(){
 }
@@ -14,31 +15,25 @@ const close = document.querySelector('.close')
 
 const favouritesList = new FavouritesList("http://localhost:3000/favourites");
 
+  favouritesButton.addEventListener('click', function(){
+    modal.style.display = 'block';
+    favouritesList.get(this.getFavouritesListRequestComplete);
+  }.bind(this));
 
-favouritesButton.addEventListener('click', function(){
-  modal.style.display = 'block';
-  favouritesList.get(getFavouritesListRequestComplete)
-});
+  close.addEventListener('click', function(){
+    modal.style.display = 'none';
+  });
 
-const getFavouritesListRequestComplete = function(allFavourites){
-  const favourites = new FavouritesListView();
-  favourites.createFavouritesView(allFavourites);
+  document.addEventListener('click', function(){
+    if(event.target === modal){
+      modal.style.display = 'none';
+    }
+  });
 }
 
-// deleteButton.addEventListener('click', function(){
-//   console.log("DELEEEEEEETE!!!");
-// })
-
-
-close.addEventListener('click', function(){
-  modal.style.display = 'none';
-});
-
-document.addEventListener('click', function(){
-  if(event.target === modal){
-    modal.style.display = 'none';
-  }
-});
+Modal.prototype.getFavouritesListRequestComplete = function(allFavourites){
+  const favourites = new FavouritesListView();
+  favourites.createFavouritesView(allFavourites);
 }
 
 
@@ -47,12 +42,12 @@ Modal.prototype.createLoadingModal = function(){
 const loadingModal = document.getElementById('modal-id2');
 const goButton = document.getElementById('button-get-flight');
 
-goButton.addEventListener('click', function(callback){
-  loadingModal.style.display = 'block';
-  setTimeout(function(){
-    loadingModal.style.display = 'none';
-  }, 5000);
-});
+// goButton.addEventListener('click', function(callback){
+//   loadingModal.style.display = 'block';
+//   setTimeout(function(){
+//     loadingModal.style.display = 'none';
+//   }, 5000);
+// });
 }
 
 
