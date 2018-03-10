@@ -4,9 +4,9 @@
     box-sizing: border-box;
 }
 
-/* div {
+div {
   border: 1px solid black;
-} */
+}
 
 html {
     background-color: #fff;
@@ -30,6 +30,12 @@ ul {
 .flex-row {
   display: flex;
   flex-direction: row;
+}
+
+.flex-row-flex-start {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
 }
 
 .flex-row-flex-end {
@@ -297,6 +303,8 @@ select option {
   padding: 20px;
   height: 300px;
   border: 1px solid #3498db;
+  display: flex;
+  justify-content: space-between;
 }
 
 

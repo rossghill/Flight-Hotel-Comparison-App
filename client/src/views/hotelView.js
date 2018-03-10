@@ -176,17 +176,20 @@ HotelView.prototype.createHotelFooter = function(hotelEntity){
   let priceSpan        = document.createElement("span");
   priceSpan.innerText  = "£ " + hotelEntity.hotelPrice.toFixed(2);
   priceDiv.appendChild(priceSpan);
-  mainDiv.appendChild(priceDiv);
+
 
 
   let divHotelAmenities   = domHelper.createDivElement();
-  mainDiv.appendChild(divHotelAmenities);
+
   hotelEntity.amenities.forEach(function(amenity){
     let amenityImage = domHelper.createImageElementWithSrc("./images/amenities/"+amenity+".png", "image-amenity");
     divHotelAmenities.appendChild(amenityImage);
   });
 
-
+  let divPriceAndAmeneties = domHelper.createDivElement("flex-row-flex-start");
+  divPriceAndAmeneties.appendChild(priceDiv);
+  divPriceAndAmeneties.appendChild(divHotelAmenities);
+  mainDiv.appendChild(divPriceAndAmeneties);
 
   let packagePriceDiv = document.createElement("div")
   packagePriceDiv.classList.add("div-package-price");

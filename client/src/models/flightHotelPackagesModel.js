@@ -48,7 +48,7 @@ FlightHotelPackagesModel.prototype.filterTravelPackages = function(filters){
       if(! rating.checked)
       {
         travelPackageFiltered = travelPackageFiltered.filter(function(travelPackage){
-          return travelPackage.hotel.starRating !== rating.value;
+          return parseInt(travelPackage.hotel.starRating) !== parseInt(rating.value);
         });
       }
     });
