@@ -1,4 +1,5 @@
 const MapWrapper = require('./../../build/map_wrapper');
+const HotelView  = require('./hotelView');
 
 const MapView   = function(container, centerLat, centerLng, zoomLevel) {
   let coords    = {lat:centerLat, lng:centerLng};
@@ -6,7 +7,7 @@ const MapView   = function(container, centerLat, centerLng, zoomLevel) {
 }
 
 MapView.prototype.populateMapWithHotels = function(travelPackages){
- this.removeAllMarkers();
+ this.map.removeAllMarker();
  travelPackages.forEach(function(travelPackage)
  {
     let centerLat = travelPackage.hotel.latitude;
@@ -19,22 +20,17 @@ MapView.prototype.populateMapWithHotels = function(travelPackages){
 
 MapView.prototype.populateMapWithHotelsInfoBoxes = function(travelPackages){
 
- this.removeAllMarkers();
+ this.map.removeAllMarker();
 
  travelPackages.forEach(function(travelPackage)
  {
     let centerLat = travelPackage.hotel.latitude;
     let centerLng = travelPackage.hotel.longitude;
     let coords    = {lat:centerLat, lng:centerLng};
-    this.map.addMarkerWithInfoWindow(travelPackage);
+    this.map.addMarkerWithInfoWindow(travelPackage.hotel.latitude,
+                                     travelPackage.hotel.longitude,
+                                     new HotelView().createHotelView(travelPackage.hotel));
 
   }.bind(this));
 }
-
-
-MapView.prototype.removeAllMarkers = function(){
-  this.map.removeAllMarker();
-}
-
-
 module.exports = MapView;
