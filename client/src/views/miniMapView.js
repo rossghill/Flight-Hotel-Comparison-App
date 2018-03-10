@@ -1,7 +1,6 @@
-const FavouritesList  = require('./../requests/favouritesList');
 const MapView         = require('./mapView');
 const DOMHelper       = require("./../entities/helpers/DOMHelper");
-
+const FavouritesList  = require("./../requests/favouritesList");
 
 const MiniMapView = function() {
   domHelper = new DOMHelper();
@@ -22,27 +21,25 @@ MiniMapView.prototype.createMiniMap = function(flightHotelPackage) {
 
 
 MiniMapView.prototype.createFaveButton = function(flightHotelPackage) {
-  const favouritesList  = new FavouritesList("http://localhost:3000/favourites");
   let minimapFooter     = domHelper.createDivElement("div-minimap-footer");
   let button            = document.createElement("button");
   minimapFooter.appendChild(button);
 
+  favouritesList = new FavouritesList();
   if(flightHotelPackage._id === undefined)
   {
     button.classList.add("button-pink-bg");
     button.innerText = "ADD TO FAVOURITES !"
-
     button.addEventListener("click", function(){
       favouritesList.post(createRequestComplete, flightHotelPackage);
     });
-
   }
   else
   {
-
+    button.classList.add("button-grey");
     button.innerText = 'DELETE';
     button.addEventListener('click', function(){
-      favouritesList.delete(flightHotelPackage._id);
+      favouritesList.delete(flightHotelPackage._id, createFavouritesView);
     });
   }
 

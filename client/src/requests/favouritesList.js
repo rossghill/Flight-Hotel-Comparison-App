@@ -1,8 +1,7 @@
 //when using FavouritesList, pass in http://localhost:3000/favourites as the argument.
-const FavouritesListView = require('./../views/favouritesListView');
-const PackageView = require('./../views/packageView');
-const FavouritesList = function(url){
-  this.url = url;
+//const FavouritesListView = require('./../views/favouritesListView');
+const FavouritesList     = function(){
+  this.url = "http://localhost:3000/favourites";
 }
 
 //GET:
@@ -22,7 +21,6 @@ FavouritesList.prototype.get = function(callback){
 
 //POST:
 FavouritesList.prototype.post = function(callback, payload){
-  console.log("hiya");
   const request = new XMLHttpRequest();
   request.open('POST', this.url)
   request.setRequestHeader("Content-Type", "application/json");
@@ -47,7 +45,7 @@ const createRequestComplete = function(newFavourite){
 
 
 //DELETE:
-FavouritesList.prototype.delete = function(id){
+FavouritesList.prototype.delete = function(id, callback){
   const request = new XMLHttpRequest();
   request.open('DELETE', this.url + "/" + id);
   request.addEventListener('load', function(){
@@ -55,11 +53,7 @@ FavouritesList.prototype.delete = function(id){
       return;
     }
 
-    const favouritesList = new FavouritesList("http://localhost:3000/favourites");
-    favouritesList.get(function(allFavourites){
-      const favourites = new FavouritesListView();
-      favourites.createFavouritesView(allFavourites);
-    });
+    callback();
 
   });
   request.send();

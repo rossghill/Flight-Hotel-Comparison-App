@@ -18,6 +18,11 @@
     <script src="https://maps.googleapis.com/maps/api/js"></script>
   </head>
   <body>
+    <div class="fullscreen-bg" id="video-presentation">
+      <video loop muted autoplay class="fullscreen-bg__video">
+          <source src="video/beach.mp4" type="video/mp4">
+      </video>
+    </div>
     <div id='container-main'>
 
       <!-- <div>
@@ -40,54 +45,55 @@
 
                     <!-- SEARCH PARAMS -->
                     <div id='div-origin'>
-                      <label for="origin">From:</label>
+                      <label for="origin">From</label>
                       <div class="flex-row-flex-end">
                         <input type="text" id="search-origin" class="input-100">
-                        <select id="origin" class="select-300"></select>
+                        <select id="origin" class="select-220" size="5"></select>
                       </div>
 
                     </div>
 
                     <div id="div-destination">
-                      <label for="destination">To:</label>
+                      <label for="destination">To</label>
                       <div class="flex-row-flex-end">
                         <input type="text" id="search-destination" class="input-100">
-                        <select id="destination" class="select-300"></select>
+                        <select id="destination" class="select-220" size="5"></select>
                       </div>
 
                     </div>
 
                     <div id="div-departureDate">
                       <div class="flex-column">
-                        <label for="departureDate">Depart:</label>
+                        <label for="departureDate">Depart</label>
                         <input type="date" id="departureDate">
                       </div>
                     </div>
 
                     <div id="div-returnDate">
                       <div class="flex-column">
-                        <label for="Return Date">Return:</label>
+                        <label for="Return Date">Return</label>
                         <input type="date" id="returnDate">
                       </div>
                     </div>
 
                     <div id="div-adults">
                       <div class="flex-column">
-                        <label for="adults">Adults:</label>
+                        <label for="adults">Adults</label>
                         <input type="number" id="adults" value="1" min="0" class="input-80">
                       </div>
                     </div>
 
                     <div id="div-children">
                       <div class="flex-column">
-                        <label for="children">Children:</label>
+                        <label for="children">Children</label>
                         <input type="number" id="children" value="0" min="0" class="input-80">
                       </div>
                     </div>
 
                     <!-- GO! BUTTON -->
-                    <button id="button-get-flight">GO!</button>
-
+                    <div>
+                      <button id="button-get-flight" class="button-pink-bg">GO !</button>
+                    </div>
 
                 </div>
 
@@ -137,7 +143,7 @@
             <span class="close">&times;</span>
             <h2>Saved Packages</h2>
           </div>
-          <div class="modal-body"></div>
+          <div class="modal-body" id="modal-body"></div>
           <!-- <div class="modal-footer"></div> -->
         </div>
       </section>

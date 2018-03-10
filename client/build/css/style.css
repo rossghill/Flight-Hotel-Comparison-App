@@ -4,9 +4,9 @@
     box-sizing: border-box;
 }
 
-div {
+/* div {
   border: 1px solid black;
-}
+} */
 
 html {
     background-color: #fff;
@@ -165,21 +165,13 @@ ul {
   font-weight: bold;
 }
 
-#container-search-bar {
+.container-search-bar {
   padding: 10px 0px 10px 10px;
   display: flex;
   align-items: flex-end;
   flex-direction: row;
   flex-wrap: wrap;
   width: 100%:
-}
-
-#button-get-flight {
-  height: 40px;
-  width: 50px;
-  background-color: #4d94ff;
-  color: white;
-  font-weight: bold;
 }
 
 #container-result-bar {
@@ -262,6 +254,10 @@ select option {
   width: 150px;
 }
 
+.select-220 {
+  width: 220px;
+}
+
 .select-300 {
   width: 300px;
 }
@@ -269,7 +265,6 @@ select option {
 #destination,
 #origin {
   font-size: 60%;
-
 }
 
 /* Styling layout proportion */
@@ -315,6 +310,7 @@ input[type=text], input[type=number], input[type=date] {
   font-size: 80%;
   height: 40px;
   font-weight: 200px;
+  border-radius: 5px;
 }
 
 .input-100 {
@@ -359,7 +355,7 @@ button {
   font-weight: 300;
   padding: 5px 10px;
   font-family: Lato;
-  height: 36px;
+  height: 40px;
   font-size: 80%;
   border-radius: 5px;
 }
@@ -410,4 +406,28 @@ button {
   border: 1px solid #f368e0;
   background-color: #fff;
   color: #f368e0;
+}
+
+.button-orange {
+  border: 1px solid #e67e22;
+  background-color: #fff;
+  color: #e67e22;
+}
+
+.button-orange:hover {
+  border: 1px solid #e67e22;
+  background-color: #e67e22;
+  color: #fff;
+}
+
+.button-grey {
+  border: 1px solid #7f8c8d;
+  background-color: #fff;
+  color: #7f8c8d;
+}
+
+.button-grey:hover {
+  border: 1px solid #7f8c8d;
+  background-color: #7f8c8d;
+  color: #fff;
 }

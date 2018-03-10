@@ -27,14 +27,7 @@ DOMHelper.prototype.addEventListenerOnChangeSelectOriginOrDestination = function
 
 DOMHelper.prototype.setSelectSize = function(selectId, size){
   const select  = document.getElementById(selectId);
-  if(size == 1)
-  {
-    select.style.position = "relative";
-  }
-  else{
-    select.style.position = "relative";
-  }
-  select.size   = size;
+  select.size   = 5;
 }
 
 
@@ -154,6 +147,22 @@ DOMHelper.prototype.createParagraphe = function(className, text){
   }
 
   return p;
+}
+
+DOMHelper.prototype.hidden = function(id){
+  document.getElementById(id).style.visibility = "hidden";
+}
+
+DOMHelper.prototype.visible = function(id){
+  document.getElementById(id).style.visibility = "visible";
+}
+
+DOMHelper.prototype.setClassName = function(elementId, className){
+  document.getElementById(elementId).className = className;
+}
+
+DOMHelper.prototype.removeElementById = function(elementId){
+  document.getElementById(elementId).parentNode.removeChild(document.getElementById(elementId));
 }
 
 module.exports = DOMHelper;
