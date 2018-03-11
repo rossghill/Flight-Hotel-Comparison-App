@@ -200,7 +200,9 @@ const mimicData = function(){
 const launchHomapageVideo = function(){
   domHelper.hidden("container-main");
   domHelper.setClassName("container-search-bar", "searchBarHomePage");
-  domHelper.displayWelcomeMessage();
+
+  setTimeout(domHelper.displayWelcomeMessage.bind(domHelper), 3000);
+
 }
 
 const configurePageLayoutForResults = function(){

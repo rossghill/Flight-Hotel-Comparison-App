@@ -195,8 +195,8 @@ DOMHelper.prototype.displayWelcomeMessage = function(){
   let wordContainer = document.getElementById("welcome-word-container");
   wordContainer.className = "display-word-container";
 
-  let message = "This is not a new place. This is not a new travel. ";
-  message    += "This is YOUR NEXT EXPERIENCE.";
+  let message = "This won't be a new place. This won't be a new travel. ";
+  message    += "This will be YOUR NEXT EXPERIENCE.";
   arrayOfWords = message.split(" ");
 
   this.counter = 0;
