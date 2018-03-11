@@ -18,13 +18,9 @@ PackageView.prototype.createPackageView = function(flightHotelPackage, displayMi
   let miniMapViewDiv = document.createElement('div');
   miniMapViewDiv.className = "mini-map-view-class";
 
-  if(displayMinimap)
-  {
-    const miniMapView = new MiniMapView();
-    miniMapViewDiv    = miniMapView.createMiniMapView(flightHotelPackage, travelPackageViewModel);
-  }
-
-
+  const miniMapView = new MiniMapView();
+  miniMapViewDiv    = miniMapView.createMiniMapView(flightHotelPackage, displayMinimap, travelPackageViewModel);
+  
   let packageViewDiv = document.createElement('div');
   packageViewDiv.classList.add('flex-row');
   packageViewDiv.classList.add('div-package');

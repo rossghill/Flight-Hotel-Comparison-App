@@ -52,11 +52,16 @@ const createRequestComplete = function(newFavourite){
 }
 
 
-MiniMapView.prototype.createMiniMapView = function(flightHotelPackage, travelPackageViewModel) {
+MiniMapView.prototype.createMiniMapView = function(flightHotelPackage, displayMiniMap, travelPackageViewModel) {
   let miniMapView = document.createElement("div")
   miniMapView.classList.add("section-mini-map")
 
-  let miniMapDiv        = this.createMiniMap(flightHotelPackage)
+  let miniMapDiv = domHelper.createDivElement();
+  if(displayMiniMap)
+  {
+    miniMapDiv = this.createMiniMap(flightHotelPackage)
+  }
+
   let faveActionButton  = this.createFaveButton(flightHotelPackage, travelPackageViewModel)
 
   miniMapView.appendChild(miniMapDiv)
