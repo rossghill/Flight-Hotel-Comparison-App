@@ -8,7 +8,7 @@ const MapView         = require ("./views/mapView");
 const ExtraFiltersView          = require("./views/ExtraFiltersView");
 const FlightHotelPackagesModel  = require("./models/flightHotelPackagesModel");
 const Modal                     = require ("./../build/modal");
-const TravelPackageViewModel       = require ("./../src/ViewModels/travelPackageViewModel");
+const TravelPackageViewModel    = require ("./../src/ViewModels/travelPackageViewModel");
 
 let travelPackageList         = [];
 let travelPackageListFiltered = [];
@@ -26,7 +26,7 @@ const initializeFlightR = function(){
   domHelper.changeDisplay("div-packages-map", false);
 
   document.getElementById("button-show-all").addEventListener("click", showAllResult);
-  //favouritesList and loading modal
+  // favouritesList and loading modal
   // const pageModals = new Modal();
   // pageModals.createFavouritesModal();
   // pageModals.createLoadingModal();
