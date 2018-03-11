@@ -17,6 +17,7 @@
 
 /* Modal Content */
 .modal-content {
+  margin-top: 5%;
   border-top-left-radius: 15px;
   border-bottom-left-radius: 15px;
   position: absolute;
