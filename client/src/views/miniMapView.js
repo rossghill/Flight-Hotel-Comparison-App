@@ -31,7 +31,8 @@ MiniMapView.prototype.createFaveButton = function(flightHotelPackage) {
     button.classList.add("button-pink-bg");
     button.innerText = "ADD TO FAVOURITES !"
     button.addEventListener("click", function(){
-      favouritesList.post(createRequestComplete);
+      //favouritesList.post(createRequestComplete);
+      favouritesList.saveFavourite(createRequestComplete, flightHotelPackage);
     });
   }
   else

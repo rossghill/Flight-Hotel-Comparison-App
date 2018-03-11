@@ -165,4 +165,25 @@ DOMHelper.prototype.removeElementById = function(elementId){
   document.getElementById(elementId).parentNode.removeChild(document.getElementById(elementId));
 }
 
+
+
+DOMHelper.prototype.createModalWindowForFavourites = function(){
+  let modalWindow = document.getElementById("favourites-modal");
+  modalWindow.style.display = "block";
+
+  let closeButton           = document.getElementById('button-close-modal-window');
+  closeButton.addEventListener('click', function(){
+    modalWindow.style.display = 'none';
+  });
+
+  document.addEventListener('click', function(){
+    if(event.target === modalWindow){
+      modalWindow.style.display = 'none';
+    }
+  });
+}
+
+
+
+
 module.exports = DOMHelper;

@@ -9,3 +9,6 @@ ClientRequest.prototype.sendRequestGetFlight = function(callBack) {
   request.addEventListener("load", callBack);
   request.send();
 }
+
+
+module.exports = ClientRequest;

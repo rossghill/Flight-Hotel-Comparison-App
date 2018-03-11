@@ -8,6 +8,7 @@ const MapView         = require ("./views/mapView");
 const ExtraFiltersView          = require("./views/ExtraFiltersView");
 const FlightHotelPackagesModel  = require("./models/flightHotelPackagesModel");
 const Modal                     = require ("./../build/modal");
+const FavouritesViewModel       = require ("./../src/ViewModels/favouritesViewModel");
 
 let travelPackageList         = [];
 let travelPackageListFiltered = [];
@@ -26,9 +27,11 @@ const initializeFlightR = function(){
 
   document.getElementById("button-show-all").addEventListener("click", showAllResult);
   //favouritesList and loading modal
-  const pageModals = new Modal();
-  pageModals.createFavouritesModal();
-  pageModals.createLoadingModal();
+  // const pageModals = new Modal();
+  // pageModals.createFavouritesModal();
+  // pageModals.createLoadingModal();
+
+  let favouritesViewModel = new FavouritesViewModel();
 
   launchHomapageVideo();
 }
@@ -51,23 +54,24 @@ let children        = document.getElementById('children').value;
   url += `&adults=${adults}`;
   url += `&children=${children}`;
 
-  request.open("GET", url);
-  request.addEventListener("load", populatePackages);
-  request.send();
+  // request.open("GET", url);
+  // request.addEventListener("load", populatePackages);
+  // request.send();
 
   if(isFirstSearch)
   {
-    configurePageLayoutForResults();
     isFirstSearch = false;
   }
 
-  //populatePackages();
+  configurePageLayoutForResults();
+  populatePackages();
 }
 
 const populatePackages = function()
 {
-  flightHotelPackagesEntity = JSON.parse(this.responseText);
-  //flightHotelPackagesEntity = JSON.parse(mimicData());
+  //flightHotelPackagesEntity = JSON.parse(this.responseText);
+  flightHotelPackagesEntity = JSON.parse(mimicData());
+
   if(flightHotelPackagesEntity.flightHotelPackages)
   {
       packagesMapView = new MapView(    document.getElementById("div-packages-map"),
