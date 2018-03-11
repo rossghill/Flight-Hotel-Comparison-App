@@ -2,32 +2,32 @@ const FavouritesRequest = require("./../requests/favouritesList");
 const DOMHelper         = require("./../entities/helpers/DOMHelper");
 const FavouritesListView = require('./../views/favouritesListView');
 
-const FavouritesViewModel = function(){
+const TravelPackageViewModel = function(){
   this.favouritesRequest = new FavouritesRequest();
   this.domHelper         = new DOMHelper();
   this.initialiseGetFavouritesAction();
 }
 
-FavouritesViewModel.prototype.initialiseGetFavouritesAction = function(){
+TravelPackageViewModel.prototype.initialiseGetFavouritesAction = function(){
   let buttonGetAllFavourites = document.getElementById("get-favourites-button");
   buttonGetAllFavourites.addEventListener("click", this.sendRequestGetAllFavourites.bind(this));
 }
 
-FavouritesViewModel.prototype.sendRequestGetAllFavourites = function(){
+TravelPackageViewModel.prototype.sendRequestGetAllFavourites = function(){
   this.favouritesRequest.getAllFavourites(this.displayAllFavourites.bind(this));
 }
 
-FavouritesViewModel.prototype.displayAllFavourites = function(favourites){
+TravelPackageViewModel.prototype.displayAllFavourites = function(favourites){
 
   const favouritesListView = new FavouritesListView();
   favouritesListView.createFavouritesView(favourites, this);
   domHelper.createModalWindowForFavourites();
 }
 
-FavouritesViewModel.prototype.refreshFavourites = function(){
+TravelPackageViewModel.prototype.refreshFavourites = function(){
   this.sendRequestGetAllFavourites();
 }
 
 
 
-module.exports = FavouritesViewModel;
+module.exports = TravelPackageViewModel;

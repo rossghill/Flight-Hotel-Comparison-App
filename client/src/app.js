@@ -8,7 +8,7 @@ const MapView         = require ("./views/mapView");
 const ExtraFiltersView          = require("./views/ExtraFiltersView");
 const FlightHotelPackagesModel  = require("./models/flightHotelPackagesModel");
 const Modal                     = require ("./../build/modal");
-const FavouritesViewModel       = require ("./../src/ViewModels/favouritesViewModel");
+const TravelPackageViewModel       = require ("./../src/ViewModels/travelPackageViewModel");
 
 let travelPackageList         = [];
 let travelPackageListFiltered = [];
@@ -31,7 +31,7 @@ const initializeFlightR = function(){
   // pageModals.createFavouritesModal();
   // pageModals.createLoadingModal();
 
-  let favouritesViewModel = new FavouritesViewModel();
+  let travelPackageViewModel = new TravelPackageViewModel();
 
   launchHomapageVideo();
 }

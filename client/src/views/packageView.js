@@ -7,7 +7,7 @@ const PackageView = function(){
 }
 
 
-PackageView.prototype.createPackageView = function(flightHotelPackage, displayMinimap, favouritesListViewModel){
+PackageView.prototype.createPackageView = function(flightHotelPackage, displayMinimap, travelPackageViewModel){
   const flightView = new FlightView();
   const flightViewDiv = flightView.createFlightView(flightHotelPackage.flightPackage);
 
@@ -21,7 +21,7 @@ PackageView.prototype.createPackageView = function(flightHotelPackage, displayMi
   if(displayMinimap)
   {
     const miniMapView = new MiniMapView();
-    miniMapViewDiv    = miniMapView.createMiniMapView(flightHotelPackage, favouritesListViewModel);
+    miniMapViewDiv    = miniMapView.createMiniMapView(flightHotelPackage, travelPackageViewModel);
   }
 
 
