@@ -25,7 +25,7 @@ FavouritesViewModel.prototype.displayAllFavourites = function(favourites){
 }
 
 FavouritesViewModel.prototype.refreshFavourites = function(){
-  // this.sendRequestGetAllFavourites();
+  this.sendRequestGetAllFavourites();
 }
 
 

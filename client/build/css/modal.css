@@ -21,7 +21,6 @@
   border-bottom-left-radius: 15px;
   position: absolute;
   right: 0;
-  margin: 10px;
   height: 80%;
   background-color: #fefefe;
   width: 90%;
@@ -54,7 +53,7 @@
 }
 
 .modal-body {
-  height: 700px;
+  height: 90%;
   overflow: scroll;
   padding: 20px;
 }

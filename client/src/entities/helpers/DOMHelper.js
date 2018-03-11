@@ -179,8 +179,7 @@ DOMHelper.prototype.createModalWindowForFavourites = function(){
 
   document.addEventListener('click', function(){
     console.log('click target', event.target);
-    // if(event.target === modalWindow){
-    if(event.target === modalBody){
+    if(event.target === modalWindow){
       modalWindow.style.display = 'none';
     }
   });
