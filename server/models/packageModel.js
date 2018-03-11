@@ -168,7 +168,10 @@ Package.prototype.searchForFlightHotelPackages = function(req){
   this.amadeusAPI.searchHotels(req.query.destination, req.query.departureDate, req.query.returnDate)
   this.amadeusAPI.onHotelsUpdate = function(hotels)
   {
-    if(hotels.error === undefined)
+    if(hotels.error === undefined
+      && hotels["results"] !== undefined
+      && Array.isArray(hotels["results"])
+      && hotels["results"].length > 0)
     {
       for(hotelJson of hotels["results"]){
         const hotelEntity = this.createHotelEntity(hotelJson)
@@ -247,25 +250,32 @@ Package.prototype.searchForFlightHotelPackages = function(req){
 
 Package.prototype.createFlightHotelsPackages = function(){
 
-  this.hotelEntitiesArray.forEach(function(hotel)
+  if(    Array.isArray(this.hotelEntitiesArray)
+      && this.hotelEntitiesArray.length > 0
+      && Array.isArray(this.flightPackagesArray)
+      && this.flightPackagesArray.length > 0
+    )
   {
-    let indexHotelImage       = Math.floor(Math.random() * this.hotelImagesArray.length-1);
-    let indexHotelDescription = Math.floor(Math.random() * this.hotelDescriptionArray.length-1);
-    if(indexHotelImage > 0)
+    this.hotelEntitiesArray.forEach(function(hotel)
     {
-      hotel.smallImage    = this.hotelImagesArray[indexHotelImage];
-      hotel.bigImage      = this.hotelImagesArray[indexHotelImage];
-      hotel.description   = this.hotelDescriptionArray[indexHotelDescription];
-    }
+      let indexHotelImage       = Math.floor(Math.random() * this.hotelImagesArray.length-1);
+      let indexHotelDescription = Math.floor(Math.random() * this.hotelDescriptionArray.length-1);
+      if(indexHotelImage > 0)
+      {
+        hotel.smallImage    = this.hotelImagesArray[indexHotelImage];
+        hotel.bigImage      = this.hotelImagesArray[indexHotelImage];
+        hotel.description   = this.hotelDescriptionArray[indexHotelDescription];
+      }
 
-    const flightPackage = this.flightPackagesArray[0];
-    const flightPrice   = parseFloat(flightPackage.flightPrice);
-    const hotelPrice    = parseFloat(hotel.hotelPrice);
-    const packagePrice  = flightPrice + hotelPrice;
-    const package       = this.createFlightHotelPackage(flightPackage, hotel, packagePrice)
+      const flightPackage = this.flightPackagesArray[0];
+      const flightPrice   = parseFloat(flightPackage.flightPrice);
+      const hotelPrice    = parseFloat(hotel.hotelPrice);
+      const packagePrice  = flightPrice + hotelPrice;
+      const package       = this.createFlightHotelPackage(flightPackage, hotel, packagePrice)
 
-    this.flightHotelPackagesArray.push(package);
-  }.bind(this));
+      this.flightHotelPackagesArray.push(package);
+    }.bind(this));
+  }
 
   let flightHotelPackages = new FlightHotelPackages(this.flightHotelPackagesArray, this.flightPackagesArray, this.destinationAirportLatitude, this.destinationAirportLongitude);
   this.onflightHotelPackagesArrayUpdate(flightHotelPackages);

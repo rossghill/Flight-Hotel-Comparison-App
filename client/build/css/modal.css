@@ -89,7 +89,7 @@
 
 
 /* Loading modal */
-.modal2 {
+.modal-loading-packages {
   display: none;
   position: fixed;
   z-index: 1;
@@ -106,7 +106,7 @@
   animation-duration: 0.4s
 }
 
-.modal-content2 {
+.modal-content-loading-packages {
   border-radius: 15px;
   background-color: #fefefe;
   height: 70%;

@@ -27,7 +27,7 @@ DOMHelper.prototype.addEventListenerOnChangeSelectOriginOrDestination = function
 
 DOMHelper.prototype.setSelectSize = function(selectId, size){
   const select  = document.getElementById(selectId);
-  select.size   = 5;
+  select.size   = size;
 }
 
 
@@ -178,7 +178,6 @@ DOMHelper.prototype.createModalWindowForFavourites = function(){
   });
 
   document.addEventListener('click', function(){
-    console.log('click target', event.target);
     if(event.target === modalWindow){
       modalWindow.style.display = 'none';
     }

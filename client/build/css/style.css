@@ -242,10 +242,12 @@ ul {
 
 
 select {
-  padding: 5px 5px;
+  padding: 5px 10px;
   height: 40px;
+  -webkit-appearance: menulist-button;
 }
 select option {
+  padding: 3px 5px;
   line-height: 20px;
 }
 

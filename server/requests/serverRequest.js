@@ -17,7 +17,9 @@ ServerRequest.prototype.sendRequest = function(url, callback){
       }
       else
       {
+        console.log("Server side");
         console.log(error);
+        console.log(body);
         callback(`{"error": ${error}, "statusCode": ${response.statusCode}}`);
       }
     });
