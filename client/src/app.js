@@ -27,9 +27,9 @@ const initializeFlightR = function(){
 
   document.getElementById("button-show-all").addEventListener("click", showAllResult);
   // favouritesList and loading modal
-  // const pageModals = new Modal();
+  const pageModals = new Modal();
   // pageModals.createFavouritesModal();
-  // pageModals.createLoadingModal();
+  pageModals.createLoadingModal();
 
   let travelPackageViewModel = new TravelPackageViewModel();
 

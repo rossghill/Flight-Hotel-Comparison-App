@@ -46,12 +46,12 @@ Modal.prototype.createFavouritesModal = function()
   const loadingModal = document.getElementById('modal-id2');
   const goButton = document.getElementById('button-get-flight');
 
-  // goButton.addEventListener('click', function(callback){
-  //   loadingModal.style.display = 'block';
-  //   setTimeout(function(){
-  //     loadingModal.style.display = 'none';
-  //   }, 5000);
-  // });
+  goButton.addEventListener('click', function(callback){
+    loadingModal.style.display = 'block';
+    setTimeout(function(){
+      loadingModal.style.display = 'none';
+    }, 5000);
+  });
   }
 
 
