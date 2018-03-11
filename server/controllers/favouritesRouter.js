@@ -69,7 +69,7 @@ favouritesRouter.post('/favourites', function(req, res){
         res.send();
       }
       res.status(204);
-      res.send();
+      res.send("OK DELETE");
     });
   });
 

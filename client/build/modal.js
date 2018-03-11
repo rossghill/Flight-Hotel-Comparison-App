@@ -36,6 +36,10 @@ Modal.prototype.createFavouritesModal = function()
     favourites.createFavouritesView(allFavourites);
   }
 
+  Modal.prototype.updateListOfFavourites = function(){
+    console.log("updateListOfFavourites");
+  }
+
 
   //loading animation modal:
   Modal.prototype.createLoadingModal = function(){

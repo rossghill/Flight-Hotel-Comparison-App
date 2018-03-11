@@ -31,7 +31,7 @@ MiniMapView.prototype.createFaveButton = function(flightHotelPackage) {
     button.classList.add("button-pink-bg");
     button.innerText = "ADD TO FAVOURITES !"
     button.addEventListener("click", function(){
-      favouritesList.post(createRequestComplete, flightHotelPackage);
+      favouritesList.post(createRequestComplete);
     });
   }
   else
@@ -39,7 +39,7 @@ MiniMapView.prototype.createFaveButton = function(flightHotelPackage) {
     button.classList.add("button-grey");
     button.innerText = 'DELETE';
     button.addEventListener('click', function(){
-      favouritesList.delete(flightHotelPackage._id, createFavouritesView);
+      favouritesList.delete(flightHotelPackage._id);
     });
   }
 
