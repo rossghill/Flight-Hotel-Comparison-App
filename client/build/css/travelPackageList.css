@@ -56,7 +56,6 @@
 .div-flight-price {
   width: 120px;
   padding: 5px 10px;
-  border: 1px solid #3498db;
   text-align: center;
 }
 
@@ -113,14 +112,12 @@
 .div-hotel-price {
   width: 120px;
   padding: 5px 10px;
-  border: 1px solid #3498db;
   text-align: center;
   margin-right: 50px;
 }
 
 .div-package-price {
   padding: 5px 10px;
-  border: 1px solid #f368e0;
   text-align: center;
   color: #f368e0;
 }
@@ -144,8 +141,31 @@
   justify-content: space-between;
 }
 
+/** Result bar **/
+#span-result-counter {
+  margin-left: 10px;
+}
+
+#button-show-all {
+  margin-left: 20px;
+}
+
+#label-checkbox-list-map-mode,
+#label-checkbox-display-minimap,
+#label-checkbox-mode-dev {
+  margin: 0px 5px;
+}
+
 
 /** Extra filters **/
 #select-sorting-packages {
   font-size: 80%;
+}
+
+/** Logo **/
+.logo-company {
+  border-radius: 20px;
+  background-image: url(./../images/thongs.png);
+  background-repeat: no-repeat;
+  background-size: contain;
 }

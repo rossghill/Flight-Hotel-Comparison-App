@@ -27,9 +27,8 @@
       <!-- CONTAINS IMAGE, SEARCH & RESULTS DIVS -->
       <div id='container-header'>
             <!-- COMPANY IMAGE & SLOGAN TO FLEX AS ROW -->
-            <div id='div-company'>
-              <!-- <h2>IMAGE TO GO HERE</h2> -->
-              <img id='logo' src="./images/go.jpg" alt=""></img>
+            <div id='div-company' class="logo-company">
+
             </div>
 
             <!-- SEARCH BAR & RESULTS TO FLEX AS COLUMN -->
@@ -37,7 +36,6 @@
 
                 <!-- MAIN SEARCH BAR & GO BUTTON -->
                 <div id='container-search-bar'>
-
                     <!-- SEARCH PARAMS -->
                     <div id='div-origin'>
                       <label for="origin">From</label>
@@ -86,39 +84,47 @@
                     </div>
 
                     <!-- GO! BUTTON -->
-                    <div>
+                    <div class="flex-row-flex-center">
                       <button id="button-get-flight" class="button-pink-bg">GO !</button>
                     </div>
 
                 </div>
 
                 <!-- RESULTS BAR -->
-                <div style="display: flex; justify-content: space-between; align-items: center">
-
-                    <div>
+                <div id="container-result-bar">
+                    <div class="flex-row-flex-center">
+                      <img src="./images/palmier.png" class="image-40"/>
                       <span id="span-result-counter"></span>
+                      <button id="button-show-all" class="button-blue">Show all</button>
                     </div>
-
-                    <div>
-                      <button id="button-show-all">Show all</button>
-                    </div>
-
-                    <div style="display: flex; align-items: center"
-                      <span>Display mode List</span>
-                        <label class="switch">
+                    <div class="flex-row-flex-center">
+                      <span>Display mode : List</span>
+                        <label class="switch" id="label-checkbox-list-map-mode">
                           <input type="checkbox" id="checkbox-list-map-mode">
                           <span class="checkbox-slider round"></span>
                         </label>
                       <span>Map</span>
-                      <span>Display  |  MiniMap No</span>
-                        <label class="switch">
+                    </div>
+                    <div class="flex-row-flex-center">
+                      <span>Display MiniMap : No</span>
+                        <label class="switch" id="label-checkbox-display-minimap">
                           <input type="checkbox" id="checkbox-display-minimap" checked>
                           <span class="checkbox-slider round"></span>
                         </label>
                       <span>Yes</span>
                     </div>
+
+                    <div class="flex-row-flex-center">
+                      <span>Mode Dev. : No</span>
+                        <label class="switch" id="label-checkbox-mode-dev">
+                          <input type="checkbox" id="checkbox-mode-dev">
+                          <span class="checkbox-slider round"></span>
+                        </label>
+                      <span>Yes</span>
+                    </div>
+
                     <div>
-                        <button id='get-favourites-button'>YOUR FAVOURITES</button>
+                        <button id='get-favourites-button' class="button-pink">YOUR FAVOURITES</button>
                     </div>
                 </div>
             </div>

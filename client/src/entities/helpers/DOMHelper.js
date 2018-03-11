@@ -184,7 +184,9 @@ DOMHelper.prototype.createModalWindowForFavourites = function(){
   });
 }
 
-
+DOMHelper.prototype.isCheckBoxChecked = function(checkBoxId){
+  return document.getElementById(checkBoxId).checked;
+}
 
 
 module.exports = DOMHelper;

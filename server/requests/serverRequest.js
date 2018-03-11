@@ -20,7 +20,7 @@ ServerRequest.prototype.sendRequest = function(url, callback){
         console.log("Server side");
         console.log(error);
         console.log(body);
-        callback(`{"error": ${error}, "statusCode": ${response.statusCode}}`);
+        callback(`{"error": ${error}}`);
       }
     });
 }

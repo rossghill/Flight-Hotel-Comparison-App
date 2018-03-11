@@ -21,6 +21,7 @@ html {
 
 body {
   /* background-image: url("https://image.ibb.co/k9RB7n/color19.png"); */
+
 }
 
 ul {
@@ -54,6 +55,13 @@ ul {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+}
+
+.flex-row-flex-between-flex-center {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .flex-column-flex-space-between {
@@ -141,22 +149,6 @@ ul {
   flex-direction: row;
 }
 
-#container-search-result-bars {
-  margin-left: 10px;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  /* background-image: url("http://bit.ly/2FGlz5B"); */
-  background-size: 100%;
-}
-
-#get-favourites-button {
-  padding: 10px 10px 10px 10px;
-  color: white;
-  background-color: #4d94ff;
-  font-weight: bold;
-}
-
 .container-search-bar {
   padding: 10px 0px 10px 10px;
   display: flex;
@@ -167,9 +159,11 @@ ul {
 }
 
 #container-result-bar {
+  margin-top: 50px;
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: space-between;
   width: 100%;
 }
 
@@ -265,6 +259,20 @@ select option {
 #container-search-result-bars,
 #container-packages {
   width: 85%;
+}
+
+#container-search-result-bars {
+  margin-left: 10px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  /* background-image: url("http://bit.ly/2FGlz5B"); */
+  /* background-size: 100%; */
+  /* justify-content: space-between; */
+}
+
+#container-search-result-bars {
+  margin-right: 20px;
 }
 
 #div-packages-map,
@@ -428,4 +436,10 @@ button {
   border: 1px solid #7f8c8d;
   background-color: #7f8c8d;
   color: #fff;
+}
+
+
+/** Images **/
+.image-40 {
+    width: 40px;
 }

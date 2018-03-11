@@ -18,7 +18,7 @@ let extraFiltersView          = null;
 let isFirstSearch             = true;
 let modalWindow               = null;
 let travelPackageViewModel    = null;
-let modeDevelopment           = true;
+let modeDevelopment           = false;
 
 const initializeFlightR = function()
 {
@@ -34,10 +34,13 @@ const initializeFlightR = function()
   domHelper.changeDisplay("div-packages-map", false);
   document.getElementById("button-show-all").addEventListener("click", showAllResult);
 
+
   launchHomapageVideo();
 }
 
 const getPackages = function(){
+
+  modeDevelopment = domHelper.isCheckBoxChecked("checkbox-mode-dev");
 
   modalWindow.openLoadingModal();
 
@@ -140,7 +143,7 @@ const populateExtraFilters = function()
 }
 
 const updateResultCounter= function(){
-  domHelper.innerText("span-result-counter", `${travelPackageListFiltered.length} out of ${travelPackageList.length}`);
+  domHelper.innerText("span-result-counter", `${travelPackageListFiltered.length} results out of ${travelPackageList.length}`);
 }
 
 const getAirportCities = function(){
