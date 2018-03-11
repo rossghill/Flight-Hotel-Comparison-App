@@ -1,6 +1,7 @@
 const DOMHelper = function(){
-
-
+  this.interval     = null;
+  this.counter      = 0;
+  this.arrayOfWords = [];
 }
 
 
@@ -186,6 +187,44 @@ DOMHelper.prototype.createModalWindowForFavourites = function(){
 
 DOMHelper.prototype.isCheckBoxChecked = function(checkBoxId){
   return document.getElementById(checkBoxId).checked;
+}
+
+DOMHelper.prototype.displayWelcomeMessage = function(){
+  document.body.className = "welcome-message-main-container";
+
+  let wordContainer = document.getElementById("welcome-word-container");
+  wordContainer.className = "display-word-container";
+
+  let message = "This is not a new place. This is not a new travel. ";
+  message    += "This is YOUR NEXT EXPERIENCE.";
+  arrayOfWords = message.split(" ");
+
+  this.counter = 0;
+  this.interval = setInterval(this.displayWelcomeWord.bind(this), 900);
+}
+
+DOMHelper.prototype.displayWelcomeWord = function(){
+
+  let wordBox       = document.getElementById("word-span");
+  wordBox.innerHTML = arrayOfWords[this.counter];
+
+  if((arrayOfWords.length-1) === this.counter)
+  {
+    this.interval     = null;
+    wordBox.className = "last-word";
+
+    setTimeout(function(){
+      let wordContainer = document.getElementById("welcome-word-container");
+      wordContainer.className = "hide-word-container";
+    }, 5000);
+
+    document.body.className = "";
+  }
+  else
+  {
+    wordBox.className = "not-last-word";
+    this.counter     += 1;
+  }
 }
 
 

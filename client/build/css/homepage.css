@@ -1,3 +1,36 @@
+/** Welcome message **/
+.last-word {
+  font-size: 1000%;
+  color: #f368e0;
+  font-weight: 400;
+}
+
+.not-last-word {
+  font-size: 900%;
+  color: #fff;
+}
+
+.welcome-message-main-container {
+  background: linear-gradient(rgba(0,0,0, 0.5), rgba(0,0,0, 0.8));
+}
+
+
+.display-word-container {
+  position: absolute;
+  transform: translate(-50%,-50%);
+  left: 50%;
+  top: 20%;
+  display: block;
+  visibility: visible;
+}
+
+.hide-word-container {
+  position: absolute;
+  top: 20%;
+  display: none;
+  visibility: hidden;
+}
+
 #container-main {
   height: 100vh;
   width: 100%;

@@ -19,6 +19,7 @@ let isFirstSearch             = true;
 let modalWindow               = null;
 let travelPackageViewModel    = null;
 let modeDevelopment           = false;
+let domHelper                 = null;
 
 const initializeFlightR = function()
 {
@@ -168,9 +169,8 @@ const getAirportCities = function(){
   }
   else
   {
-    let helper = new DOMHelper();
-    helper.createSelectOptions(this.id, []);
-    helper.setSelectSize(this.id, 5);
+    domHelper.createSelectOptions(this.id, []);
+    domHelper.setSelectSize(this.id, 5);
   }
 }
 
@@ -181,10 +181,9 @@ const populateAirportCities = function(input)
     return {"value": airportCity.value, "label": airportCity.label};
   });
 
-  let helper = new DOMHelper();
-  helper.createSelectOptions(input.id, airportCitiesArrayForSelect);
-  helper.setSelectSize(input.id, 5);
-  helper.addEventListenerOnChangeSelectOriginOrDestination(input.id, "search-"+input.id);
+  domHelper.createSelectOptions(input.id, airportCitiesArrayForSelect);
+  domHelper.setSelectSize(input.id, 5);
+  domHelper.addEventListenerOnChangeSelectOriginOrDestination(input.id, "search-"+input.id);
 }
 
 const showAllResult = function(){
@@ -199,13 +198,12 @@ const mimicData = function(){
 
 
 const launchHomapageVideo = function(){
-  domHelper = new DOMHelper();
   domHelper.hidden("container-main");
   domHelper.setClassName("container-search-bar", "searchBarHomePage");
+  domHelper.displayWelcomeMessage();
 }
 
 const configurePageLayoutForResults = function(){
-  domHelper = new DOMHelper();
   domHelper.setClassName("container-search-bar", "container-search-bar");
   domHelper.visible("container-main");
   domHelper.removeElementById("video-presentation");
