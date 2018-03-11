@@ -4,7 +4,7 @@ const FavouritesListView = function(){
 
 }
 
-FavouritesListView.prototype.createFavouritesView = function(flightHotelPackages){
+FavouritesListView.prototype.createFavouritesView = function(flightHotelPackages, favouritesListViewModel){
   const div     = document.getElementById("modal-body");
   div.innerHTML = "";
   const ul      = document.createElement("ul");
@@ -13,7 +13,7 @@ FavouritesListView.prototype.createFavouritesView = function(flightHotelPackages
   for(flightHotelPackage of flightHotelPackages)
   {
     const packageView = new PackageView();
-    const div         = packageView.createPackageView(flightHotelPackage, true);
+    const div         = packageView.createPackageView(flightHotelPackage, true, favouritesListViewModel);
     let li            = document.createElement('li');
     li.appendChild(div);
     ul.appendChild(li);

@@ -20,7 +20,7 @@ MiniMapView.prototype.createMiniMap = function(flightHotelPackage) {
 }
 
 
-MiniMapView.prototype.createFaveButton = function(flightHotelPackage) {
+MiniMapView.prototype.createFaveButton = function(flightHotelPackage, favouritesListViewModel) {
   let minimapFooter     = domHelper.createDivElement("div-minimap-footer");
   let button            = document.createElement("button");
   minimapFooter.appendChild(button);
@@ -40,7 +40,7 @@ MiniMapView.prototype.createFaveButton = function(flightHotelPackage) {
     button.classList.add("button-grey");
     button.innerText = 'DELETE';
     button.addEventListener('click', function(){
-      favouritesList.delete(flightHotelPackage._id);
+      favouritesList.delete(flightHotelPackage._id, favouritesListViewModel.refreshFavourites.bind(favouritesListViewModel));
     });
   }
 
@@ -52,12 +52,12 @@ const createRequestComplete = function(newFavourite){
 }
 
 
-MiniMapView.prototype.createMiniMapView = function(flightHotelPackage) {
+MiniMapView.prototype.createMiniMapView = function(flightHotelPackage, favouritesListViewModel) {
   let miniMapView = document.createElement("div")
   miniMapView.classList.add("section-mini-map")
 
   let miniMapDiv        = this.createMiniMap(flightHotelPackage)
-  let faveActionButton  = this.createFaveButton(flightHotelPackage)
+  let faveActionButton  = this.createFaveButton(flightHotelPackage, favouritesListViewModel)
 
   miniMapView.appendChild(miniMapDiv)
   miniMapView.appendChild(faveActionButton)

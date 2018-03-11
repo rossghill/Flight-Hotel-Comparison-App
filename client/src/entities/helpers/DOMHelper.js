@@ -169,6 +169,7 @@ DOMHelper.prototype.removeElementById = function(elementId){
 
 DOMHelper.prototype.createModalWindowForFavourites = function(){
   let modalWindow = document.getElementById("favourites-modal");
+  let modalBody = document.getElementById("modal-body");
   modalWindow.style.display = "block";
 
   let closeButton           = document.getElementById('button-close-modal-window');
@@ -177,7 +178,9 @@ DOMHelper.prototype.createModalWindowForFavourites = function(){
   });
 
   document.addEventListener('click', function(){
-    if(event.target === modalWindow){
+    console.log('click target', event.target);
+    // if(event.target === modalWindow){
+    if(event.target === modalBody){
       modalWindow.style.display = 'none';
     }
   });

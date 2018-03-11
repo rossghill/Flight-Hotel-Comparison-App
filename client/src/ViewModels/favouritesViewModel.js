@@ -20,11 +20,13 @@ FavouritesViewModel.prototype.sendRequestGetAllFavourites = function(){
 FavouritesViewModel.prototype.displayAllFavourites = function(favourites){
 
   const favouritesListView = new FavouritesListView();
-  favouritesListView.createFavouritesView(favourites);
-
+  favouritesListView.createFavouritesView(favourites, this);
   domHelper.createModalWindowForFavourites();
 }
 
+FavouritesViewModel.prototype.refreshFavourites = function(){
+  // this.sendRequestGetAllFavourites();
+}
 
 
 

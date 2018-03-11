@@ -12,7 +12,7 @@
   -webkit-animation-name: fadeIn;
   -webkit-animation-duration: 0.2s;
   animation-name: fadeIn;
-  animation-duration: 0.2s
+  animation-duration: 0.2s;
 }
 
 /* Modal Content */
@@ -28,7 +28,7 @@
   -webkit-animation-name: slideIn;
   -webkit-animation-duration: 0.8s;
   animation-name: slideIn;
-  animation-duration: 0.8s
+  animation-duration: 0.8s;
 }
 
 /* Close Button */
