@@ -143,3 +143,9 @@
   align-items: center;
   justify-content: space-between;
 }
+
+
+/** Extra filters **/
+#select-sorting-packages {
+  font-size: 80%;
+}

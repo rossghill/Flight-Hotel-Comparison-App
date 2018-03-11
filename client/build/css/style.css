@@ -121,14 +121,6 @@ ul {
   padding: 10px;
 }
 
-#banner {
-  /* width: 1200px; */
-  padding: 10px 0px 10px 0px;
-  position: static;
-  display: flex;
-  flex-direction: row;
-}
-
 #container-main {
   padding: 30px;
   display: flex;
@@ -154,7 +146,7 @@ ul {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  background-image: url("http://bit.ly/2FGlz5B");
+  /* background-image: url("http://bit.ly/2FGlz5B"); */
   background-size: 100%;
 }
 
@@ -175,13 +167,10 @@ ul {
 }
 
 #container-result-bar {
-  /* padding: 10px 10px 10px 10px; */
-  /* margin-top: 10px; */
   display: flex;
   flex-direction: row;
   align-items: center;
   width: 100%;
-  /* border: 1px solid black; */
 }
 
 #map-view-button {
@@ -194,7 +183,6 @@ ul {
 }
 
 #container-body {
-/* background-color: #008aff; */
   margin-top: 10px;
   width: 100%;
   height: 50vw;
@@ -214,11 +202,10 @@ ul {
 
 
 #container-packages {
-  /* background-color: white; */
-  /* border: 1px solid black; */
   margin-bottom: 10px;
   display: flex;
   flex-direction: row;
+  overflow: auto;
 }
 
 #flight-going-img {
@@ -283,6 +270,7 @@ select option {
 #div-packages-map,
 #div-packages-list {
   width: 100%;
+  padding-right: 20px;
 }
 
 .mini-map-view-class {
@@ -313,6 +301,10 @@ input[type=text], input[type=number], input[type=date] {
   height: 40px;
   font-weight: 200px;
   border-radius: 5px;
+}
+
+input[type=date] {
+  width: 160px;
 }
 
 input[type=number] {
