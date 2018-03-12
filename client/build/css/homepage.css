@@ -51,12 +51,13 @@
 }
 
 .searchBarHomePage {
+  opacity: 0.8;
   border-radius: 10px;
   position: absolute;
   width: 85%;
   transform: translate(-50%,-50%);
-  left: 50%;
-  top: 50%;
+  left: 60%;
+  top: 85%;
   color: #fff;
   font-weight: 400;
   visibility: visible;
