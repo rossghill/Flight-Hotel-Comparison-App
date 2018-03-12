@@ -7,6 +7,9 @@ Flight and hotel price comparison web application using multiple APIs from Amade
 Colaboration project using HTML, CSS and vanilla JS by:
 
 https://github.com/BlueMorning
+
 https://github.com/markywildtype
+
 https://github.com/NTERPRYZ
+
 https://github.com/rossghill
