@@ -159,7 +159,16 @@ HotelView.prototype.createHotelBody = function(hotelEntity){
   let divHotelDescription = domHelper.createDivElement("hotel-description");
 
   divDescription.appendChild(divHotelDescription);
-  divHotelDescription.appendChild(domHelper.createParagraphe("hotel-description", hotelEntity.description.substring(0, 250)));
+
+  let hotelDescription = hotelEntity.description;
+  if(    hotelEntity.description !== undefined
+      && hotelEntity.description !== null
+      && hotelEntity.description.length > 250)
+  {
+    hotelDescription = hotelEntity.description.substring(0, 250);
+  }
+  
+  divHotelDescription.appendChild(domHelper.createParagraphe("hotel-description", hotelDescription));
   divRightPart.appendChild(divDescription);
 
   mainDiv.appendChild(divLeftPart);
