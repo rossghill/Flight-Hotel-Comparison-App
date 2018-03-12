@@ -2,9 +2,9 @@
 
 [![Waffle.io - Columns and their card count](https://badge.waffle.io/rossghill/CodeClan-Group-Project.svg?columns=all)](https://waffle.io/rossghill/CodeClan-Group-Project)
 
-Flight and hotel price comparison web application using multiple APIs from Amadeus (https://sandbox.amadeus.com/) and Pixabay (https://pixabay.com/api/docs/).
+Flight and hotel price comparison web application using multiple APIs from Amadeus (https://sandbox.amadeus.com/) and Pixabay (https://pixabay.com/api/docs/) using HTML, CSS and vanilla JS.
 
-Colaboration project using HTML, CSS and vanilla JS by:
+Colaboration between:
 
 https://github.com/BlueMorning
 
