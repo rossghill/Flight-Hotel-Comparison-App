@@ -1,5 +1,15 @@
-# CodeClan-Group-Project
+# CodeClan Group Project
 
 [![Waffle.io - Columns and their card count](https://badge.waffle.io/rossghill/CodeClan-Group-Project.svg?columns=all)](https://waffle.io/rossghill/CodeClan-Group-Project)
 
-Test upload ROBERT
+Flight and hotel price comparison web application using multiple APIs from Amadeus (https://sandbox.amadeus.com/) and Pixabay (https://pixabay.com/api/docs/) using HTML, CSS and vanilla JS.
+
+Colaboration between:
+
+https://github.com/BlueMorning
+
+https://github.com/markywildtype
+
+https://github.com/NTERPRYZ
+
+https://github.com/rossghill
