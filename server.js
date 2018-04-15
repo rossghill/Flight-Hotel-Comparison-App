@@ -15,5 +15,5 @@ server.use(router);
 
 
 server.listen(3000, function () {
-  console.log('FlightR running on port ' + this.address().port);
+  console.log('FlightR running on port' + this.address().port);
 });
